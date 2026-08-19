@@ -53,6 +53,7 @@
   /* Motion */
   --dur-fast: 160ms;
   --dur-med: 320ms;
+  --dur-reveal: 600ms;
   --ease: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
@@ -958,9 +959,28 @@ table.ledger td.mono { font-size: 0.8125rem; }
   transform: none;
   transition: opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
 }
+
+/* ---------- Staggered block reveal ----------
+   `data-reveal` is set only by PageEffects.tsx, on blocks it is actively
+   observing, so nothing here can strand content invisible without JS. The
+   doubled-up selectors keep these at the same specificity as
+   `.reveal.is-visible` above, which some cards carry as well — being written
+   later, these win. `--reveal-delay` is the per-element stagger. */
+[data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--dur-reveal) var(--ease), transform var(--dur-reveal) var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
+  [data-reveal]:not(.is-revealed) { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
