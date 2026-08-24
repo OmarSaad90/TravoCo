@@ -38,7 +38,7 @@ export default function AboutPage() {
       <PageEffects />
       <div className="page" id="page-about" role="region" aria-label="about">
       <section className="section page-hero section-ink on-dark" aria-labelledby="about-title" id="about">
-        <div className="wrap"><p className="kicker">About</p><h1 id="about-title">Research. Industry. Teaching. One risk discipline.</h1><p className="lede editorial"><em><span className="travo-word">TRAVO</span> is the commercial application of a career spent studying, applying and teaching engineering decision-making under uncertainty.</em></p></div>
+        <div className="wrap"><p className="kicker">About</p><h1 id="about-title">Research. Industry. Teaching.<br />One risk discipline.</h1><p className="lede editorial"><em><span className="travo-word">TRAVO</span> is the commercial application of a career spent studying, applying and teaching engineering decision-making under uncertainty.</em></p></div>
       </section>
       <section className="section reveal" aria-labelledby="background-title">
         <div className="wrap"><div className="section-head"><p className="kicker">Founder evidence</p><h2 id="background-title">The methodology was developed across three environments.</h2></div>

@@ -81,7 +81,7 @@ export default function LifecyclePage() {
       </section>
       <section className="section reveal" aria-labelledby="conditional-title">
         <div className="wrap">
-          <div className="section-head"><p className="kicker">Conditional branch</p><h2 id="conditional-title">Dispute is not a normal project phase. It is one possible path when risk materializes.</h2></div>
+          <div className="section-head"><p className="kicker">Conditional branch</p><h2 id="conditional-title">Dispute is not a normal project phase. It is one possible path<br />when risk materializes.</h2></div>
           <div className="branch-box">
             <p className="lede">Prospective risk analysis and forensic analysis examine the same project at different points in time: first as uncertainty about the future, later as evidence about what actually happened.</p>
             <div className="branch-flow" aria-label="Conditional distress and dispute branch">

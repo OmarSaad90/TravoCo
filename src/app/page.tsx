@@ -41,9 +41,12 @@ export default function HomePage() {
       <div className="page" id="page-home" role="region" aria-label="home">
       <section aria-labelledby="hero-title" className="premium-hero on-dark" style={{ overflow: "hidden" }}>
         <div className="wrap premium-hero-grid">
-          <div className="hero-copy">
+          <div className="hero-head">
             <p className="kicker">Independent construction risk advisory</p>
             <h1 id="hero-title">Construction risk, quantified before capital is committed, funded, reserved or defended.</h1>
+          </div>
+
+          <div className="hero-copy">
             <p className="hero-deck"><em>Independent, principal-led cost-and-schedule risk analysis for one decision at a time — starting with a bounded Project Risk Screen.</em></p>
             <p className="hero-support">From preconstruction through active delivery, distress and post-project learning, <span className="travo-word">TRAVO</span> converts project information into a defensible range of outcomes, the few drivers that move it, and the contingency, investigation or action the decision requires.</p>
             <p className="mt-block">

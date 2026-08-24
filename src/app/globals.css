@@ -2295,36 +2295,65 @@ html{-webkit-text-size-adjust:100%}
    TravoC additions (not in the reference document)
    ========================================================================== */
 
-/* Split hero: copy left, the logo-loop animation right, and the Decision
-   architecture strip spanning both beneath — which is where .premium-decision-panel
-   already puts itself via `grid-column: 1 / -1`. This replaces the reference's
-   single-column home hero, where the animation ran as a full-width band above
-   the copy. */
+/* Split hero, three rows:
+     1. .hero-head  — kicker + h1, spanning both columns
+     2. .hero-copy (left) / .hero-video-band (right) — 50/50
+     3. .premium-decision-panel — spans both, via its own `grid-column: 1 / -1`
+   The headline runs full width so it can keep the reference's own --fs-hero
+   (up to 5rem); it was previously scaled down only because it lived inside a
+   55% column and wrapped to six or seven lines there. This replaces the
+   reference's single-column home hero, where the animation ran as a full-width
+   band above the copy. */
 #page-home .premium-hero-grid {
-  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
-  /* Trimmed so the split hero clears a laptop viewport under the sticky header. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  /* Trimmed so the split hero stays as close to one viewport as the full-size
+     headline allows. If the hero ever needs to be shorter, this and row-gap are
+     the levers — the h1 size is the client's explicit request, so not that. */
   padding-block: clamp(2rem, 4vw, 3.25rem) clamp(2.5rem, 5vw, 4rem);
+  row-gap: clamp(2rem, 4vw, 3rem);
 }
+#page-home .premium-hero-grid > .hero-head {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+/* row-gap already separates the headline from the row beneath it; the h1's own
+   0.55em bottom margin (44px at full size) would double that up. */
+#page-home .premium-hero-grid > .hero-head h1 {
+  margin-bottom: 0;
+}
+/* Overrides the reference's `.hero-copy { grid-column: 1 / -1 }` above, which
+   assumed a single-column hero. */
 #page-home .premium-hero-grid > .hero-copy {
   grid-column: 1;
   width: 100%;
 }
 #page-home .premium-hero-grid > .hero-video-band {
   grid-column: 2;
-  /* Top-aligned, not centred: centring it in a row whose height is set by the
-     much taller copy column pushed the wordmark and tagline below the fold.
-     The offset is the kicker's own height (0.9rem padding + its line box +
-     1.4rem margin), so the mark's top edge lands level with the h1. */
-  align-self: start;
-  padding-block: 3.5rem 0;
+  /* THE clipper. `#page-home .hero-video-band` above sets `overflow: hidden`,
+     which cuts the digit field off at the column box — the hard edges on the
+     left and top. `.finale`'s own `overflow: visible` could never help, since
+     this ancestor clips first. The section still has `overflow: hidden`, so
+     nothing can spill off-page or cause sideways scroll. */
+  overflow: visible;
 }
-/* The reference sized the headline for a full-width hero (--fs-hero tops out at
-   5rem); at that size it wraps to six or seven lines in a 55% column and makes
-   the hero far taller than one screen. Scaled to the column it holds ~4 lines. */
-#page-home .premium-hero .hero-copy h1 {
-  font-size: clamp(2rem, 3.1vw, 2.9rem);
+/* Let the digit field wash across the copy rather than stopping at the column.
+   `#finaleCanvas` is absolutely positioned inside `.finale`, so it paints in a
+   later stacking layer than its statically-positioned siblings — left alone,
+   the digits land ON TOP of the text. Lifting the three text blocks into the
+   same positioned layer puts them above the canvas, so the field drifts behind
+   them. The canvas is `pointer-events: none`, so nothing here affects the CTAs.
+   At maxScale 2.2 the field reaches roughly 80px past the column on every side,
+   which is why the headline and the decision panel need this as much as the
+   copy column does. */
+#page-home .premium-hero-grid > .hero-head,
+#page-home .premium-hero-grid > .hero-copy,
+#page-home .premium-hero-grid > .premium-decision-panel {
+  position: relative;
+  z-index: 1;
 }
-#page-home .premium-hero .hero-copy h1,
+/* The reference scopes its `max-width: none` to `.hero-copy`; the h1 has moved
+   out of that wrapper, so restate it here for the new one. */
+#page-home .premium-hero .hero-head h1,
 #page-home .premium-hero .hero-copy .hero-deck,
 #page-home .premium-hero .hero-copy .hero-support {
   max-width: none;
@@ -2337,9 +2366,11 @@ html{-webkit-text-size-adjust:100%}
   padding-top: 0 !important;
 }
 /* Size the mark off the column, not the viewport: the reference's 42vw would
-   overflow a 45% column at mid-range widths. */
+   overflow a half-width column at mid-range widths. Nudged up from 17rem now
+   that the column is 50% rather than 45%, so the lockup roughly matches the
+   height of the deck + support + CTA stack beside it. */
 #page-home .hero-video-band .finale-logo {
-  width: min(100%, 17rem);
+  width: min(100%, 20rem);
 }
 /* The digit field swells to CONFIG.maxScale (2x) at the midpoint, and the
    canvas only paints within its own box — in a narrow column that would shear
@@ -2351,11 +2382,18 @@ html{-webkit-text-size-adjust:100%}
   overflow: visible;
   padding: 0;
 }
+/* With the column no longer clipping, the canvas becomes the next thing that
+   can. The field is centred on the LOGO, which sits at the top of the lockup
+   (wordmark and tagline hang below it), so at maxScale 2.2 it reaches further
+   above `.finale`'s top edge than the old -35% inset allowed — that was the
+   cut-off along the top. 220%/-60% clears it on every side with room spare.
+   Biasing this box left/up would not help: the field is centred on the mark,
+   so an off-centre canvas just moves which side gets clipped. */
 #page-home .hero-video-band #finaleCanvas {
-  top: -35% !important;
-  left: -35% !important;
-  width: 170% !important;
-  height: 170% !important;
+  top: -60% !important;
+  left: -60% !important;
+  width: 220% !important;
+  height: 220% !important;
 }
 
 @media (max-width: 900px) {
@@ -2363,14 +2401,10 @@ html{-webkit-text-size-adjust:100%}
   #page-home .premium-hero-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+  #page-home .premium-hero-grid > .hero-head,
   #page-home .premium-hero-grid > .hero-copy,
   #page-home .premium-hero-grid > .hero-video-band {
     grid-column: 1 / -1;
-  }
-  /* The top offset only exists to line the mark up with the h1 beside it. */
-  #page-home .premium-hero-grid > .hero-video-band {
-    align-self: stretch;
-    padding-block: 0;
   }
   #page-home .hero-video-band .finale-logo {
     width: min(72vw, 20rem);
@@ -2397,3 +2431,11 @@ html{-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce) {
   [data-reveal]:not(.is-revealed) { opacity: 1; transform: none; }
 }
+
+/* ---------- Footer tagline weight (client request) ----------
+   `.brand-tagline` declares no font-weight, so it inherits from `.wordmark` —
+   and the hero-embed block's unscoped `.wordmark { font-weight: 700 }` wins on
+   cascade order, rendering the footer tagline bold. Match the hero lockup's
+   `.tag` (font-weight: 500) instead. Header tagline is display:none, so this is
+   footer-only by construction. Deliberate divergence from the reference file. */
+.site-footer .brand-tagline { font-weight: 500; }
