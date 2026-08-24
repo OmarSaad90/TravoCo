@@ -3,11 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import BrandMarkDissolve from "./BrandMarkDissolve";
+import TravoWord from "./TravoWord";
 
-const NAV_LINKS = [
+type NavLink = { href: string; label: React.ReactNode };
+
+const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Home" },
-  { href: "/lifecycle", label: "How TRAVO Works" },
+  {
+    href: "/lifecycle",
+    label: (
+      <>
+        How <TravoWord /> Works
+      </>
+    ),
+  },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
   { href: "/claims", label: "Claims & Disputes" },
@@ -55,7 +64,10 @@ export default function Header() {
       <div className="topbar">
         <div className="wrap topbar-inner">
           <span>
-            <strong>TRAVO</strong> · Total Risk Analysis and Value Optimization
+            <strong>
+              <TravoWord />
+            </strong>{" "}
+            · Total Risk Analysis and Value Optimization
           </span>
           <span>Quantified Risk. Disciplined Decisions.</span>
           <span>New Jersey · New York Metropolitan Region</span>
@@ -63,7 +75,8 @@ export default function Header() {
       </div>
       <div className="wrap navbar">
         <Link className="wordmark" href="/" aria-label="TRAVO home">
-          <BrandMarkDissolve />
+          <img className="brand-logo" src="/brand-logo.png" alt="TRAVO logo" />
+          <span className="brand-tagline">Quantified Risk. Disciplined Decisions.</span>
         </Link>
         <button
           ref={toggleRef}

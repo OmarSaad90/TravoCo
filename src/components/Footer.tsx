@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TravoWord from "./TravoWord";
 
 export default function Footer() {
   return (
@@ -6,23 +7,18 @@ export default function Footer() {
       <div className="wrap footer-top">
         <div>
           <Link className="wordmark" href="/" aria-label="TRAVO home">
-            <img className="brand-logo" src="/brand-logo.png" alt="TRAVO logo" />
+            <img className="brand-logo" src="/brand-logo-footer.png" alt="TRAVO logo" />
             <span className="brand-tagline">Quantified Risk. Disciplined Decisions.</span>
           </Link>
           <p className="footer-tag">Total Risk Analysis and Value Optimization</p>
-          <p className="footer-region">
-            Construction risk assessment &amp; decision analysis across the project
-            lifecycle.
-          </p>
-          <p className="footer-independence">
-            Risk Analysis → Decision Analysis → Value Optimization.
-          </p>
         </div>
         <nav aria-label="Footer — practice">
           <p className="footer-heading">Practice</p>
           <ul>
             <li>
-              <Link href="/lifecycle">How TRAVO Works</Link>
+              <Link href="/lifecycle">
+                How <TravoWord /> Works
+              </Link>
             </li>
             <li>
               <Link href="/services">Services</Link>
@@ -76,9 +72,13 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      <div className="wrap footer-bottom">
-        <span>© 2026 TRAVO. All rights reserved.</span>
-        <span>Independent construction risk assessment &amp; decision analysis.</span>
+      <div className="footer-bottom-band">
+        <div className="wrap footer-bottom">
+          <span>
+            © 2026 <TravoWord />. All rights reserved.
+          </span>
+          <span>Independent construction risk assessment &amp; decision analysis.</span>
+        </div>
       </div>
     </footer>
   );
