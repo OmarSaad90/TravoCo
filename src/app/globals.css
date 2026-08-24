@@ -740,12 +740,9 @@ a.btn.btn-ghost:hover { color: var(--white); }
 }
 @media (max-width: 1000px) {
   .premium-decision-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.4rem; }
-  .premium-decision-panel > .premium-decision-row:nth-of-type(3) { border-left: 0; padding-left: 0; }
 }
 @media (max-width: 620px) {
   .premium-decision-panel { grid-template-columns: 1fr; }
-  .premium-decision-row { border-left: 0; padding-left: 0; border-top: 1px solid var(--teal-dark); padding-top: 1.1rem; }
-  .premium-decision-panel > .premium-decision-row:first-of-type { border-top: 0; padding-top: 0; }
 }
 
 /* Proof strip — three foundations on one measured baseline */
