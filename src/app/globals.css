@@ -2459,6 +2459,21 @@ html{-webkit-text-size-adjust:100%}
   position: relative;
   top: -1.75rem;
 }
+/* Only the ICON dissolves — the "TRAVO" wordmark and the tagline stay put
+   (client, 2026-08-25). His `ref/logonew.html` makes this change twice, and
+   both halves are needed:
+     1. the loop stops adding/removing `.in` on the cap each frame
+        (see HeroFinale.tsx), and
+     2. `.finale-cap` becomes opaque with NO transition, so nothing can fade it
+        even if the class is toggled by the reduced-motion branch or `restart()`.
+   The ported hero-embed region above still carries his OLD values
+   (`opacity: 0; transition: opacity 1s ease .3s`) because that region mirrors
+   the site reference, not this standalone logo file — so the override lives
+   here, and `diff` against the site reference stays clean. */
+#page-home .hero-video-band .finale-cap {
+  opacity: 1;
+  transition: none;
+}
 /* Size the mark off the column, not the viewport: the reference's 42vw would
    overflow a half-width column at mid-range widths.
 

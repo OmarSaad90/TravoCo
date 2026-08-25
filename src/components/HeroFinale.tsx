@@ -382,12 +382,12 @@ export default function HeroFinale() {
       const ws = d1 * d1 * d1 * (d1 * (d1 * 6 - 15) + 10); // smootherstep(d1)
       const prog = u >= 2 ? 1 : ws * ws;
       drawFrame(prog, t);
+      // Keep the TRAVO wordmark + tagline visible and fixed throughout the
+      // animation — only the icon dissolves. (Client's ref/logonew.html.)
       if (prog > 0.82) {
         logo.classList.add("in");
-        cap.classList.add("in");
       } else {
         logo.classList.remove("in");
-        cap.classList.remove("in");
       }
       if (u >= 2 && !done) {
         done = true;
