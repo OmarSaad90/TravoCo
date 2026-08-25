@@ -21,16 +21,19 @@ import { useEffect, useRef } from "react";
    The reference also shipped a hidden "press T" slider panel for tuning
    these live; that debug affordance is left out of the site.
 ========================================================= */
-// Values baked in from the client's own "press T" tuner panel (screenshot,
-// 2026-08-24) — his settings, read straight off the read-out his panel prints
-// for exactly this purpose. Fewer, larger, calmer digits than the defaults.
+// Values baked in from the client's own file, verbatim — `ref/logonew.html`
+// (2026-08-25), which supersedes the tuner-panel screenshot of 2026-08-24.
+// The headline change is `maxScale: 1.00`: the digit field now holds the mark's
+// size for the whole animation instead of swelling to 2.2x at the midpoint.
+// That is what removed the canvas fade mask in globals.css — see the note on
+// `#page-home .hero-video-band #finaleCanvas` there before re-raising maxScale.
 const CONFIG = {
-  density: 2200, // how many numbers fill the mark (more = denser)
-  maxScale: 2.2, // peak size of the number-logo at the midpoint (1 = no growth, 2 = double)
-  glyphSize: 1.35, // base size of each number
+  density: 2100, // how many numbers fill the mark (more = denser)
+  maxScale: 1.0, // keep the number-logo at a constant size throughout the animation
+  glyphSize: 1.75, // base size of each number
   churn: 0.02, // in-shape drift/churn as a fraction of the mark's size (0 = perfectly still)
   spinSpeed: 0.3, // per-glyph spin ("turnable") speed multiplier
-  flipRate: 0.2, // how fast the whole 0/1 field inverts
+  flipRate: 0.0, // how fast the whole 0/1 field inverts
 };
 
 type Task = { fn: (t: number) => void; active: boolean };

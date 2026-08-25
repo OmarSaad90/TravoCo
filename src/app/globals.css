@@ -2310,15 +2310,36 @@ html{-webkit-text-size-adjust:100%}
      headline allows. If the hero ever needs to be shorter, this and row-gap are
      the levers — the h1 size is the client's explicit request, so not that. */
   padding-block: clamp(2rem, 4vw, 3.25rem) clamp(2.5rem, 5vw, 4rem);
-  row-gap: clamp(2rem, 4vw, 3rem);
+  /* One gap, two complaints. This single value is what sits BOTH between the
+     deck and the logo/copy row AND between that row and the decision panel, so
+     tightening it once fixes both (client, 2026-08-25: "quite a lot of empty
+     space"). Was clamp(2rem, 4vw, 3rem) = 32-48px; now 24-40px.
+     Note the panel adds its own 1.5rem `padding-top` under its border rule, so
+     the gap before the four cards always reads ~24px larger than this one. */
+  row-gap: clamp(1.5rem, 3vw, 2.5rem);
+  /* The reference sets `align-items: center` (its hero was one column, so it
+     never mattered). Here the animation column is taller than the copy column,
+     so centring floated the copy down by half the difference — the client read
+     it as the support paragraph sitting lower than the top of the mark, and as
+     the column looking empty. Top-align both instead.
+     Rows that span 1 / -1 (.hero-head, .premium-decision-panel) are unaffected:
+     a lone item defines its own row height, so start and center coincide. */
+  align-items: start;
 }
 #page-home .premium-hero-grid > .hero-head {
   grid-column: 1 / -1;
   width: 100%;
 }
-/* row-gap already separates the headline from the row beneath it; the h1's own
-   0.55em bottom margin (44px at full size) would double that up. */
-#page-home .premium-hero-grid > .hero-head h1 {
+/* The deck now lives inside `.hero-head`, directly under the h1 — the same
+   kicker -> h1 -> italic lede stack the inner pages use in `.page-hero`
+   (client request, 2026-08-25: "back to full width under the title, just like
+   other pages"). So the h1 KEEPS its own 0.55em bottom margin, which is the
+   internal gap between it and the deck, and the DECK is the element that has to
+   give its bottom margin up: it is last in the block, and the grid's row-gap
+   already separates it from the row beneath. The reference's `p:last-child`
+   would zero it anyway — this is stated explicitly so that adding anything
+   after the deck later does not silently reintroduce a doubled gap. */
+#page-home .premium-hero-grid > .hero-head .hero-deck {
   margin-bottom: 0;
 }
 /* Overrides the reference's `.hero-copy { grid-column: 1 / -1 }` above, which
@@ -2326,9 +2347,67 @@ html{-webkit-text-size-adjust:100%}
 #page-home .premium-hero-grid > .hero-copy {
   grid-column: 1;
   width: 100%;
+  /* Match the top of the copy to the top of the MARK, not to the top of the
+     grid row. Two things sit between them:
+
+     1. `#page-home .hero-video-band` (reference region) carries
+        `padding-block: clamp(2rem, 4vw, 3rem)`, so the logo begins 32-48px
+        below the row's top edge. The same expression is repeated here rather
+        than a fixed pixel value, so the two stay locked together at every
+        viewport width. If that padding is ever changed, change it here too.
+        (The mark is then lifted a further 1.75rem above this by a relative `top`
+        on `.hero-logo-embed` — deliberately, at the client's request. That is a
+        paint-only offset, so it does not enter this calculation.)
+     2. A text box is not flush with its text: --fs-body 1.0625rem at
+        line-height 1.62 puts ~5px of half-leading above the first line, plus
+        the ascender-to-cap gap. brand-icon.png's alpha runs to row 0, so the
+        mark has no matching inset. The -0.4rem cancels that difference so the
+        cap-height lines up with the mark's visible top edge rather than its
+        box. Purely optical — drop just that term if the copy reads high. */
+  margin-top: calc(clamp(2rem, 4vw, 3rem) - 0.4rem);
+}
+/* Three CTAs stacked vertically in the left column (client request), replacing
+   the reference's inline row — which, in a half-width column, wrapped into a
+   ragged two-line clump.
+
+   `align-items: flex-start` is the load-bearing declaration. `.btn` is
+   `inline-flex`, but a flex column STRETCHES its children by default, so
+   without this the three buttons would each fill the column's full width.
+   Three equal-width slabs flatten the hierarchy — the primary stops reading as
+   primary. Intrinsic width keeps "Request a decision-scoping call" the widest
+   and first, so the stack still has an entry point.
+
+   The reference's `p > .btn { margin: 0 0.75rem 0.75rem 0 }` exists for the
+   inline layout; zeroed here so `gap` is the only thing spacing them. */
+#page-home .premium-hero-grid > .hero-copy .mt-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Opened up so the stack reaches down toward the bottom of the lockup on the
+     right (client request, 2026-08-25 — "matches the logo's end... fine if not
+     exact"). Deliberately split across two properties instead of forcing it all
+     into `gap`: at ~1280px the stack ended ~130px short of the lockup, and two
+     65px gaps would have stopped reading as one group of buttons. So the gap
+     roughly triples (12px -> 44px) and the rest comes from the space above the
+     stack below. Approximate by construction — the right column's height is set
+     by the JS-sized wordmark and the tag, so an exact match is not stable. */
+  gap: clamp(1.25rem, 2.6vw, 2rem);
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+}
+#page-home .premium-hero-grid > .hero-copy .mt-block > .btn {
+  margin: 0;
 }
 #page-home .premium-hero-grid > .hero-video-band {
   grid-column: 2;
+  /* Trim the dead space UNDER the lockup (client request, 2026-08-25).
+     `#page-home .hero-video-band` sets `padding-block`, so the same 32-48px it
+     puts above the mark it also puts below it — and since the lockup is now
+     painted 1.75rem higher than its box, the space below reads larger still.
+     This column is the taller of the two, so it sets the row height: trimming
+     here pulls the decision panel up under BOTH columns, not just this one.
+     `padding-block-END` only — the start value stays put, because
+     `.hero-copy`'s margin-top is matched to it and the two tops would drift. */
+  padding-block-end: clamp(0.75rem, 1.5vw, 1.25rem);
   /* THE clipper. `#page-home .hero-video-band` above sets `overflow: hidden`,
      which cuts the digit field off at the column box — the hard edges on the
      left and top. `.finale`'s own `overflow: visible` could never help, since
@@ -2355,7 +2434,7 @@ html{-webkit-text-size-adjust:100%}
 /* The reference scopes its `max-width: none` to `.hero-copy`; the h1 has moved
    out of that wrapper, so restate it here for the new one. */
 #page-home .premium-hero .hero-head h1,
-#page-home .premium-hero .hero-copy .hero-deck,
+#page-home .premium-hero .hero-head .hero-deck,
 #page-home .premium-hero .hero-copy .hero-support {
   max-width: none;
 }
@@ -2365,6 +2444,20 @@ html{-webkit-text-size-adjust:100%}
 #page-home .hero-video-band .hero-logo-embed {
   max-width: 100% !important;
   padding-top: 0 !important;
+  /* A small upward nudge for the lockup (client request, 2026-08-25: "lift the
+     logo a tiny bit up... without touching anything else").
+
+     Done as a relative offset, NOT a negative margin or reduced band padding,
+     precisely because of the "nothing else" part: `position: relative` + `top`
+     paints the element off its normal position without changing the box it
+     occupies, so the row height, the decision panel below and the copy column
+     beside it all stay exactly where they are. A negative margin would have
+     pulled the row's bottom up with it. `#finaleCanvas` is absolutely
+     positioned against `.finale` inside this box, so the digit field rides
+     along with the mark rather than separating from it.
+     THIS IS THE KNOB: more negative lifts further. */
+  position: relative;
+  top: -1.75rem;
 }
 /* Size the mark off the column, not the viewport: the reference's 42vw would
    overflow a half-width column at mid-range widths.
@@ -2388,52 +2481,40 @@ html{-webkit-text-size-adjust:100%}
 #page-home .hero-video-band .finale-logo {
   width: min(100%, 20rem);
 }
-/* The "lower it a tiny bit" nudge. Earlier passes reserved the field's whole
-   vertical overhang here (10rem, then 5.75rem), which pushed the lockup so far
-   down it read as a slab of dead space under the headline. The mask below does
-   the real work now, so this is just a small drop to take pressure off it —
-   every 1rem here is 16px of fade the mask does not have to hide.
-   `overflow: visible` stays: the canvas must paint past this box, not clip. */
+/* No top padding. This used to be a 2rem "lower it a tiny bit" nudge that took
+   pressure off the canvas fade mask — every 1rem here was 16px of overhang the
+   mask did not have to hide. With `maxScale: 1.00` the mask is gone and the
+   field never leaves the mark, so the padding stopped buying anything and was
+   simply stacking 32px on top of the grid's row-gap: the gap above the logo
+   read ~80px against ~48px above the left column, which is the lopsidedness the
+   client flagged. `overflow: visible` stays — the canvas must paint past this
+   box, not clip. */
 #page-home .hero-video-band .finale {
   overflow: visible;
-  padding: 2rem 0 0;
+  padding: 0;
 }
 /* With the column no longer clipping, the canvas becomes the next thing that
-   can. The field is centred on the LOGO, which sits at the top of the lockup
-   (wordmark and tagline hang below it), so at maxScale 2.2 it reaches further
-   above `.finale`'s top edge than the old -35% inset allowed — that was the
-   cut-off along the top. 220%/-60% clears it on every side with room spare.
-   Biasing this box left/up would not help: the field is centred on the mark,
-   so an off-centre canvas just moves which side gets clipped. */
+   can. Sized generously at 220%/-60% back when maxScale was 2.2 and the field
+   swelled well past `.finale`'s top edge. At maxScale 1.00 that headroom is no
+   longer needed, but it is kept deliberately: the canvas is transparent and
+   `pointer-events: none`, so the extra box costs nothing visible, and it means
+   raising maxScale again cannot reintroduce a clipped edge. Biasing this box
+   left/up would not help either way — the field is centred on the mark, so an
+   off-centre canvas just moves which side gets clipped. */
 #page-home .hero-video-band #finaleCanvas {
   top: -60% !important;
   left: -60% !important;
   width: 220% !important;
   height: 220% !important;
 
-  /* THE FIX FOR THE HEADLINE OVERLAP (client request, 2026-08-25).
-     Fade the field out before it reaches the h1 instead of shrinking the mark
-     or pushing the lockup down — the client liked the 20rem size and the left
-     side already cleared the copy, so only the top needed dealing with.
-
-     Percentages are of this canvas box, which is 220% of `.finale`, so they
-     scale with the lockup instead of being pinned to one viewport width.
-     Working in canvas coordinates, measured down from the canvas's own top:
-
-       canvas top sits    0.60 * 480px  = 288px above `.finale`'s top edge
-       the h1's box ends  288 - 72 (row-gap)   = 216px  ->  216/1056 = 20%
-       the field reaches  288 - (376 - 192)    = 104px  ->  ~10%
-
-     So the top ~20% of this box is the strip that overlaps the headline, and
-     the field's own top edge is at ~10%. Hold it fully transparent to 20%, then
-     ramp to opaque by 27% so the digits dissolve upward rather than ending on a
-     visible straight line. Nothing below 27% is touched.
-
-     TO TUNE: raise the first stop if digits still graze the title, lower it if
-     the field looks cut short. The two stops must stay ~7% apart or the ramp
-     becomes a hard edge. */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0 20%, #000 27%);
-  mask-image: linear-gradient(to bottom, transparent 0 20%, #000 27%);
+  /* NO MASK — deliberately. The fade mask that used to live here existed only
+     to hide the field where it swelled past the mark and reached the headline.
+     The client's `ref/logonew.html` sets `maxScale: 1.00` ("keep the number-logo
+     at a constant size throughout"), so the field now never leaves the mark's
+     own silhouette and there is nothing left to hide. Re-adding the mask would
+     only eat the top of the mark itself — its ramp ended at 27% of this box and
+     the mark's top edge sits at only ~30%. If maxScale ever goes back above 1,
+     the mask comes back with it; see the git history for the tuned values. */
 }
 
 @media (max-width: 900px) {
@@ -2446,18 +2527,21 @@ html{-webkit-text-size-adjust:100%}
   #page-home .premium-hero-grid > .hero-video-band {
     grid-column: 1 / -1;
   }
+  /* Stacked, `.hero-copy` sits ABOVE the animation rather than beside it, so the
+     offset that lines it up with the mark has nothing to line up with — it would
+     just be dead space under the deck. row-gap handles the separation here. */
+  #page-home .premium-hero-grid > .hero-copy {
+    margin-top: 0;
+  }
+  /* Stacked, the buttons have no lockup to reach the bottom of — the generous
+     desktop spacing would just be scroll. Back to a compact group. */
+  #page-home .premium-hero-grid > .hero-copy .mt-block {
+    gap: 0.75rem;
+    margin-top: var(--space-block);
+  }
   /* Back to the reference's own 20rem cap, with the vw guard for narrow phones. */
   #page-home .hero-video-band .finale-logo {
     width: min(72vw, 20rem);
-  }
-  /* Stacked, the row-gap bottoms out at its 2.75rem floor (44px) rather than the
-     72px available at desktop, so the overlapping strip is TALLER here:
-     288 - 44 = 244px, i.e. 244/1056 = ~23%. The element directly above is now
-     `.hero-copy` (the CTA stack), not the h1 — same problem, less headroom.
-     Holding the desktop 20% here would let digits reach that copy. */
-  #page-home .hero-video-band #finaleCanvas {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0 23%, #000 30%);
-    mask-image: linear-gradient(to bottom, transparent 0 23%, #000 30%);
   }
 }
 
@@ -2510,3 +2594,9 @@ html{-webkit-text-size-adjust:100%}
 .site-footer .wordmark:focus-visible .brand-tagline { color: var(--teal); }
 .site-footer .wordmark:hover,
 .site-footer .wordmark:focus-visible { text-decoration: none; }
+
+/* ---------- Footer "Total Risk Analysis and Value Optimization" in white ------
+   The reference sets `.footer-tag { color: var(--blue-light) }`. Client asked
+   for white. `.footer-tag` only appears in the footer, so no other surface is
+   affected. Deliberate divergence from the reference file. */
+.site-footer .footer-tag { color: var(--white); }
