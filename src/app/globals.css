@@ -2336,15 +2336,16 @@ html{-webkit-text-size-adjust:100%}
      nothing can spill off-page or cause sideways scroll. */
   overflow: visible;
 }
-/* Let the digit field wash across the copy rather than stopping at the column.
+/* Defence in depth, kept after the 2026-08-25 containment change.
+   The mark size and `.finale`'s padding are now sized so the field never
+   reaches this text at all — but those are tuned numbers, and a future change
+   to CONFIG.maxScale or the logo width could put digits back over the copy.
    `#finaleCanvas` is absolutely positioned inside `.finale`, so it paints in a
-   later stacking layer than its statically-positioned siblings — left alone,
-   the digits land ON TOP of the text. Lifting the three text blocks into the
-   same positioned layer puts them above the canvas, so the field drifts behind
-   them. The canvas is `pointer-events: none`, so nothing here affects the CTAs.
-   At maxScale 2.2 the field reaches roughly 80px past the column on every side,
-   which is why the headline and the decision panel need this as much as the
-   copy column does. */
+   later stacking layer than its statically-positioned siblings; left alone the
+   digits would land ON TOP of the text. Lifting the three text blocks into the
+   same positioned layer means that in the worst case the field passes BEHIND
+   them rather than over them. The canvas is `pointer-events: none`, so nothing
+   here affects the CTAs. Cheap insurance — do not remove. */
 #page-home .premium-hero-grid > .hero-head,
 #page-home .premium-hero-grid > .hero-copy,
 #page-home .premium-hero-grid > .premium-decision-panel {
@@ -2366,21 +2367,36 @@ html{-webkit-text-size-adjust:100%}
   padding-top: 0 !important;
 }
 /* Size the mark off the column, not the viewport: the reference's 42vw would
-   overflow a half-width column at mid-range widths. Nudged up from 17rem now
-   that the column is 50% rather than 45%, so the lockup roughly matches the
-   height of the deck + support + CTA stack beside it. */
+   overflow a half-width column at mid-range widths.
+
+   20rem is the size the client signed off on and it is deliberately unchanged.
+   The field's peak half-extent is (0.5 shape + 0.03 churn) * LS * CONFIG.maxScale
+   plus about half a glyph diagonal — i.e. ~1.1 * LS + 24px, where LS is this
+   width — so at maxScale 2.2 the swell is ~2.2x the mark's own box. It is
+   centred on the MARK, which sits at the top of the lockup (wordmark and
+   tagline hang below), so it reaches much further up than down.
+
+   That is the whole problem: at 20rem the field is ~752px across, and only the
+   TOP of it ever caused trouble (it reached into the h1). The left side always
+   cleared the copy and the client was happy with it. Shrinking the mark to fit
+   the field entirely was tried at 11rem and 14rem and read too small both
+   times — the swell is 2.2x whatever this number is, so no size that looks
+   right can also be self-contained. Do not shrink it again.
+
+   The top overlap is handled where it actually occurs, by fading the canvas out
+   before it reaches the headline — see the #finaleCanvas mask below. */
 #page-home .hero-video-band .finale-logo {
   width: min(100%, 20rem);
 }
-/* The digit field swells to CONFIG.maxScale (2x) at the midpoint, and the
-   canvas only paints within its own box — in a narrow column that would shear
-   the swell off against a hard rectangular edge. Oversizing the canvas past the
-   lockup gives the growth room without making the column taller or the mark
-   smaller. The 2x mask stays within ~32px of the column edge, well inside the
-   column gap, so digits never reach the copy. */
+/* The "lower it a tiny bit" nudge. Earlier passes reserved the field's whole
+   vertical overhang here (10rem, then 5.75rem), which pushed the lockup so far
+   down it read as a slab of dead space under the headline. The mask below does
+   the real work now, so this is just a small drop to take pressure off it —
+   every 1rem here is 16px of fade the mask does not have to hide.
+   `overflow: visible` stays: the canvas must paint past this box, not clip. */
 #page-home .hero-video-band .finale {
   overflow: visible;
-  padding: 0;
+  padding: 2rem 0 0;
 }
 /* With the column no longer clipping, the canvas becomes the next thing that
    can. The field is centred on the LOGO, which sits at the top of the lockup
@@ -2394,6 +2410,30 @@ html{-webkit-text-size-adjust:100%}
   left: -60% !important;
   width: 220% !important;
   height: 220% !important;
+
+  /* THE FIX FOR THE HEADLINE OVERLAP (client request, 2026-08-25).
+     Fade the field out before it reaches the h1 instead of shrinking the mark
+     or pushing the lockup down — the client liked the 20rem size and the left
+     side already cleared the copy, so only the top needed dealing with.
+
+     Percentages are of this canvas box, which is 220% of `.finale`, so they
+     scale with the lockup instead of being pinned to one viewport width.
+     Working in canvas coordinates, measured down from the canvas's own top:
+
+       canvas top sits    0.60 * 480px  = 288px above `.finale`'s top edge
+       the h1's box ends  288 - 72 (row-gap)   = 216px  ->  216/1056 = 20%
+       the field reaches  288 - (376 - 192)    = 104px  ->  ~10%
+
+     So the top ~20% of this box is the strip that overlaps the headline, and
+     the field's own top edge is at ~10%. Hold it fully transparent to 20%, then
+     ramp to opaque by 27% so the digits dissolve upward rather than ending on a
+     visible straight line. Nothing below 27% is touched.
+
+     TO TUNE: raise the first stop if digits still graze the title, lower it if
+     the field looks cut short. The two stops must stay ~7% apart or the ramp
+     becomes a hard edge. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0 20%, #000 27%);
+  mask-image: linear-gradient(to bottom, transparent 0 20%, #000 27%);
 }
 
 @media (max-width: 900px) {
@@ -2406,8 +2446,18 @@ html{-webkit-text-size-adjust:100%}
   #page-home .premium-hero-grid > .hero-video-band {
     grid-column: 1 / -1;
   }
+  /* Back to the reference's own 20rem cap, with the vw guard for narrow phones. */
   #page-home .hero-video-band .finale-logo {
     width: min(72vw, 20rem);
+  }
+  /* Stacked, the row-gap bottoms out at its 2.75rem floor (44px) rather than the
+     72px available at desktop, so the overlapping strip is TALLER here:
+     288 - 44 = 244px, i.e. 244/1056 = ~23%. The element directly above is now
+     `.hero-copy` (the CTA stack), not the h1 — same problem, less headroom.
+     Holding the desktop 20% here would let digits reach that copy. */
+  #page-home .hero-video-band #finaleCanvas {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0 23%, #000 30%);
+    mask-image: linear-gradient(to bottom, transparent 0 23%, #000 30%);
   }
 }
 
@@ -2439,3 +2489,24 @@ html{-webkit-text-size-adjust:100%}
    `.tag` (font-weight: 500) instead. Header tagline is display:none, so this is
    footer-only by construction. Deliberate divergence from the reference file. */
 .site-footer .brand-tagline { font-weight: 500; }
+
+/* ---------- Footer brand lockup: no hover treatment at all (client request) ---
+   Two separate rules were dressing this link on hover, both wrong for a logo:
+
+   1. COLOUR. The reference's `.wordmark:hover .brand-tagline { color:
+      var(--teal-dark) }` was written for the light masthead. Our header tagline
+      is display:none, so it only ever fired in the footer — where --teal-dark
+      (#14403F) sits almost invisibly on the dark band.
+
+   2. THE CORAL UNDERLINE. `.site-footer a:hover` (further up) sets
+      `text-decoration: underline` with `text-decoration-color: var(--coral)`.
+      Text-decoration propagates from the link box into its inline descendants,
+      so the tagline picked up a red underline. It CANNOT be cancelled on
+      `.brand-tagline` — a descendant cannot opt out of an ancestor's
+      decoration — so `text-decoration: none` has to go on the <a> itself.
+
+   Deliberate divergence from the reference file. */
+.site-footer .wordmark:hover .brand-tagline,
+.site-footer .wordmark:focus-visible .brand-tagline { color: var(--teal); }
+.site-footer .wordmark:hover,
+.site-footer .wordmark:focus-visible { text-decoration: none; }
