@@ -2615,3 +2615,51 @@ html{-webkit-text-size-adjust:100%}
    for white. `.footer-tag` only appears in the footer, so no other surface is
    affected. Deliberate divergence from the reference file. */
 .site-footer .footer-tag { color: var(--white); }
+
+/* ---------- Footer lockup scaled to the hero's proportions (client request) ---
+   The client asked for the footer lockup to read like the homepage hero's.
+   Measured both before touching anything, and the mark/wordmark relationship is
+   NOT the problem: `brand-logo-footer.png` bakes "TRAVO" at 186px against a
+   288px mark (0.646), and the hero's JS sizes its live wordmark to 0.625 of the
+   mark. Those already match. Two things were off, and one knob drives both:
+
+   1. SCALE. The footer mark rendered at clamp(6rem, 9vw, 8.5rem) — 136px at
+      desktop — against the hero's `min(100%, 20rem)` = 320px. Because "TRAVO"
+      is baked into the PNG, scaling the image scales the wordmark with it at
+      the ratio above, which is exactly the "img a little bigger, TRAVO bigger"
+      the client described.
+   2. THE TAGLINE WAS NOT SCALING. It was pinned at 0.95rem while the mark
+      shrank, so tagline/mark came out at 0.112 against the hero's 22px/320px =
+      0.0688 — 1.6x oversized. That is why "Quantified…" read wider and heavier
+      than the wordmark above it. It is now derived from --lockup-w at the
+      hero's own ratio, with a 0.875rem floor so it stays legible once the
+      clamp bottoms out on narrow viewports (the hero's own ratio drifts the
+      same way there — its tagline clamp floors at 15px while the mark holds
+      20rem).
+
+   Also matched to the hero's `.tag`: colour --blue-light (#C5ECFE, the hero
+   value) instead of --teal, and letter-spacing 0 — the tagline was inheriting
+   the 0.04em tracking that the hero-embed block's unscoped `.wordmark` leaks
+   onto this link, which the hero's own tagline cancels.
+
+   The negative margin is not a nudge: brand-logo-footer.png carries 42 rows of
+   transparent padding below the wordmark (42/292 = 0.144 of its width), so at
+   this size ~29px of dead space sits between "TRAVO" and the tagline. Pulling
+   back 0.075 leaves 0.069 x mark width — about 14px here. That is looser than
+   the hero's own 0.044 (14px against its 320px mark) because the client found
+   the strictly-proportional gap too tight at this size; 0.1 was the derived
+   value and this is one step back off it. Re-derive if the asset is ever
+   re-exported trimmed.
+
+   Deliberate divergence from the reference file. */
+.site-footer .wordmark {
+  --lockup-w: clamp(11rem, 14vw, 13rem);
+  gap: 0;
+}
+.site-footer .brand-logo { width: var(--lockup-w); }
+.site-footer .brand-tagline {
+  font-size: max(0.875rem, calc(var(--lockup-w) * 0.0688));
+  letter-spacing: 0;
+  color: var(--blue-light);
+  margin-top: calc(var(--lockup-w) * -0.075);
+}
