@@ -33,7 +33,11 @@
   --sans: var(--font-hanken-grotesk), system-ui, sans-serif;
   --serif: var(--font-newsreader), serif;
   --mono: var(--font-ibm-plex-mono), monospace;
-  --gotham: "Gotham", "Gotham SSm", "Montserrat", var(--font-hanken-grotesk), system-ui, sans-serif;
+  /* "Montserrat" was in this stack in the reference and has been removed: his
+     page never loads it, so it is meant to fall through to Hanken Grotesk. The
+     insights article does load it (next/font registers the real family name),
+     which would otherwise make every .travo-word site-wide match it instead. */
+  --gotham: "Gotham", "Gotham SSm", var(--font-hanken-grotesk), system-ui, sans-serif;
 
   /* Type scale — a wider register than before: editorial highs, forensic lows */
   --fs-hero: clamp(2.6rem, 6.6vw, 5rem);

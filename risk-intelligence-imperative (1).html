@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Risk Intelligence Imperative — TRAVO Insights</title>
+<meta name="description" content="Construction and engineering risk intelligence, 2026–2031: quantified risk, contingency, reference-class forecasting, decision analysis and continuous, auditable risk models. Independent, principal-led analysis from TRAVO — New Jersey / New York metropolitan region.">
+<meta name="keywords" content="construction risk intelligence, quantified risk, project contingency, reference-class forecasting, Monte Carlo cost schedule risk, decision analysis, value of information, independent construction risk advisory, New Jersey New York">
+<meta name="author" content="Dr. Karim S. Karam, Principal, TRAVO">
+<link rel="canonical" href="https://travo-advisory.com/insights/risk-intelligence-imperative/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Risk Intelligence Imperative — TRAVO Insights">
+<meta property="og:description" content="Construction and engineering risk intelligence, 2026–2031: quantified risk, contingency, reference-class forecasting, decision analysis and continuous, auditable risk models.">
+<meta property="og:url" content="https://travo-advisory.com/insights/risk-intelligence-imperative/">
+<meta property="article:published_time" content="2026-07-01">
+<meta property="article:author" content="Dr. Karim S. Karam">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Risk Intelligence Imperative — TRAVO Insights">
+<meta name="twitter:description" content="A 2026–2031 outlook on construction and engineering risk intelligence from TRAVO.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"The Risk Intelligence Imperative",
+  "description":"Construction and engineering risk intelligence, 2026–2031: quantified risk, contingency, reference-class forecasting, decision analysis and continuous, auditable risk models.",
+  "datePublished":"2026-07-01",
+  "author":{"@type":"Person","name":"Dr. Karim S. Karam"},
+  "publisher":{"@type":"Organization","name":"TRAVO","url":"https://travo-advisory.com"},
+  "mainEntityOfPage":"https://travo-advisory.com/insights/risk-intelligence-imperative/"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* ============ TRAVO TOKENS ============ */
+:root{
+  /* ===== 8 locked TRAVO palette tokens ===== */
+  --coral:#FF5B5E;
+  --coral-light:#FFB9BB;
+  --blue-light:#C5ECFE;
+  --teal:#71D2CF;
+  --teal-dark:#14403F;
+  --indigo:#242543;
+  --white:#FFFFFF;
+  --black:#1C1D34;
+
+  /* ===== semantic aliases mapped onto locked tokens ===== */
+  --ink:var(--indigo);      /* body text on light */
+  --deep:var(--indigo);     /* headings / wordmark (was dark-teal) */
+  --paper:var(--white);
+  --rose:var(--coral-light);
+  --sky:var(--blue-light);
+
+  /* ===== functional tints — each a tint of a locked token (data-viz surfaces) ===== */
+  --teal-10:#E0F5F4;   /* faint teal fill  (base-case cells)  */
+  --teal-18:#D2F0F0;   /* light teal       (data markers)     */
+  --sky-28:#F1FAFF;    /* faint blue       (table stripes)    */
+  --sky-45:#E8F7FF;    /* light blue       (bar tracks)       */
+  --rose-30:#FFE7E8;   /* faint rose       (coral notices)    */
+  --line:#E5E5E8;      /* hairline         (12% indigo)       */
+  --mut:#6E6F83;       /* muted text       (66% indigo)       */
+
+  /* ===== 3 locked typefaces ===== */
+  --display:"Newsreader",Georgia,serif;
+  --body:"Montserrat",-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+
+  /* ===== type scale ===== */
+  --fs-hero:clamp(2.6rem,6.6vw,5rem);
+  --fs-h1:clamp(2.25rem,5.2vw,3.9rem);
+  --fs-h2:clamp(1.75rem,3.8vw,2.75rem);
+  --fs-h3:clamp(1.1875rem,2vw,1.375rem);
+  --fs-body:1.0625rem;
+  --fs-small:.9375rem;
+  --fs-meta:.75rem;
+  --fs-micro:.6875rem;
+
+  /* ===== spacing ===== */
+  --space-section:clamp(4rem,8vw,7rem);
+  --space-block:clamp(2rem,4vw,3.25rem);
+  --gutter:clamp(1.375rem,4vw,3.25rem);
+  --wide:1240px;       /* --wrap-max */
+  --measure:76ch;      /* running-prose measure (long-form readability) */
+
+  /* ===== motion ===== */
+  --dur-fast:120ms;
+  --dur-med:280ms;
+  --dur-slow:500ms;
+  --ease:cubic-bezier(.25,0,.25,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--body);color:var(--ink);background:var(--paper);
+  font-size:var(--fs-body);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+::selection{background:var(--teal);color:var(--deep)}
+/* prevent mid-number line breaks */
+.nw{white-space:nowrap}
+/* prevent orphaned currency symbols before any number */
+abbr,b{white-space:normal}
+a{color:var(--deep);text-decoration-color:var(--teal);text-underline-offset:3px}
+a:hover{color:var(--coral);text-decoration-color:var(--coral)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:2px}
+
+/* ============ PROGRESS + TOP BAR ============ */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--teal);z-index:60}
+.topbar{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--teal-dark);
+}
+.topbar-in{max-width:calc(var(--wide) + (2 * var(--gutter)));margin:0 auto;padding:.85rem var(--gutter);display:flex;align-items:center;gap:1rem;justify-content:space-between}
+.wordmark{display:flex;align-items:center;gap:1.1rem;font-family:var(--display);font-weight:600;font-size:1.75rem;letter-spacing:.01em;color:var(--indigo);text-decoration:none}.wordmark svg,.wordmark img{flex-shrink:0}
+.wordmark span{color:var(--teal)}
+.topbar-title{font-family:var(--mono);font-size:1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:640px){.topbar-title{display:none}}
+
+/* ============ HERO / COVER ============ */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--teal-dark);background:var(--indigo)}
+.hero-in{max-width:calc(var(--wide) + (2 * var(--gutter)));margin:0 auto;padding:5.5rem var(--gutter) 0}
+.eyebrow{
+  font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--white);
+}
+.eyebrow::before{content:"";display:inline-block;width:2.2rem;height:2px;background:var(--coral);margin-right:.7rem;vertical-align:middle}
+h1{
+  font-family:var(--display);font-weight:500;color:var(--white);
+  font-size:var(--fs-hero);line-height:1.04;letter-spacing:-.018em;
+  text-wrap:balance;max-width:none;margin:1.4rem 0 1.6rem;
+}
+.hero-dek{
+  font-size:clamp(1.05rem,1.6vw,1.28rem);line-height:1.55;max-width:none;color:var(--blue-light);
+  font-weight:500;
+}
+.hero-dek strong{color:var(--white)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.4rem 2rem;margin:1.8rem 0 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--teal)}
+.hero-meta b{color:var(--white);font-weight:600}
+.hero-art{display:block;width:100%;height:auto;margin-top:3rem}
+
+/* ============ STRUCTURE ============ */
+main{display:block}
+.section{padding:var(--space-section) var(--gutter);position:relative}
+.section-in{max-width:var(--wide);margin:0 auto}
+.section + .section{border-top:none}
+/* signature grammar: short coral tick + full-width teal hairline opens every section */
+.section-in::before{
+  content:"";display:block;height:3px;margin:0 0 2.4rem;
+  background:
+    linear-gradient(var(--coral),var(--coral)) left center/2.25rem 3px no-repeat,
+    linear-gradient(var(--teal),var(--teal)) left center/100% 1px no-repeat;
+}
+.kicker{
+  font-family:var(--mono);font-size:var(--fs-meta);font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--coral);display:block;margin-bottom:1.1rem;
+}
+h2{
+  font-family:var(--display);font-weight:500;color:var(--deep);
+  font-size:var(--fs-h2);line-height:1.06;letter-spacing:-.018em;
+  text-wrap:balance;max-width:none;margin-bottom:1.6rem;
+}
+h3{font-family:var(--body);font-weight:700;color:var(--deep);font-size:var(--fs-h3);line-height:1.22;margin:2rem 0 .6rem}
+.prose{max-width:var(--measure)}
+.prose p{margin-bottom:1.15rem}
+.prose p:last-child{margin-bottom:0}
+.lead-in{font-weight:700;color:var(--deep)}
+.smallnote{font-size:.82rem;color:var(--mut);max-width:var(--measure)}
+
+/* dotted divider motif (signature echo) */
+.dotrule{display:flex;gap:9px;margin:0 0 1.4rem}
+.dotrule i{width:7px;height:7px;border-radius:50%;background:var(--teal);display:block}
+.dotrule i:nth-child(5){background:var(--coral)}
+.dotrule i:nth-child(n+6){background:var(--deep);opacity:.25}
+
+/* ============ PULL QUOTE ============ */
+.pull{
+  font-family:var(--display);font-weight:500;font-style:italic;
+  font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.32;color:var(--teal-dark);
+  max-width:26ch;margin:0 0 2.2rem;
+}
+.pull.deep{color:var(--deep);font-style:normal}
+.pull-rule{width:3.4rem;height:4px;background:var(--coral);margin-bottom:1.1rem}
+
+/* ============ EXHIBITS ============ */
+figure.exhibit{max-width:var(--wide);margin:3rem auto 0;border:1px solid var(--line);overflow:hidden;background:var(--paper)}
+.ex-head{padding:1.4rem 1.6rem .4rem}
+.ex-no{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.ex-title{font-family:var(--body);font-weight:700;font-size:1.18rem;color:var(--deep);line-height:1.32;margin:.45rem 0 .35rem;max-width:none}
+.ex-sowhat{font-size:.9rem;font-style:italic;color:var(--mut);max-width:none}
+.ex-body{padding:1.4rem 1.6rem 1.8rem}
+figcaption.ex-src{
+  background:var(--sky-28);border-top:1px solid var(--line);
+  font-size:.76rem;color:var(--mut);padding:.7rem 1.6rem;line-height:1.5;
+}
+figcaption.ex-src b{color:var(--deep);font-weight:600}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.45}
+#hz-scale .tbl th{background:var(--teal);color:var(--indigo)}
+#evidence-prose{max-width:none}
+#baseline-prose{max-width:none}
+#foresight-prose{max-width:none}
+#scenarios-prose{max-width:none}
+#what-changes h3{color:var(--teal-dark)}
+#what-changes li::marker{color:var(--teal-dark)}
+#what-changes li{color:var(--teal-dark)}
+#what-changes h3{border-bottom-color:var(--teal-dark)}
+#what-changes li::before{background:var(--teal-dark)}
+#hz-scale.horizon::after{background:var(--teal);box-shadow:0 0 0 4px var(--teal-10)}
+#hz-scale .rng{background:var(--teal);color:var(--indigo)}
+#hz-scale .nm{color:var(--teal)}
+#hz-lead .tbl th{background:var(--coral-light);color:var(--indigo)}
+#hz-lead.horizon::after{background:var(--coral);box-shadow:0 0 0 4px var(--rose-30)}
+#hz-lead .rng{background:var(--coral);color:var(--indigo)}
+#hz-lead .nm{color:var(--coral)}
+.tbl th{
+  background:var(--indigo);color:#fff;text-align:left;font-weight:600;
+  padding:.7rem .8rem;font-size:.8rem;letter-spacing:.03em;vertical-align:bottom;
+}
+.tbl td a{color:var(--coral);text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;transition:color var(--dur-fast) var(--ease),text-decoration-color var(--dur-fast) var(--ease)}
+.tbl td a:hover{color:var(--coral-light);text-decoration-color:var(--coral-light)}
+.tbl td{padding:.7rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--sky-28)}
+.tbl td:first-child{font-weight:600;color:var(--deep)}
+.tbl .hl td{background:var(--teal-10)}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:760px){.tbl{font-size:.82rem;min-width:640px}}
+
+/* chips */
+.chip{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.24rem .55rem;border-radius:100px;white-space:nowrap}
+.chip.now{background:var(--coral);color:var(--indigo)}
+.chip.next{background:var(--coral-light);color:var(--indigo)}
+.chip.mon{background:var(--sky);color:var(--deep)}
+.chip.deep{background:var(--deep);color:#fff}
+.chip.rose{background:var(--rose);color:var(--deep)}
+
+/* bars (Exhibit 2) */
+.bars{display:grid;gap:.85rem}
+.bar-row{display:grid;grid-template-columns:190px 1fr 64px;align-items:center;gap:.9rem}
+@media(max-width:640px){.bar-row{grid-template-columns:120px 1fr 54px;font-size:.82rem}}
+.bar-label{font-size:.86rem;font-weight:600;color:var(--deep);text-align:right}
+.bar-track{background:var(--sky-45);height:22px;position:relative}
+.bar-fill{position:absolute;inset:0 auto 0 0;background:var(--teal);width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.bar-val{font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--deep)}
+.bar-note{margin-top:1.3rem;padding:.8rem 1rem;border-left:4px solid var(--coral);background:var(--rose-30);font-size:.88rem;max-width:60ch}
+.bar-note b{color:var(--teal-dark)}
+
+/* 2x2 matrix (Exhibit 5) */
+.matrix-wrap{display:grid;grid-template-columns:auto 1fr;grid-template-rows:1fr auto;gap:.7rem;max-width:880px;margin:0 auto}
+.axis-y{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center}
+.axis-x{grid-column:2;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center}
+.matrix{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px}
+.quad{border:1px solid var(--line);padding:1.1rem 1.15rem;background:var(--paper);min-height:170px}
+.quad.base{background:var(--teal-10);border-color:var(--teal)}
+.quad h4{font-family:var(--mono);font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.55rem}
+.quad p{font-size:.86rem;line-height:1.5}
+.quad .tag{display:block;font-size:.74rem;color:var(--mut);font-style:italic;margin-top:.6rem}
+@media(max-width:640px){.matrix{grid-template-columns:1fr}.quad{min-height:0}}
+
+/* capability lanes (Exhibit 8) */
+.lanes{display:grid;gap:.65rem}
+.lane{display:grid;grid-template-columns:200px 1fr 132px;align-items:center;gap:1rem;padding:.75rem .9rem;border:1px solid var(--line)}
+.lane:nth-child(even){background:var(--sky-28)}
+.lane-name{font-weight:700;color:var(--deep);font-size:.9rem}
+.lane-name small{display:block;font-weight:400;color:var(--mut);font-size:.76rem;line-height:1.4;margin-top:.15rem}
+.lane-track{position:relative;height:26px}
+.lane-track::before{content:"";position:absolute;left:8px;right:8px;top:50%;height:2px;background:var(--line)}
+.lane-track .from,.lane-track .to{position:absolute;top:50%;transform:translateY(-50%);width:13px;height:13px;border-radius:50%}
+.lane-track .from{left:0;background:var(--deep)}
+.lane-track .to{right:0;background:var(--teal);box-shadow:0 0 0 4px var(--teal-18)}
+.lane-track .arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:.8rem}
+@media(max-width:760px){.lane{grid-template-columns:1fr;gap:.5rem}.lane-track{display:none}}
+
+/* roadmap (Exhibit 9) */
+.horizon{position:relative;padding-left:1.8rem;margin-top:1.6rem}
+.horizon::before{content:"";position:absolute;left:6px;top:10px;bottom:-1.4rem;width:3px;background:var(--teal)}
+.horizon:last-child::before{bottom:auto;height:14px}
+.horizon::after{content:"";position:absolute;left:0;top:6px;width:15px;height:15px;border-radius:50%;background:var(--deep);box-shadow:0 0 0 4px var(--teal-18)}
+.hz-head{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:baseline;margin-bottom:.7rem}
+.hz-head .rng{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--deep);color:#fff;padding:.28rem .7rem}
+.hz-head .nm{font-family:var(--display);font-weight:500;font-size:1.25rem;color:var(--deep)}
+
+/* watchlist (Exhibit 10) */
+.watch-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:860px){.watch-grid{grid-template-columns:1fr}}
+.watch{border:1px solid var(--line);overflow:hidden}
+.watch header{padding:.7rem 1rem;display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:.92rem}
+.watch.confirm header{background:var(--teal-18);color:var(--deep)}
+.watch.accel header{background:var(--teal-dark);color:#fff}
+.watch.weak header{background:var(--rose-30);color:var(--deep)}
+.watch.reverse header{background:var(--coral);color:var(--indigo)}
+.watch ul{list-style:none}
+.watch li{padding:.75rem 1rem;border-top:1px solid var(--line);font-size:.85rem;line-height:1.5}
+.watch li b{color:var(--deep)}
+.watch li .resp{display:block;margin-top:.3rem;font-size:.78rem;color:var(--mut)}
+.watch li .resp::before{content:"→ ";color:var(--coral);font-weight:700}
+
+/* exec summary */
+.execlist{counter-reset:x;max-width:var(--measure)}
+.execlist li{list-style:none;counter-increment:x;position:relative;padding:0 0 1.15rem 3.4rem;margin-bottom:1.15rem;border-bottom:1px solid var(--line)}
+.execlist li:last-child{border-bottom:none}
+.execlist li::before{
+  content:counter(x,decimal-leading-zero);position:absolute;left:0;top:.05rem;
+  font-family:var(--mono);font-size:1.15rem;font-weight:600;color:var(--teal);
+}
+.execlist b{color:var(--deep)}
+
+/* prediction panel */
+.pred{
+  background:var(--teal-10);border:1px solid var(--teal);
+  padding:1.8rem 1.9rem;max-width:var(--wide);
+}
+.pred .lbl{font-family:var(--mono);font-size:var(--fs-meta);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-dark);display:block;margin-bottom:.8rem}
+.pred p{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.42;color:var(--deep)}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.4rem}
+@media(max-width:860px){.tri{grid-template-columns:1fr}}
+.tri h3{margin-top:0;padding-bottom:.5rem;border-bottom:3px solid var(--teal)}
+.tri .why h3{border-bottom-color:var(--coral)}
+.tri ul{list-style:none}
+.tri li{padding:.55rem 0 .55rem 1.15rem;position:relative;font-size:.9rem;line-height:1.5;border-bottom:1px dashed var(--line)}
+.tri li::before{content:"";position:absolute;left:0;top:1.05rem;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.tri .why li::before{background:var(--coral)}
+
+/* sidebar module */
+.sidebar-mod{
+  background:var(--blue-light);border:1px solid var(--indigo);
+  padding:2.2rem 2rem;max-width:var(--wide);margin:0 auto;
+}
+.sidebar-mod .sb-eyebrow{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.7rem}
+.sidebar-mod h2{margin-bottom:1.2rem}
+.sidebar-mod .cols{columns:2;column-gap:2.6rem;max-width:none}
+@media(max-width:860px){.sidebar-mod .cols{columns:1}}
+.sidebar-mod .cols p{break-inside:avoid;margin-bottom:1rem;font-size:.94rem}
+
+/* questions */
+.qlist{counter-reset:q;max-width:var(--measure)}
+.qlist li{list-style:none;counter-increment:q;position:relative;padding:.9rem 0 .9rem 3.2rem;border-bottom:1px solid var(--line);font-size:.98rem}
+.qlist li::before{content:counter(q);position:absolute;left:.3rem;top:.85rem;font-family:var(--display);font-weight:500;font-size:1.35rem;color:var(--deep);opacity:.35}
+.qlist .cat{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dark);display:block;margin-top:.25rem}
+
+/* conclusion */
+.concl{max-width:60ch;margin:0 auto;text-align:left}
+.concl .final{font-family:var(--display);font-weight:500;color:var(--deep);font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.35;margin-top:1.8rem}
+.concl-rule{width:5rem;height:3px;background:var(--teal);margin:2.4rem auto 0}
+
+/* methodology */
+.meth{background:var(--sky-28)}
+.meth .cols2{columns:2;column-gap:3rem;font-size:.86rem}
+@media(max-width:860px){.meth .cols2{columns:1}}
+.meth .cols2 p, .meth .cols2 li{break-inside:avoid}
+.assump{border:1px solid var(--indigo);background:var(--paper);padding:1rem 1.2rem;margin:1.2rem 0}
+.assump ul{list-style:none;font-size:.86rem}
+.assump li{padding:.35rem 0}
+.assump b{color:var(--teal-dark)}
+.srclist{font-size:.84rem;color:var(--ink);padding-left:1.2rem}
+.srclist li{margin-bottom:.5rem}
+
+/* footer */
+footer{background:var(--indigo);color:var(--blue-light);padding:2.6rem var(--gutter)}
+.foot-in{max-width:var(--wide);margin:0 auto;display:flex;flex-wrap:wrap;gap:1rem 3rem;justify-content:space-between;align-items:baseline;font-size:.82rem}
+footer .wordmark{color:#fff}
+footer .wordmark span{color:var(--teal)}
+footer a{color:var(--teal)}
+
+/* reveal animation */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .bar-fill{transition:none}
+}
+
+/* svg text */
+.svgt{font-family:var(--mono);font-size:11px;fill:var(--mut)}
+.svgt.b{fill:var(--deep);font-weight:600}
+.svgt.w{fill:#fff;font-weight:600}
+
+/* ============ N4 — one-page executive brief (print-to-PDF) ============ */
+.btn-outline{background:var(--coral);color:#fff;border:1px solid var(--coral)}
+.btn-outline:hover{background:var(--coral-light);color:var(--indigo);border-color:var(--coral-light)}
+.brief-cta{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem}
+.brief-cta .hint{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+#brief-print{display:none}
+@media print{
+  @page{margin:16mm}
+  body.brief-only > *{display:none !important}
+  body.brief-only > #brief-print{display:block !important}
+  .no-print{display:none !important}
+  #brief-print{font-family:var(--body);color:var(--indigo);max-width:720px;margin:0 auto}
+  #brief-print .bp-title{font-family:var(--display);font-weight:500;font-size:1.9rem;line-height:1.08;letter-spacing:-.018em}
+  #brief-print .bp-meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:.45rem 0 1.2rem}
+  #brief-print .bp-lead{font-size:1rem;line-height:1.5;margin:0 0 1rem}
+  #brief-print .bp-list{margin:0 0 1rem 1.1rem;padding:0}
+  #brief-print .bp-list li{margin-bottom:.55rem;font-size:.92rem;line-height:1.45}
+  #brief-print .bp-cta{font-size:.92rem;line-height:1.5;border-top:2px solid var(--coral);padding-top:.8rem;margin-top:1.1rem}
+  #brief-print a{color:var(--indigo);text-decoration:underline}
+}
+
+/* ============ COMMERCIAL BRIDGES (restrained) ============ */
+/* buttons — design-system §8 */
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-weight:500;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.5rem;text-decoration:none;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease)}
+.btn-primary{background:var(--coral);color:#fff}
+.btn-primary:hover{background:var(--coral-light);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--teal)}
+.btn-ghost:hover{background:var(--teal);color:var(--indigo)}
+
+/* Bridge 1 — quiet "in practice" note (not a CTA box) */
+.practice-note{border:1px solid var(--indigo);background:var(--sky-28);padding:1.3rem 1.5rem;max-width:var(--measure)}
+.practice-note a{color:var(--coral);text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;transition:color var(--dur-fast) var(--ease),text-decoration-color var(--dur-fast) var(--ease)}
+.practice-note a:hover{color:var(--coral-light);text-decoration-color:var(--coral-light)}
+.practice-note .pn-label{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-dark);display:block;margin-bottom:.6rem}
+.practice-note p{font-size:var(--fs-body);margin:0}
+.practice-note p + p{margin-top:.7rem}
+
+/* Bridge 2 — role routing table reuses .tbl; regional note */
+.region-note{font-size:var(--fs-small);color:var(--mut);max-width:var(--measure);margin-top:1.4rem}
+.region-note b{color:var(--deep)}
+
+/* Bridge 3 — end engagement band (section-ink) */
+#engage{background:var(--indigo)}
+#engage h2{color:#fff}
+#engage .lede-dark{color:var(--blue-light);max-width:none;font-size:1.05rem;line-height:1.5}
+#engage .lede-dark + .lede-dark{margin-top:.9rem}
+#engage .cta-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.9rem}
+#engage .cta-independence{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-top:1.6rem}
+#engage .author{margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid rgba(197,236,254,.22);max-width:none}
+#engage .author .nm{font-family:var(--display);font-weight:500;font-size:1.15rem;color:#fff}
+#engage .author p{font-size:var(--fs-small);color:var(--blue-light);margin:.5rem 0 0}
+#engage .author a{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<div id="progress" aria-hidden="true"></div>
+
+<div style="background:var(--blue-light);border-bottom:1px solid var(--teal);padding:1.4rem var(--gutter)">
+  <div style="max-width:calc(var(--wide) + (2 * var(--gutter)));margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+    <span style="font-family:var(--mono);font-size:var(--fs-micro);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark)">TRAVO · Total Risk Analysis and Value Optimization</span>
+    <span style="font-family:var(--mono);font-size:var(--fs-micro);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark)">Quantified Risk. Disciplined Decisions.</span>
+    <span style="font-family:var(--mono);font-size:var(--fs-micro);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark)">New Jersey · New York Metropolitan Region</span>
+  </div>
+</div>
+<nav class="topbar" aria-label="Publication">
+  <div class="topbar-in">
+    <a class="wordmark" href="#top"><img src="data:image/png;base64,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" alt="TRAVO" style="display:block;height:100px;width:auto"><span style="align-self:center;font-family:var(--display);font-weight:600;font-size:1.75rem;letter-spacing:.01em;color:var(--teal)">&nbsp;Insights</span></a>
+    <div class="topbar-title">The Risk Intelligence Imperative · 2026–2031</div>
+  </div>
+</nav>
+
+<!-- ================= COVER ================= -->
+<header class="hero" id="top">
+  <div class="hero-in">
+    <p class="eyebrow"><span style="color:var(--coral-light)">TRAVO Forecast 2026–2031</span></p>
+    <h1>The Risk Intelligence Imperative</h1>
+    <p class="hero-dek">By 2031, continuous, AI-enabled risk intelligence will become a condition of competing for many major engineering projects — emerging first through insurance pricing and procurement prequalification, with professional and legal expectations evolving more gradually. Firms that remain dependent on static risk documents will face what we call the <strong>“analog penalty”</strong>: a growing disadvantage in insurance terms, procurement competitiveness, and the defensibility of professional judgment.</p>
+    <div class="hero-meta">
+      <span><b>A five-year outlook</b> for owners, engineers, insurers, and investors</span>
+      <span>by <b>Dr. Karim S. Karam</b> · Principal, TRAVO</span>
+      <span>July 2026 · travo-advisory.com</span>
+    </div>
+  </div>
+  <svg class="hero-art" id="dotfield" viewBox="0 0 1200 340" role="img" aria-label="Abstract cover graphic: a grid of dots representing a risk register, with a diagonal band of teal dots converging toward a single coral signal dot."></svg>
+</header>
+
+<main>
+
+<!-- ================= 01 WHY ================= -->
+<section class="section" id="why">
+  <div class="section-in">
+    <div style="max-width:72ch;margin-left:auto;margin-right:auto">
+    <p class="kicker">Why this question matters</p>
+    <blockquote class="pull" style="text-align:center;margin-left:auto;margin-right:auto">“We can see every crack in the bridge. Why can’t we see the risk in the project?”</blockquote>
+    <div class="prose rv">
+      <p>A public-works director asked us a version of this question last winter, and it deserves a serious answer. Her agency operates sensors that report structural strain in near real time. Yet the risk assessment governing her <span class="nw">$400 million</span> capital program was a spreadsheet, last updated at the previous stage gate, built on assumptions already three quarters old.</p>
+      <p>That gap — between what is now <em>observable</em> and what is actually <em>assessed</em> — defines the next five years of engineering risk management.</p>
+      <p>The pressure is arriving from three directions at once. First, the sheer scale of exposure: the American Society of Civil Engineers’ 2025 Report Card raised US infrastructure to its highest-ever grade, a C, but still identified a <span class="nw">$9.1 trillion</span> investment need through 2033 against roughly <span class="nw">$5.4 trillion</span> in planned funding — a <span class="nw">$3.7 trillion</span> gap that guarantees aging assets will be pushed harder for longer. Second, the record of the profession: across the largest project database ever assembled — more than <span class="nw">16,000</span> major projects — only about one in two hundred delivers on budget, on time, and on benefits. Third, the environment itself: 2025 marked the sixth consecutive year in which insured natural-catastrophe losses exceeded <span class="nw">$100 billion</span>, and insurers are re-pricing accordingly.</p>
+      <p>Meanwhile, the tools have finally changed. AI adoption in architecture, engineering, and construction remains a minority practice — roughly a quarter of respondents in a recent industry survey — but nearly all current adopters plan to expand. In parallel, legal and professional commentary is beginning to examine whether the availability of predictive tools could eventually influence how reasonable care is assessed; that channel remains less developed than the insurance and procurement signals in this outlook.</p>
+      <p>When observability rises, capital tightens, losses climb, and professional expectations evolve, risk assessment stops being a compliance artifact. It becomes a competitive instrument. This report examines how that transition will unfold between 2026 and 2031 — and what leaders should do before the market prices it for them.</p>
+    </div>
+    <p class="smallnote" style="margin-top:1.6rem">Sources: ASCE, 2025 Report Card for America’s Infrastructure; Flyvbjerg &amp; Gardner, <em>How Big Things Get Done</em> (2023) and the Oxford/ITU megaproject database; Swiss Re Institute, sigma 1/2026; Bluebeam AEC survey, 2025.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 EXEC SUMMARY ================= -->
+<section class="section" id="summary">
+  <div class="section-in">
+    <div style="max-width:72ch;margin-left:auto;margin-right:auto">
+    <p class="kicker">Executive summary</p>
+    <h2>Seven things to know</h2>
+    <ol class="execlist rv">
+      <li><b>The prediction.</b> By 2031, continuous AI-enabled risk intelligence — live data feeds, model-based forecasting, auditable risk registers — will be a de facto condition of doing business on major engineering projects, enforced not by regulation first but by insurers, lenders, and procurement officers.</li>
+      <li><b>Why it will happen.</b> Four forces converge this cycle: a <span class="nw">$3.7 trillion</span> US infrastructure funding gap that forces owners to sweat aging assets; six straight years of <span class="nw">$100B+</span> insured catastrophe losses hardening insurance markets; a step-change in sensing and AI capability (AEC AI use is doubling, with 94% of adopters expanding); and an emerging legal and professional debate over whether failing to consider available predictive tools could eventually affect the standard-of-care analysis.</li>
+      <li><b>What changes first.</b> Insurance underwriting and owner prequalification. Carriers already price cyber and property risk using increasingly granular data. Our base-case expectation: by 2028, data-conditioned insurance terms and risk-data requirements begin appearing more visibly on major programs.</li>
+      <li><b>Who is most affected.</b> Mid-sized engineering and construction firms — large enough to bid instrumented megaprojects, too small to fund enterprise risk platforms alone — face the sharpest squeeze. Owners and insurers capture the early value; unprepared operators absorb the cost.</li>
+      <li><b>The economics are asymmetric.</b> With megaproject overruns averaging 30–100% by asset class and only ~0.5% of projects hitting all targets, even modest predictive improvement is worth multiples of its cost. The primary barriers are increasingly less about theoretical ROI than about data quality, governance, implementation, and trust.</li>
+      <li><b>What leaders should do now.</b> Inventory risk-relevant data assets; pilot continuous risk monitoring on one live program; assign clear decision rights for model-informed judgments; open early conversations with carriers and lenders about data-for-terms exchanges.</li>
+      <li><b>What to watch.</b> Insurer filings that reference telemetry or AI-assisted underwriting for construction lines; owner RFQs requiring live risk dashboards; the first litigated claim turning on non-use of available predictive tools; post-IIJA federal funding decisions in 2026.</li>
+    </ol>
+    </div>
+    <div class="brief-cta no-print" style="max-width:72ch;margin-left:auto;margin-right:auto">
+      <button type="button" class="btn btn-outline" onclick="printBrief()">One-page brief · Print / Save PDF</button>
+      <span class="hint">Board-ready · one page</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRIDGE 1 · IN PRACTICE ================= -->
+<section class="section" id="in-practice">
+  <div class="section-in">
+    <div style="max-width:72ch;margin-left:auto;margin-right:auto">
+    <p class="kicker">Where this connects to practice</p>
+    <div class="practice-note rv">
+      <span class="pn-label">In practice</span>
+      <p>The capabilities this outlook describes are not a distant program. <a href="https://travo-advisory.com/#methodology">TRAVO's decision-first method</a> already works this way: uncertainty is quantified rather than rated, field evidence updates the model through an observational approach, the Value of Information decides what is worth investigating before commitment, reference-class comparison tests the forecast against how comparable projects actually behaved, and every analytical answer leaves an auditable decision record.</p>
+      <p>The entry point is bounded, not enterprise-wide. A <b><a href="https://travo-advisory.com/#svc-a1">Project Risk Screen</a></b> establishes the current information state, isolates the few drivers that matter, and tests whether the existing forecast or reserve is still credible — the first move when a live decision cannot wait for the market to price the difference.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 PREDICTION ================= -->
+<section class="section" id="prediction">
+  <div class="section-in">
+    <p class="kicker">The central prediction</p>
+    <div class="pred rv">
+      <span class="lbl">Our prediction</span>
+      <p>By 2031, continuous AI-enabled risk intelligence will become a condition of competing for many major engineering and infrastructure programs in advanced markets. We expect the shift to emerge first through insurance pricing and procurement prequalification, with professional and legal expectations evolving more gradually. The result will be what we call the “analog penalty”: a growing economic and competitive disadvantage for firms that cannot produce timely, auditable evidence of how project risk is changing. Our evidence assessment is <em>strongest for the insurance and procurement channels</em> and <em>more tentative for the legal channel</em>; these labels describe the strength of the supporting evidence and mechanism, not statistical probabilities. Evidence strength: insurance — strong and emerging; procurement — strong directional case; professional/legal — developing.</p>
+    </div>
+    <div class="tri">
+      <div class="why rv">
+        <h3>Why now</h3>
+        <ul>
+          <li><b>Capital scarcity meets asset age.</b> A <span class="nw">$3.7T</span> US funding shortfall through 2033 means more risk carried per dollar of maintenance.</li>
+          <li><b>Insurance repricing.</b> Six consecutive years above <span class="nw">$100B</span> in insured nat-cat losses; across insurance markets, carriers increasingly use verifiable risk and mitigation data to differentiate capacity and terms. The critical question for this outlook is how quickly that logic extends into construction and professional-risk underwriting.</li>
+          <li><b>Capability inflection.</b> AEC AI use roughly doubled into 2026 from a low base (~27% of firms), with near-universal expansion intent; ~33% CAGR market growth projected.</li>
+          <li><b>Liability migration.</b> Legal and professional commentary is beginning to examine whether available predictive tools could eventually inform reasonable-care expectations; the timing and direction remain uncertain.</li>
+          <li><b>Workforce arithmetic.</b> 20+ job openings per net new job in critical trades makes tacit risk judgment structurally scarcer, forcing codification.</li>
+        </ul>
+      </div>
+      <div class="rv" id="what-changes">
+        <h3>What changes</h3>
+        <ul>
+          <li>Risk assessment shifts from periodic documents to continuous, versioned, auditable risk models.</li>
+          <li>Insurance and bonding terms become explicitly data-conditioned on major programs.</li>
+          <li>Owner prequalification adds risk-data maturity alongside safety record and financials.</li>
+          <li>The risk engineer’s role bifurcates: model stewardship and judgment governance replace manual register maintenance.</li>
+          <li>Reference-class, outside-view forecasting becomes an expected discipline, not an academic novelty.</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>What leaders should do</h3>
+        <ul>
+          <li>Start with one live decision: establish the current information state, quantify the range, identify the few drivers that matter, and define what new evidence would trigger reassessment.</li>
+          <li>Run one continuous-monitoring pilot on a live program within 12 months, instrumented for before/after comparison; build the enterprise risk-data backbone only after the pilot establishes what information and governance are actually decision-relevant.</li>
+          <li>Codify decision rights: which decisions may rely on model output, with what human review.</li>
+          <li>Negotiate data-for-terms pilots with one carrier and one lender before the market standardizes.</li>
+          <li>Pair senior judgment with model-literate staff before retirements erase the former.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="smallnote" style="margin-top:1.6rem">Sources: ASCE 2025 Report Card; Swiss Re Institute sigma 1/2026; Munich Re NatCat 2025; Bluebeam, <em>2026 AEC Technology Outlook</em> (released 2025); McKinsey, “Tradespeople wanted” (2024).</p>
+  </div>
+</section>
+
+<!-- ================= 04 FORCES ================= -->
+<section class="section" id="forces">
+  <div class="section-in">
+    <p class="kicker">The “why now” forces</p>
+    <h2>Five forces, one window</h2>
+    <div class="prose rv">
+      <p>Each of these forces has existed in some form for a decade. What is new is their simultaneity. Funding pressure without capability would produce rationing; capability without insurance pressure would produce pilots that never scale. Together, they produce a market mechanism: <span class="lead-in">risk data becomes exchangeable for capital, capacity, and work.</span></p>
+    </div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 1">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 1</span>
+        <p class="ex-title">Five forces are converging on a single window — and each is measurable today.</p>
+        <p class="ex-sowhat">The forces reinforce one another; leaders should plan for compound, not sequential, pressure.</p>
+      </div>
+      <div class="ex-body">
+        <svg viewBox="0 0 1000 450" style="width:100%;height:auto" role="img" aria-label="Convergence diagram: five force arrows meeting at a central node labelled risk intelligence becomes priced, 2026 to 2028 window.">
+          <defs>
+            <marker id="ah-t" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 Z" fill="#71D2CF"/></marker>
+            <marker id="ah-c" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 Z" fill="#FF5B5E"/></marker>
+          </defs>
+          <!--
+            Longest body line: "AEC AI use doubling; 94% of adopters expanding;" → ~310px at 11.5px
+            Longest title line: "Insurance & Climate Pressure · Hardening"        → ~305px at 13.5px bold
+            Box: x=10, padding-left=16, content≈310, padding-right=16 → width=342
+            All five boxes set to w=342 for consistency. Same left margin x=10.
+            Vertical layout: gap=18px between boxes, height=72px per box (title+2 body lines)
+              y positions: 14, 104, 194, 284, 374  (step=90)
+            Arrow exit x = 10+342 = 352. Centre of each box = y+36.
+          -->
+          <g font-family="'Hanken Grotesk',sans-serif">
+            <!-- 1 Capital — cy=50 -->
+            <rect x="10" y="14" width="342" height="72" rx="0" fill="#E0F5F4" stroke="#71D2CF"/>
+            <text x="26" y="38" font-size="13.5" font-weight="700" fill="#242543">Capital &amp; Funding Shift · Tightening</text>
+            <text x="26" y="57" font-size="11.5" fill="#6E6F83">$3.7T US infrastructure gap;</text>
+            <text x="26" y="74" font-size="11.5" fill="#6E6F83">IIJA authorizations expire FY2026</text>
+            <line x1="352" y1="50" x2="610" y2="188" stroke="#71D2CF" stroke-width="2.5" marker-end="url(#ah-t)"/>
+            <!-- 2 Insurance — cy=140 -->
+            <rect x="10" y="104" width="342" height="72" rx="0" fill="#E0F5F4" stroke="#71D2CF"/>
+            <text x="26" y="128" font-size="13.5" font-weight="700" fill="#242543">Insurance &amp; Climate Pressure · Hardening</text>
+            <text x="26" y="147" font-size="11.5" fill="#6E6F83">6th straight year &gt;$100B insured losses;</text>
+            <text x="26" y="164" font-size="11.5" fill="#6E6F83">LA fires approx. $40B insured</text>
+            <line x1="352" y1="140" x2="612" y2="205" stroke="#71D2CF" stroke-width="2.5" marker-end="url(#ah-t)"/>
+            <!-- 3 Technology — cy=230 -->
+            <rect x="10" y="194" width="342" height="72" rx="0" fill="#E0F5F4" stroke="#71D2CF"/>
+            <text x="26" y="218" font-size="13.5" font-weight="700" fill="#242543">Technology Shift · Accelerating</text>
+            <text x="26" y="237" font-size="11.5" fill="#6E6F83">AEC AI use doubling; 94% of adopters expanding;</text>
+            <text x="26" y="254" font-size="11.5" fill="#6E6F83">~33% CAGR market growth</text>
+            <line x1="352" y1="230" x2="614" y2="222" stroke="#71D2CF" stroke-width="2.5" marker-end="url(#ah-t)"/>
+            <!-- 4 Legal (coral) — cy=320 -->
+            <rect x="10" y="284" width="342" height="72" rx="0" fill="#FFE7E8" stroke="#FF5B5E"/>
+            <text x="26" y="308" font-size="13.5" font-weight="700" fill="#242543">Legal / Standard-of-Care Shift · Emerging</text>
+            <text x="26" y="327" font-size="11.5" fill="#6E6F83">Non-use of predictive tools entering</text>
+            <text x="26" y="344" font-size="11.5" fill="#6E6F83">professional and legal debate</text>
+            <line x1="352" y1="320" x2="612" y2="240" stroke="#FF5B5E" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#ah-c)"/>
+            <!-- 5 Workforce — cy=410 -->
+            <rect x="10" y="374" width="342" height="72" rx="0" fill="#E0F5F4" stroke="#71D2CF"/>
+            <text x="26" y="398" font-size="13.5" font-weight="700" fill="#242543">Workforce Shift · Structural</text>
+            <text x="26" y="417" font-size="11.5" fill="#6E6F83">&gt;20 openings per net new job in critical trades;</text>
+            <text x="26" y="434" font-size="11.5" fill="#6E6F83">senior supervisors retiring</text>
+            <line x1="352" y1="410" x2="609" y2="257" stroke="#71D2CF" stroke-width="2.5" marker-end="url(#ah-t)"/>
+            <!-- central node — cx=756 cy=222 r=120 -->
+            <circle cx="756" cy="222" r="120" fill="#71D2CF"/>
+            <circle cx="756" cy="222" r="120" fill="none" stroke="#14403F" stroke-width="3"/>
+            <text x="756" y="193" text-anchor="middle" font-size="15.5" font-weight="700" fill="#14403F">TRAVO Base Case:</text>
+            <text x="756" y="215" text-anchor="middle" font-size="15.5" font-weight="700" fill="#14403F">Risk Intelligence Priced</text>
+            <text x="756" y="249" text-anchor="middle" font-size="12" fill="#14403F" font-family="'IBM Plex Mono',monospace">2026–28 Activation Window</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> ASCE (2025); Swiss Re Institute (2026); Munich Re (2026); Bluebeam (2025); McKinsey (2024, 2022); industry legal commentary (2025–26). Dashed coral arrow marks the least certain, highest-consequence force.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 05 BASELINE ================= -->
+<section class="section" id="baseline">
+  <div class="section-in">
+    <p class="kicker">Current state</p>
+    <h2>A paradox baseline: total observability, unchanged practice</h2>
+    <div class="prose rv" id="baseline-prose">
+      <p><span class="lead-in">How risk is assessed today.</span> The modal practice on engineering programs remains stage-gated and document-based: qualitative registers scored on likelihood-impact matrices, quantitative schedule and cost risk analysis at major gates, and contingency set by percentage heuristics. ISO&nbsp;31000 and sector codes shape vocabulary more than cadence. Between gates, the risk picture is effectively frozen.</p>
+      <p><span class="lead-in">What it produces.</span> The outside record is unambiguous. In the Oxford-lineage database of more than <span class="nw">16,000</span> major projects, only about 0.5% deliver on budget, on time, and with promised benefits — patterns that have remained remarkably persistent across decades. Whatever improvements the industry has made in documentation and project controls, forecast error remains stubborn.</p>
+      <p><span class="lead-in">What has changed underneath.</span> Observability. Structural-health sensors, drone photogrammetry, computer-vision site monitoring, connected equipment telemetry, and digital twins now generate continuous risk-relevant data on ordinary projects — data that mostly never reaches the risk register.</p>
+      <p><span class="lead-in">The cost of the gap.</span> Beyond overruns, the churn economics are stark: annual hiring in critical trades runs more than twenty times net new job creation, an estimated <span class="nw">$5.3B</span> per year in acquisition and training costs alone — and every departure removes tacit risk judgment that documents never captured.</p>
+    </div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 2">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 2</span>
+        <p class="ex-title">Decades of more sophisticated project controls have not eliminated persistent forecasting error.</p>
+        <p class="ex-sowhat">The failure is structural, not informational — more of the same assessment practice will not close the gap.</p>
+      </div>
+      <div class="ex-body">
+        <p style="font-size:.8rem;color:var(--mut);margin-bottom:1rem;font-family:var(--mono)">Average real cost overrun at decision-to-build, by asset class (%)</p>
+        <div class="bars" id="overrunBars">
+          <div class="bar-row"><span class="bar-label">Roads</span><span class="bar-track"><span class="bar-fill" data-w="12.7"></span></span><span class="bar-val">~20%</span></div>
+          <div class="bar-row"><span class="bar-label">Bridges &amp; tunnels</span><span class="bar-track"><span class="bar-fill" data-w="22.3"></span></span><span class="bar-val">~35%</span></div>
+          <div class="bar-row"><span class="bar-label">Rail</span><span class="bar-track"><span class="bar-fill" data-w="25.5"></span></span><span class="bar-val">~40%</span></div>
+          <div class="bar-row"><span class="bar-label">IT-intensive programs</span><span class="bar-track"><span class="bar-fill" data-w="46.5"></span></span><span class="bar-val">~73%</span></div>
+          <div class="bar-row"><span class="bar-label">Dams</span><span class="bar-track"><span class="bar-fill" data-w="61.1"></span></span><span class="bar-val">~96%</span></div>
+          <div class="bar-row"><span class="bar-label">Olympic-scale programs</span><span class="bar-track"><span class="bar-fill" data-w="100"></span></span><span class="bar-val">~157%</span></div>
+        </div>
+        <p class="bar-note"><b>Reference line:</b> share of all megaprojects delivered on budget, on time, and on benefits — <b>~0.5%</b>.</p>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> Flyvbjerg &amp; Gardner (2023) base-rate appendix; Flyvbjerg et&nbsp;al. (2016–2022); McKinsey (2015). Overruns measured in real terms against the budget at decision to build.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 06 EVIDENCE ================= -->
+<section class="section" id="evidence">
+  <div class="section-in">
+    <p class="kicker">Evidence base</p>
+    <h2>The pricing mechanisms are already moving</h2>
+    <div class="prose rv" id="evidence-prose">
+      <p><span class="lead-in">Losses are repricing risk transfer.</span> Insured natural-catastrophe losses reached <span class="nw">$107B</span> in 2025 — the sixth consecutive year above <span class="nw">$100B</span> — led by the costliest wildfire event ever recorded (≈<span class="nw">$40B</span> insured, Los Angeles). Reconstruction costs remain ~37% above pre-COVID levels. Carriers respond as they always have to sustained loss trends: tighter terms, more granular data demands, and rewards for verifiable mitigation.</p>
+      <p><span class="lead-in">Capability adoption has crossed from novelty to trajectory.</span> Roughly 27% of AEC professionals report operational AI use — a minority, but one that doubled recently — and 94% of adopters plan to expand. Peer-reviewed syntheses converge on the same functional map: machine learning for predictive modeling, computer vision for safety monitoring, NLP for compliance risk — with data quality and interpretability as the binding constraints.</p>
+      <p><span class="lead-in">Funding pressure is forcing prioritization discipline.</span> ASCE’s 2025 assessment shows owners already shifting toward preservation of fair-condition assets, phased delivery, and programmatic contracting in response to the <span class="nw">$3.7T</span> gap and the FY2026 IIJA cliff — precisely the behaviors that demand better risk instrumentation to defend sequencing decisions.</p>
+    </div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 3">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 3</span>
+        <p class="ex-title">The pricing environment and the capability curve are crossing.</p>
+        <p class="ex-sowhat">TRAVO inference: when sustained loss pressure meets scalable measurement capability, underwriting can become more data-sensitive. Whether construction and professional-risk lines follow that pattern — and how quickly — remains a central uncertainty in this outlook.</p>
+      </div>
+      <div class="ex-body">
+        <svg viewBox="0 0 1000 380" style="width:100%;height:auto" role="img" aria-label="Two-panel chart. Left: Swiss Re global insured natural catastrophe losses in 2025 prices: 2015 to 2024 average 111 billion dollars, 2024 141 billion, and 2025 107 billion; 2025 was the sixth consecutive year above 100 billion. Right: share of AEC survey respondents reporting operational AI use, rising from the low teens to about 27 percent, with an illustrative 2031 scenario band.">
+          <!-- panel borders -->
+          <rect x="10" y="8" width="490" height="348" fill="none" stroke="#E5E5E8" stroke-width="1.5"/>
+          <rect x="520" y="8" width="470" height="348" fill="none" stroke="#E5E5E8" stroke-width="1.5"/>
+          <!-- LEFT PANEL -->
+          <g font-family="'Hanken Grotesk',sans-serif">
+            <text x="30" y="36" font-size="13" font-weight="700" fill="#242543">Swiss Re insured nat-cat losses ($B, 2025 prices)</text>
+            <g stroke="#E8F7FF" stroke-width="1.5">
+              <line x1="60" y1="310" x2="480" y2="310"/><line x1="60" y1="236.7" x2="480" y2="236.7"/>
+              <line x1="60" y1="163.3" x2="480" y2="163.3"/><line x1="60" y1="90" x2="480" y2="90"/>
+            </g>
+            <g class="svgt" text-anchor="end">
+              <text x="54" y="314">0</text><text x="54" y="241">50</text><text x="54" y="168">100</text><text x="54" y="94">150</text>
+            </g>
+            <g fill="#71D2CF">
+              <rect x="90"  y="147.2" width="88" height="162.8"/>
+              <rect x="227" y="103.2" width="88" height="206.8"/>
+              <rect x="364" y="153.1" width="88" height="156.9"/>
+            </g>
+            <g class="svgt b" text-anchor="middle">
+              <text x="134" y="139">111</text><text x="271" y="95">141</text><text x="408" y="145">107</text>
+            </g>
+            <g class="svgt" text-anchor="middle">
+              <text x="134" y="328">2015–24 avg</text><text x="271" y="328">2024</text><text x="408" y="328">2025</text>
+            </g>
+            <line x1="60" y1="163.3" x2="480" y2="163.3" stroke="#FF5B5E" stroke-width="2.5" stroke-dasharray="8 6"/>
+            <text x="478" y="157" text-anchor="end" font-size="11.5" font-weight="700" fill="#242543">$100B reference · 2025: sixth consecutive year above</text>
+          </g>
+          <!-- RIGHT PANEL -->
+          <g font-family="'Hanken Grotesk',sans-serif">
+            <text x="540" y="36" font-size="13" font-weight="700" fill="#242543">AEC survey respondents reporting operational AI use (%)</text>
+            <g stroke="#E8F7FF" stroke-width="1.5">
+              <line x1="565" y1="310" x2="978" y2="310"/><line x1="565" y1="240" x2="978" y2="240"/>
+              <line x1="565" y1="170" x2="978" y2="170"/><line x1="565" y1="100" x2="978" y2="100"/>
+            </g>
+            <g class="svgt" text-anchor="end">
+              <text x="559" y="314">0</text><text x="559" y="244">25</text><text x="559" y="174">50</text><text x="559" y="104">75</text>
+            </g>
+            <path d="M 705,234 L 958,106 L 958,198 L 705,238 Z" fill="#C5ECFE" opacity=".45"/>
+            <polyline points="585,274 705,234" fill="none" stroke="#242543" stroke-width="3.5"/>
+            <circle cx="585" cy="274" r="5.5" fill="#242543"/>
+            <circle cx="705" cy="234" r="7" fill="#71D2CF" stroke="#242543" stroke-width="2.5"/>
+            <line x1="705" y1="234" x2="958" y2="106" stroke="#242543" stroke-width="2" stroke-dasharray="3 6"/>
+            <line x1="705" y1="238" x2="958" y2="198" stroke="#242543" stroke-width="2" stroke-dasharray="3 6"/>
+            <g class="svgt" text-anchor="middle">
+              <text x="585" y="328">2024</text><text x="705" y="328">2026 survey</text><text x="958" y="328">2031 scenario</text>
+            </g>
+            <text x="717" y="222" font-size="12" font-weight="700" fill="#242543">~27%</text>
+            <text x="595" y="262" font-size="12" fill="#6E6F83">low teens</text>
+            <text x="805" y="150" font-size="11.5" font-weight="600" fill="#242543">illustrative range —</text>
+            <text x="805" y="166" font-size="11.5" font-weight="600" fill="#242543">94% of adopters expanding</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> Swiss Re Institute, <em>sigma</em> 1/2026 — 2024, 2025 and the 2015–2024 average shown on a single 2025-price basis; Bluebeam, <em>2026 AEC Technology Outlook</em> (released 2025); StartUs Insights (2025). The AI adoption points are survey-based; the 2031 range is illustrative of directional intent, not a point forecast.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 07 TOOLKIT ================= -->
+<section class="section" id="toolkit">
+  <div class="section-in">
+    <p class="kicker">The foresight toolkit</p>
+    <h2>Instruments, matched to decisions</h2>
+    <div class="prose rv" id="foresight-prose"><p>Prediction in this report is scenario-bounded, not point-certain. The same discipline should govern how leaders consume it. Five instruments, matched to the decisions they inform — and note the pairing rule: no instrument is decision-grade alone. TRAVO methodology pairs <a href="https://travo-advisory.com/#methodology">reference-class forecasting</a> with stress testing where both are decision-relevant.</p></div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 4">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 4</span>
+        <p class="ex-title">Five foresight instruments, matched to the executive decisions they inform.</p>
+        <p class="ex-sowhat">The toolkit’s value is in pairing — no instrument is decision-grade alone.</p>
+      </div>
+      <div class="ex-body tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Instrument</th><th>Purpose</th><th>When to use</th><th>Output</th><th>Executive decision informed</th></tr></thead>
+          <tbody>
+            <tr><td>Horizon scanning</td><td>Detect weak signals in insurance filings, RFQs, case law, standards</td><td>Continuous; quarterly synthesis</td><td>Signal log with confidence ratings</td><td>When to accelerate or pause capability investment</td></tr>
+            <tr><td>Scenario planning</td><td>Structure irreducible uncertainty into plannable futures</td><td>Annually; at major capital decisions</td><td>3–4 scenarios with triggers</td><td>Portfolio posture; hedged vs. concentrated bets</td></tr>
+            <tr><td>Reference-class forecasting</td><td>Correct optimism bias with outside-view base rates</td><td>Every major estimate &amp; contingency setting</td><td>Adjusted P-range forecasts</td><td>Contingency size; go/no-go; bid pricing</td></tr>
+            <tr><td>Stress tests &amp; simulation</td><td>Quantify exposure under tail conditions (climate, funding, supply)</td><td>Semiannually on the live portfolio</td><td>Loss exceedance curves; breakpoints</td><td>Insurance limits; balance-sheet reserves</td></tr>
+            <tr><td>Leadership war games</td><td>Rehearse decision rights under compound crisis</td><td>Before program start; after near-misses</td><td>Decision-rights map; playbooks</td><td>Governance design; delegation thresholds</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> <a href="https://travo-advisory.com/#methodology">TRAVO practice methodology</a>; reference-class method per Flyvbjerg (Oxford) and its documented adoption in public planning practice; ISO&nbsp;31000 family.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 08 SCENARIO LOGIC ================= -->
+<section class="section" id="scenarios">
+  <div class="section-in">
+    <p class="kicker">Scenario planning logic</p>
+    <h2>Two uncertainties, four futures</h2>
+    <div class="prose rv" id="scenarios-prose">
+      <p>Most drivers on the forces map are trends — direction known, pace uncertain. Two are genuine uncertainties.</p>
+      <p><span class="lead-in">Critical uncertainty 1 — Trust in machine-informed risk judgment.</span> Does the ecosystem — courts, insurers, licensing boards, engineers themselves — come to treat model-derived risk assessments as reliable and auditable, or does a high-profile model failure stall institutional acceptance?</p>
+      <p><span class="lead-in">Critical uncertainty 2 — External risk pressure.</span> Do funding stress, catastrophe losses, and regulatory demands intensify (hard market, post-IIJA austerity, continued <span class="nw">$100B+</span> loss years) or ease (reauthorization, benign loss years, softening cover)?</p>
+    </div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 5">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 5</span>
+        <p class="ex-title">Four futures for engineering risk assessment, 2026–2031.</p>
+        <p class="ex-sowhat">Three of four quadrants reward building risk intelligence now; none requires betting the enterprise on a single forecast.</p>
+      </div>
+      <div class="ex-body">
+        <div class="matrix-wrap">
+          <div class="axis-y">External risk pressure&nbsp; · &nbsp;easing → intensifying</div>
+          <div class="matrix">
+            <div class="quad"><h4>Analog Squeeze</h4><p>Pressure without accepted tools; blunt rationing, rising premiums for all, judgment bottlenecks.</p><span class="tag">Build anyway — scarce trusted capability commands premium fees.</span></div>
+            <div class="quad base"><h4>Priced-In Precision</h4><p>The prediction realized: data-conditioned terms standard; the analog penalty explicit.</p><span class="tag">Build fast — data maturity is priced. The base trajectory.</span></div>
+            <div class="quad"><h4>Patchwork Progress</h4><p>Pilots persist, no forcing function; advantage accrues quietly to early movers.</p><span class="tag">Build selectively — optionality preserved at low cost.</span></div>
+            <div class="quad"><h4>Quiet Upgrade</h4><p>Capability spreads on productivity merits; pricing follows slowly.</p><span class="tag">Build economically — differentiate via client outcomes, not gatekeepers.</span></div>
+          </div>
+          <div></div>
+          <div class="axis-x">Trust in machine-informed judgment&nbsp; · &nbsp;low → high</div>
+        </div>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> TRAVO scenario workshop, Q2 2026; uncertainties derived from the Exhibits 1–3 evidence base. Tinted quadrant marks the base trajectory.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 09 THREE SCENARIOS ================= -->
+<section class="section" id="outlook">
+  <div class="section-in">
+    <p class="kicker">Three-scenario outlook</p>
+    <h2>Plan on the base, insure the downside, position for the upside</h2>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 6">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 6</span>
+        <p class="ex-title">Three planning scenarios — the recommended posture is robust across all three.</p>
+        <p class="ex-sowhat">The actions that pay off in the base case are also the cheapest hedge in the downside — that asymmetry is the strategy.</p>
+      </div>
+      <div class="ex-body tbl-scroll">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th style="width:12%;background:transparent;border-top:none;border-left:none;border-right:none;border-bottom:1px solid var(--line)"></th>
+              <th style="background:var(--teal);color:var(--indigo)"><span style="font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo)">Base</span><br>“Steady Instrumentation”<br><small style="font-weight:400;opacity:.85">Evidence Support: strong</small></th>
+              <th style="background:var(--blue-light);color:var(--indigo)"><span style="font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo)">Upside</span><br>“Risk Dividend”<br><small style="font-weight:400;opacity:.85">Evidence Support: moderate</small></th>
+              <th style="background:var(--coral-light);color:var(--indigo)"><span style="font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo)">Downside</span><br>“Trust Stall”<br><small style="font-weight:400;opacity:.85">Evidence Support: limited</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Narrative</td><td style="background:var(--teal-10)">Insurance and procurement channels adopt data-conditioning progressively, 2027–2030; the legal channel lags but looms. Adoption remains uneven by firm size.</td><td>A visible save — a model-flagged failure averted at scale — plus favorable court treatment accelerates acceptance; premium and capital advantages become quotable by 2029.</td><td>A prominent model-implicated failure or data scandal triggers institutional caution; adoption continues in operations but is excluded from formal risk gatekeeping until standards mature.</td></tr>
+            <tr><td>Key assumptions</td><td style="background:var(--teal-10)">Loss trend persists near <span class="nw">$100B+</span>/yr; post-IIJA funding partially reauthorized; no landmark liability ruling either way.</td><td>At least one carrier publicly ties construction/PL terms to telemetry by 2028; standards bodies issue model-governance guidance.</td><td>High-profile failure attributed (fairly or not) to model reliance; interpretability unresolved; standards fragmented.</td></tr>
+            <tr><td>Strategic implications</td><td style="background:var(--teal-10)">Data maturity becomes table stakes on major programs; the mid-market squeeze materializes.</td><td>Early movers monetize directly: better terms, prequal advantage, premium advisory fees.</td><td>Human-judgment capacity becomes the scarce asset; hybrid (model + documented expert review) is the only bankable posture.</td></tr>
+            <tr><td>Early signals</td><td style="background:var(--teal-10)">Carrier filings referencing project telemetry; owner RFQs with live-dashboard clauses.</td><td>Publicized underwriting pilot results; first “data-for-terms” endorsements.</td><td>Litigation discovery targeting model logs; carrier exclusions for AI-assisted assessments.</td></tr>
+            <tr><td>Recommended response</td><td style="background:var(--teal-10)">Execute the action agenda on schedule.</td><td>Accelerate: expand data-for-terms negotiations; productize the risk-intelligence offer.</td><td>Double down on governance and documentation; market “auditable judgment” as the differentiator.</td></tr>
+          </tbody>
+        </table>
+        <p class="smallnote" style="margin-top:1rem"><em>We deliberately use evidence-support labels, not probabilities: the underlying events (court rulings, single catastrophic failures) are discrete and event-driven, and point probabilities would imply false precision.</em></p>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> Scenario construction per Exhibit 5; signal categories from insurance-market reporting (Swiss Re, Aon, Allianz Risk Barometer 2026) and procurement observation.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 10 STAKEHOLDERS ================= -->
+<section class="section" id="stakeholders">
+  <div class="section-in">
+    <p class="kicker">Strategic implications</p>
+    <h2>Who gains, who pays, who must move first</h2>
+    <div class="prose rv" style="max-width:none"><p>Value migrates to whoever owns trusted risk data — every stakeholder’s move list follows from that single fact.</p></div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 7">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 7</span>
+        <p class="ex-title">Stakeholder impact map.</p>
+        <p class="ex-sowhat">The “decide differently” column is the action column — it is where each reader should start.</p>
+      </div>
+      <div class="ex-body tbl-scroll">
+        <table class="tbl">
+          <thead><tr><th>Stakeholder</th><th>What changes</th><th>Key risks</th><th>Key opportunities</th><th style="background:#14403F">Decide differently</th></tr></thead>
+          <tbody>
+            <tr><td>Owners &amp; agencies</td><td>Sequencing the <span class="nw">$3.7T</span> gap requires defensible, data-based prioritization</td><td>Political exposure of transparent risk rankings; vendor lock-in</td><td>Lower lifecycle cost; stronger funding cases; insurance capacity</td><td style="background:var(--teal-10)">Write data-maturity into prequal; procure outcomes, not documents</td></tr>
+            <tr><td>Engineering &amp; construction firms</td><td>Risk-data maturity joins safety record as a bid credential</td><td>Mid-market analog penalty; liability from inappropriate model reliance <em>and, potentially over time,</em> unreasonable failure to consider available decision-support tools</td><td>Premium advisory work; better bonding and insurance terms</td><td style="background:var(--teal-10)">Fund the data backbone as bid-cost, not overhead; codify decision rights</td></tr>
+            <tr><td>Insurers &amp; sureties</td><td>Underwriting shifts from proxies to telemetry</td><td>Adverse selection during transition; model risk on their side</td><td>Portfolio steering; new data-conditioned products</td><td style="background:var(--teal-10)">Launch data-for-terms pilots before competitors set the standard</td></tr>
+            <tr><td>Investors &amp; lenders</td><td>Project risk becomes partially observable pre-close</td><td>Mispricing legacy (analog) exposures</td><td>Alpha from risk-data diligence; infra credit differentiation</td><td style="background:var(--teal-10)">Add risk-data maturity to diligence checklists now</td></tr>
+            <tr><td>Policymakers &amp; regulators</td><td>Standard of care and disclosure norms in motion</td><td>Over- or under-regulating model use; trust erosion after failures</td><td>Cheaper resilience via disclosure levers rather than spending</td><td style="background:var(--teal-10)">Fund open loss/condition data; set model-governance guardrails early</td></tr>
+            <tr><td>Educators &amp; licensure bodies</td><td>Risk-model literacy enters the PE skill set</td><td>Curriculum lag amplifies the workforce gap (&gt;20:1 churn)</td><td>New credential value: “auditable judgment”</td><td style="background:var(--teal-10)">Build model-governance content into CE requirements</td></tr>
+            <tr><td>Communities &amp; users</td><td>Risk rankings become visible and contestable</td><td>Equity concerns in who gets protected first</td><td>Transparent prioritization; faster hazard response</td><td style="background:var(--teal-10)">Demand disclosure of asset risk status</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> ASCE (2025) on owner behavior shifts; Swiss Re / Aon (2026) on underwriting direction; McKinsey (2024) on trades churn; TRAVO analysis and principal industry observation.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 11 CAPABILITIES ================= -->
+<section class="section" id="capabilities">
+  <div class="section-in">
+    <p class="kicker">Capabilities required</p>
+    <h2>Build now, build next, monitor</h2>
+    <div class="prose rv" style="max-width:none"><p>The two hardest capabilities — data and governance — are also the slowest to build, which is why they must start first.</p></div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 8">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 8</span>
+        <p class="ex-title">Capability map: current state → 2031 target, with build priority.</p>
+        <p class="ex-sowhat">Coral chips mark the three capabilities that cannot wait.</p>
+      </div>
+      <div class="ex-body">
+        <div class="lanes">
+          <div class="lane"><div class="lane-name">Data &amp; Intelligence<small>Versioned risk-data backbone; telemetry ingestion; outside-view base-rate library</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip now">Must build now</span></div>
+          <div class="lane"><div class="lane-name">Decision Governance<small>Documented decision rights for model-informed judgment; audit trail on every material risk decision</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip now">Must build now</span></div>
+          <div class="lane"><div class="lane-name">Talent &amp; Operating Model<small>Paired teams — senior judgment × model literacy; risk engineers as model stewards</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip now">Must build now</span></div>
+          <div class="lane"><div class="lane-name">Risk Management Core<small>Reference-class forecasting standard on all estimates; continuous registers replacing gate documents</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip next">Build next</span></div>
+          <div class="lane"><div class="lane-name">Partnerships<small>Data-for-terms agreements with ≥1 carrier, ≥1 lender; sensing/analytics vendor bench</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip next">Build next</span></div>
+          <div class="lane"><div class="lane-name">Technology Enablement<small>Digital-twin integration where asset value justifies; interoperable, exportable data — no lock-in</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip next">Build next</span></div>
+          <div class="lane"><div class="lane-name">Communications &amp; Alignment<small>Ability to explain model-informed decisions to boards, courts, and the public</small></div><div class="lane-track"><span class="from"></span><span class="to"></span></div><span class="chip mon">Monitor → build</span></div>
+        </div>
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> TRAVO capability framework; talent constraint per McKinsey (2024); governance need per <em>Journal of Risk Research</em> AI-risk lifecycle synthesis (2025). Dark dot = typical current state; teal dot = 2031 target.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 12 SIDEBAR ================= -->
+<section class="section" id="ai-sidebar">
+  <div class="section-in">
+    <div class="sidebar-mod rv">
+      <p class="sb-eyebrow">Sidebar · Methods</p>
+      <h2>Using AI to improve strategic foresight</h2>
+      <div class="cols">
+        <p><span class="lead-in">Weak-signal detection.</span> Language models can scan insurance filings, RFQ language, standards drafts, and case law at a scale that would be impractical for most analyst teams — surfacing, for example, the first appearances of telemetry clauses in construction underwriting. The value is coverage; the risk is noise. Every machine-flagged signal in a TRAVO watchlist carries a human-assigned confidence rating.</p>
+        <p><span class="lead-in">Synthesis at volume.</span> Summarizing thousands of pages of market, policy, and technical material compresses the foresight cycle from quarters to weeks. Peer-reviewed reviews of AI in construction risk consistently find NLP most mature exactly here — document and compliance analysis.</p>
+        <p><span class="lead-in">Scenario generation.</span> Models are effective at proposing scenario variants and challenging framing (“what would have to be true”). They widen the option set; they do not choose. Scenario selection remains a leadership act because it allocates real capital.</p>
+        <p><span class="lead-in">Stress-testing assumptions.</span> AI can rapidly re-run outlooks under altered assumptions — a funding cliff, a repeat <span class="nw">$40B</span> wildfire, a landmark liability ruling — exposing which conclusions are fragile.</p>
+        <p><span class="lead-in">Where AI misleads.</span> Four failure modes matter for foresight: confident extrapolation of trends that are actually regime-dependent; training-data blind spots for genuinely novel risks; opaque reasoning that cannot be defended to a board or a court; and automation bias — the human tendency to defer once a number appears on a dashboard. The last is the most dangerous, because it silently transfers judgment without transferring accountability.</p>
+        <p><span class="lead-in">Why judgment and governance remain essential.</span> The professional engineer’s signature carries professional accountability; AI does not transfer that responsibility. Between 2026 and 2031, the winning posture is neither manual nor autonomous but <em>auditable</em>: model-informed analysis, documented human review, and decision rights defined before the crisis, not during it.</p>
+      </div>
+      <p class="smallnote" style="margin-top:1.4rem">Sources: bibliometric review of AI in construction risk management, <em>ScienceDirect</em> (2025); decade review, <em>Journal of Risk Research</em> (2025); TRAVO methodology.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 13 ACTION AGENDA ================= -->
+<section class="section" id="agenda">
+  <div class="section-in">
+    <p class="kicker">Recommended action agenda</p>
+    <h2>Three horizons — every action names its owner</h2>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 9">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 9</span>
+        <p class="ex-title">A three-horizon action agenda.</p>
+        <p class="ex-sowhat">Nothing on this roadmap requires betting on a single future; every 0–6-month action pays off in all three scenarios.</p>
+      </div>
+      <div class="ex-body">
+
+        <div class="horizon">
+          <div class="hz-head"><span class="rng">0–6 months</span><span class="nm">Prove</span></div>
+          <div class="tbl-scroll"><table class="tbl">
+            <thead><tr><th>Priority action</th><th>Owner</th><th>Output</th><th>Decision enabled</th></tr></thead>
+            <tbody>
+              <tr><td>Establish the current decision and risk-information state on one live project</td><td>Program director / risk lead</td><td>Decision statement, evidence inventory, quantified range, dominant drivers and trigger conditions</td><td>Whether the current forecast, contingency or intervention basis remains credible</td></tr>
+              <tr><td>Select and instrument one continuous-monitoring pilot</td><td>Program director</td><td>Live risk view with defined update triggers on one program</td><td>Scale / no-scale, with evidence</td></tr>
+              <tr><td>Draft decision-rights charter for model-informed judgment</td><td>GC + CRO</td><td>One-page governance charter</td><td>Who signs what, with what review</td></tr>
+              <tr><td>Baseline current insurance terms and loss history</td><td>CFO / Risk</td><td>Terms benchmark</td><td>Data-for-terms negotiating position</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="horizon" id="hz-scale">
+          <div class="hz-head"><span class="rng">6–24 months</span><span class="nm">Scale</span></div>
+          <div class="tbl-scroll"><table class="tbl">
+            <thead><tr><th>Priority action</th><th>Owner</th><th>Output</th><th>Decision enabled</th></tr></thead>
+            <tbody>
+              <tr><td>Stand up the versioned risk-data backbone</td><td>CTO / CRO</td><td>Single source of risk truth</td><td>Portfolio-level risk steering</td></tr>
+              <tr><td>Make reference-class forecasting standard on estimates</td><td>Head of estimating</td><td>RCF-adjusted P-range on every bid</td><td>Contingency and bid pricing</td></tr>
+              <tr><td>Negotiate one data-for-terms pilot (carrier) and one (lender)</td><td>CFO</td><td>Signed pilot endorsements</td><td>Whether data maturity is monetizable now</td></tr>
+              <tr><td>Launch paired-talent program (senior judgment × model literacy)</td><td>CHRO</td><td>Initial cohort of paired senior-domain and model-literate staff</td><td>Succession before the retirement wave</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="horizon" id="hz-lead">
+          <div class="hz-head"><span class="rng">2+ years</span><span class="nm">Lead</span></div>
+          <div class="tbl-scroll"><table class="tbl">
+            <thead><tr><th>Priority action</th><th>Owner</th><th>Output</th><th>Decision enabled</th></tr></thead>
+            <tbody>
+              <tr><td>Productize risk intelligence for clients</td><td>CEO / Practice leads</td><td>Advisory offer with reference cases</td><td>Growth bet sizing</td></tr>
+              <tr><td>Contribute to standards &amp; model-governance guidance</td><td>CRO</td><td>Seat at standards tables</td><td>Shaping vs. absorbing the rules</td></tr>
+              <tr><td>Extend stress testing to climate &amp; funding tails, portfolio-wide</td><td>CFO / CRO</td><td>Annual exceedance report</td><td>Reserves, limits, portfolio mix</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+      </div>
+      <figcaption class="ex-src"><b>Source:</b> TRAVO practice playbooks; sequencing informed by the capability map (Exhibit 8).</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= BRIDGE 2 · WHERE TRAVO FITS ================= -->
+<section class="section" id="where-travo-fits">
+  <div class="section-in">
+    <p class="kicker">From outlook to decision</p>
+    <h2>Where <span style="font-family:'Montserrat',sans-serif">TRAVO</span> fits, by role</h2>
+    <div class="tbl-scroll rv"><table class="tbl">
+      <thead><tr><th>Reader</th><th>The decision in front of you</th><th>Relevant TRAVO entry point</th></tr></thead>
+      <tbody>
+        <tr><td>Owners &amp; developers</td><td>Commit · reserve · intervene — is the basis credible and is contingency adequate?</td><td><a href="https://travo-advisory.com/#svc-p2">Preconstruction Risk Review</a> · <a href="https://travo-advisory.com/#svc-p3">Independent Risk Peer Review</a></td></tr>
+        <tr><td>Lenders &amp; private credit</td><td>Fund · reserve · escalate — will it complete within available capital?</td><td><a href="https://travo-advisory.com/#svc-a1">Project Risk Screen</a> · <a href="https://travo-advisory.com/#svc-a4">Lender Monitoring &amp; Draw Overlay</a></td></tr>
+        <tr><td>Sureties &amp; SDI</td><td>Capacity · completion · intervention — is completion exposure increasing?</td><td><a href="https://travo-advisory.com/#svc-a5">Contractor Performance &amp; Completion-Risk Review</a></td></tr>
+        <tr><td>Construction counsel</td><td>Evidence · exposure · next step — what does the technical record show?</td><td><a href="https://travo-advisory.com/#svc-f1">Counsel-Directed Project Risk &amp; Quantum Review</a></td></tr>
+        <tr><td>Contractors</td><td>Bid · mitigate · recover — which uncertainties threaten margin or delivery?</td><td><a href="https://travo-advisory.com/#svc-p1">Quantitative Risk &amp; Contingency</a> · <a href="https://travo-advisory.com/#svc-p4">Strategic Alternatives</a></td></tr>
+        <tr><td>Public agencies &amp; program primes</td><td>Approve · reserve · oversee — are the assumptions independent and defensible?</td><td><a href="https://travo-advisory.com/#svc-p7">Independent Project Risk Review</a></td></tr>
+      </tbody>
+    </table></div>
+    <p class="region-note rv"><b>Regional lens.</b> TRAVO is a focused New Jersey / New York metropolitan practice. The <span class="nw">$3.7&nbsp;trillion</span> national gap, the post-IIJA funding cliff and hardening catastrophe pricing arrive here as concrete questions on regional capital programs — which projects to sequence, how much contingency to hold, and when a live forecast has stopped being credible.</p>
+  </div>
+</section>
+
+<!-- ================= 14 WATCHLIST ================= -->
+<section class="section" id="watchlist">
+  <div class="section-in">
+    <p class="kicker">Watchlist dashboard</p>
+    <h2>The prediction is falsifiable — watch these sixteen signals</h2>
+    <div class="prose rv" style="max-width:none"><p>Strategy reviews should be triggered by signals, not by the calendar. Each entry names the signal, why it matters, the monitoring cadence, and the response if it fires. Baseline: July 2026; status should be refreshed at each review cycle.</p></div>
+
+    <figure class="exhibit rv" role="group" aria-label="Exhibit 10">
+      <div class="ex-head">
+        <span class="ex-no">Exhibit 10</span>
+        <p class="ex-title">Sixteen leading indicators across four signal classes.</p>
+        <p class="ex-sowhat">The palette is semantic here: teal confirms, deep-teal accelerates, rose weakens, coral reverses.</p>
+      </div>
+      <div class="ex-body">
+        <div class="watch-grid">
+          <div class="watch confirm">
+            <header>Confirm — prediction on track</header>
+            <ul>
+              <li><b>Carrier filings referencing project telemetry / AI</b> in construction or PL lines · the pricing channel activating · quarterly<span class="resp">Accelerate data-for-terms talks</span></li>
+              <li><b>Owner RFQs requiring live risk dashboards</b> or data maturity · procurement channel activating · monthly (bid pipeline)<span class="resp">Fast-track the backbone build</span></li>
+              <li><b>Standards bodies issue model-governance guidance</b> · trust infrastructure forming · semiannual<span class="resp">Align the charter; seek early conformity</span></li>
+              <li><b>Continued <span class="nw">$100B+</span> insured nat-cat years</b> · loss pressure sustained · annual (sigma / NatCat)<span class="resp">Maintain course</span></li>
+            </ul>
+          </div>
+          <div class="watch accel">
+            <header>Accelerate — faster than base case</header>
+            <ul>
+              <li><b>Publicized underwriting pilot</b> showing loss-ratio improvement from telemetry · proof insurers can’t ignore · quarterly<span class="resp">Pull Horizon-2 actions forward</span></li>
+              <li><b>A litigated claim arguing non-use of predictive tools as negligence</b> · the legal channel arriving early · continuous scan<span class="resp">Brief boards; harden documentation</span></li>
+              <li><b>A DOT-scale owner mandates continuous risk monitoring</b> · anchor-client standard-setting · quarterly<span class="resp">Bid aggressively; build the reference case</span></li>
+              <li><b>Post-IIJA reauthorization ties funds to asset-condition data</b> · federal forcing function · legislative calendar<span class="resp">Position for compliance advisory</span></li>
+            </ul>
+          </div>
+          <div class="watch weak">
+            <header>Weaken — slower than base case</header>
+            <ul>
+              <li><b>AEC AI adoption plateaus below ~35%</b> for 4+ quarters · capability curve stalling · quarterly surveys<span class="resp">Stretch investment timeline; keep pilots</span></li>
+              <li><b>Carriers stay on proxy-based pricing</b> despite loss years · pricing channel inert · renewal cycles<span class="resp">Shift the value story to client outcomes</span></li>
+              <li><b>Benign loss years soften the market broadly</b> · pressure easing · annual<span class="resp">Emphasize productivity ROI over terms</span></li>
+              <li><b>Interpretability tools fail to mature</b> · trust bottleneck persists · semiannual<span class="resp">Weight hybrid / judgment positioning</span></li>
+            </ul>
+          </div>
+          <div class="watch reverse">
+            <header>Reverse — thesis broken</header>
+            <ul>
+              <li><b>High-profile failure attributed to model reliance</b> triggers exclusions or bans · trust collapse (“Trust Stall”) · continuous<span class="resp">Execute the downside playbook</span></li>
+              <li><b>Regulation restricts model use</b> in safety-critical assessment · the legal channel inverts · legislative scan<span class="resp">Reposition on auditable human judgment</span></li>
+              <li><b>Insurers exclude AI-assisted assessments</b> from cover · pricing channel inverts · renewal cycles<span class="resp">Same repositioning; document everything</span></li>
+              <li><b>Sustained funding surplus removes prioritization pressure</b> · forcing function gone · annual<span class="resp">Compete on delivery; hold optionality</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <figcaption class="ex-src"><b>Monitoring sources:</b> Swiss Re sigma; Munich Re NatCat; Aon Climate &amp; Catastrophe Insight; Allianz Risk Barometer; state insurance filings; ENR; federal legislative trackers. Baseline: July 2026 · Last reviewed: July 2026.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= 15 QUESTIONS ================= -->
+<section class="section" id="questions">
+  <div class="section-in">
+    <div style="max-width:72ch;margin-left:auto;margin-right:auto">
+    <p class="kicker">Leadership questions</p>
+    <h2>Ten questions for the next board or partner meeting</h2>
+    <ol class="qlist rv">
+      <li>If a carrier offered a 10% premium reduction for live project telemetry tomorrow, could we technically deliver the data — and would we be comfortable with what it shows?<span class="cat">assumptions · readiness</span></li>
+      <li>What share of our current contingency setting is based on outside-view base rates versus internal optimism?<span class="cat">assumptions</span></li>
+      <li>Which of our decisions may currently rely on model output — and who has actually signed off on that list?<span class="cat">governance</span></li>
+      <li>Where does tacit risk judgment sit in our organization, and how much of it retires in the next five years?<span class="cat">organizational readiness</span></li>
+      <li>If a competitor’s bid includes a live risk dashboard and ours includes a PDF register, how does the owner score that — today, and in 2028?<span class="cat">competitive exposure</span></li>
+      <li>What is our maximum tolerable loss under a repeat of a 2025-scale catastrophe year on our portfolio — and is it reserved, or just assumed?<span class="cat">risk appetite</span></li>
+      <li>Are we prepared to defend a model-informed decision in litigation — with logs, versions, and documented human review?<span class="cat">governance · legal</span></li>
+      <li>Which single pilot, started this quarter, would generate the most decision-relevant evidence within 12 months?<span class="cat">timing · investment posture</span></li>
+      <li>Whose risk gets prioritized when our data makes trade-offs visible — and are we ready for that conversation with communities and clients?<span class="cat">stakeholder impact</span></li>
+      <li>If the prediction in this report is wrong, which of our planned investments would we regret — and which would we keep anyway?<span class="cat">robustness test</span></li>
+    </ol>
+    <div style="margin-top:3rem" class="rv">
+      <blockquote class="pull deep" style="text-align:center;margin-left:auto;margin-right:auto">“The most dangerous risk register is the one that was accurate last quarter.”</blockquote>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 16 CONCLUSION ================= -->
+<section class="section" id="conclusion">
+  <div class="section-in">
+    <p class="kicker" style="text-align:center">Conclusion</p>
+    <div class="concl rv">
+      <div class="dotrule" style="justify-content:center"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p style="margin-bottom:1.1rem">Across decades, the record of major engineering programs has shown persistent forecasting error and chronic overruns despite increasingly sophisticated documentation and project controls. The instinct has often been to treat that record as fate — the cost of building big things.</p>
+      <p style="margin-bottom:1.1rem">The next five years break the excuse. The data now exists to see risk as it moves. The analytical capability exists to read it. And three gatekeepers — insurers absorbing their sixth consecutive $100-billion year, owners rationing a <span class="nw">$3.7 trillion</span> gap, and professional and legal expectations beginning to confront what a careful practitioner should reasonably consider when predictive tools are available — have every incentive to start pricing the difference between firms that can see and firms that cannot.</p>
+      <p style="margin-bottom:1.1rem">Our prediction is specific enough to be wrong, and we have listed the signals that would prove it so. But note the asymmetry that runs through every scenario in this report: the moves that win in the base case — a data backbone, decision governance, paired talent, outside-view forecasting — are the same moves that protect in the downside and compound in the upside. That is rare. Most strategic bets force a choice between futures. This one rewards preparation in all of them.</p>
+      <p>The discipline of foresight was never about predicting one future. It is about refusing to be surprised by any of the plausible ones. Our thesis is simple: between now and 2031, engineering risk will increasingly be assessed continuously — or the inability to do so will increasingly carry a price. The firms that internalize that thesis early will not merely avoid the analog penalty.</p>
+      <p class="final">They will help set the standard by which everyone else is judged.</p>
+      <div class="concl-rule"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRIDGE 3 · ENGAGE ================= -->
+<section class="section" id="engage">
+  <div class="section-in">
+    <p class="kicker">For a live project</p>
+    <h2>Is the risk view supporting your next decision still credible?</h2>
+    <p class="lede-dark rv">If a current forecast, contingency, financing, completion, reserve, procurement or intervention decision depends on assumptions that may already be stale, the immediate need is not an enterprise transformation. It is an independent view of what the available evidence supports now, what remains uncertain, and what could materially change the decision.</p>
+    <p class="lede-dark rv">TRAVO's bounded Project Risk Screen is designed as a first step for a live decision under pressure — establishing the current information state, identifying the few drivers that matter, and testing whether the existing forecast or reserve remains credible before deeper reforecasting or monitoring is warranted.</p>
+    <div class="cta-actions rv">
+      <a class="btn btn-primary" href="mailto:principal@travo-advisory.com?subject=Decision-scoping%20call:%20Risk%20Intelligence%20outlook">Request a decision-scoping call</a>
+      <a class="btn btn-ghost" href="mailto:principal@travo-advisory.com?subject=Project%20Risk%20Screen:%20Risk%20Intelligence%20outlook">Discuss the Project Risk Screen</a>
+    </div>
+    <p class="cta-independence">Independent · principal-led · decision-focused</p>
+
+    <div class="author rv">
+      <div class="nm">Dr. Karim S. Karam · Principal, TRAVO</div>
+      <p>Dr. Karam studied engineering at Imperial College London, holds master's and doctoral degrees from MIT, and teaches construction risk and decision-making at Stevens Institute of Technology. He was Co-Founder, Partner and Advisor to the Board of a construction business that completed more than 170 infrastructure projects totaling over $1&nbsp;billion of work. Every TRAVO analytical product is personally reviewed by the principal.</p>
+      <p>New Jersey · New York metropolitan region · <a href="mailto:principal@travo-advisory.com">principal@travo-advisory.com</a> · <a href="https://travo-advisory.com/#about">About the principal</a> · <a href="https://travo-advisory.com/#methodology">Methodology</a> · <a href="https://travo-advisory.com">travo-advisory.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 17 METHODOLOGY ================= -->
+<section class="section meth" id="methodology">
+  <div class="section-in">
+    <p class="kicker">Methodology &amp; sources</p>
+    <h2>How this outlook was built</h2>
+    <div class="cols2 rv">
+      <p><span class="lead-in">Research approach.</span> This outlook was developed by (1) assembling a quantitative evidence base from government, institutional, insurer, and academic sources; (2) separating trend drivers from genuine uncertainties; (3) constructing scenarios on the two dominant uncertainties — trust in machine-informed judgment and external risk pressure; (4) stress-testing the central prediction against each scenario; and (5) deriving actions that remain valuable across all scenarios. AI-assisted document scanning supported source discovery; all figures were verified against primary or named institutional sources, and all judgments are the author’s own. Throughout this report, “observed evidence” refers to sourced data or current market developments; “TRAVO inference” is our interpretation of those signals; a “forecast” is a forward-looking judgment; and a “scenario” is a plausible future used to test whether today’s decisions remain robust.</p>
+      <p><span class="lead-in">Source categories.</span> Government and quasi-governmental (US BLS, ASCE, legislative records); institutional research (McKinsey &amp; Company published insights); reinsurer research (Swiss Re Institute sigma, Munich Re NatCat, Aon Climate &amp; Catastrophe Insight, Allianz Risk Barometer); academic literature (Flyvbjerg et&nbsp;al., Oxford/ITU megaproject research; peer-reviewed AI-in-construction-risk reviews, 2025); industry surveys (Bluebeam AEC, 2025) and trade press (ENR, Construction Dive) where primary data was unavailable.</p>
+      <p><span class="lead-in">Limitations.</span> Adoption statistics vary widely by survey frame; megaproject base rates mix asset classes and eras; legal-channel timing is inherently event-driven and could fall outside the five-year window; insurer strategy is competitive and partially opaque. Scenario evidence-support labels reflect these limits; we deliberately avoided point probabilities.</p>
+      <p><span class="lead-in">How Evidence Support was assessed.</span> Strong = multiple independent quantitative sources trending the same direction. Moderate = strong analogy plus early direct signals. Limited = plausible mechanism dependent on discrete triggering events.</p>
+    </div>
+
+    <div class="assump rv">
+      <h3 style="margin-top:0;color:var(--indigo)">Key assumptions — labeled</h3>
+      <ul>
+        <li><b>A1.</b> Insured nat-cat losses remain elevated near or above the ~<span class="nw">$100B</span> trend through the horizon (extrapolation of a six-year pattern; could break in benign years).</li>
+        <li><b>A2.</b> AEC AI adoption continues rising from ~27% (survey-based; sampling may skew toward digitally engaged firms).</li>
+        <li><b>A3.</b> Post-IIJA federal funding does not fully close the ASCE gap (policy judgment; the largest single political uncertainty in this report).</li>
+        <li><b>A4 — load-bearing assumption.</b> Insurer behavior in construction lines follows the telemetry-pricing pattern established in property and cyber (analogical inference rather than a universal observed construction-market fact; this is the report’s most consequential assumption).</li>
+      </ul>
+    </div>
+
+    <h3>Method foundations — peer-reviewed</h3>
+    <p class="smallnote" style="margin-bottom:.8rem">The decision-analysis methods behind this outlook — Value of Information, exploration under uncertainty, and formal updating — rest on the principal's published research, applied commercially through TRAVO.</p>
+    <ol class="srclist rv">
+      <li>Karam, K. S.; Karam, J. S.; Einstein, H. H. (2007). <a href="https://doi.org/10.1061/(ASCE)0733-9364(2007)133:5(344)" rel="external noopener">Decision Analysis Applied to Tunnel Exploration Planning. I: Principles and Case Study</a>. <em>Journal of Construction Engineering and Management</em>, 133(5), 344–353.</li>
+      <li>Karam, K. S.; Karam, J. S.; Einstein, H. H. (2007). <a href="https://doi.org/10.1061/(ASCE)0733-9364(2007)133:5(354)" rel="external noopener">Decision Analysis Applied to Tunnel Exploration Planning. II: Consideration of Uncertainty</a>. <em>Journal of Construction Engineering and Management</em>, 133(5), 354–363.</li>
+      <li>Sousa, R. L.; Karam, K.; Einstein, H. H. (2014). <a href="https://doi.org/10.1080/17499518.2014.958174" rel="external noopener">Exploration Analysis for Landslide Risk Management</a>. <em>Georisk</em>, 8(3), 155–170.</li>
+    </ol>
+
+    <h3>Principal sources</h3>
+    <ol class="srclist rv">
+      <li><a href="https://infrastructurereportcard.org/economics/" rel="external noopener">ASCE, <em>2025 Report Card for America’s Infrastructure</em></a> — grade C; <span class="nw">$9.1T</span> need; <span class="nw">$3.7T</span> gap; IIJA FY2026 expiration.</li>
+      <li><a href="https://www.swissre.com/institute/research/sigma-research/sigma-2026-01-natcat-2025-wildfire-storm-risk.html" rel="external noopener">Swiss Re Institute, <em>sigma</em> 1/2026</a> — 2025 insured nat-cat losses <span class="nw">$107B</span>; sixth consecutive <span class="nw">$100B+</span> year; LA wildfires ≈<span class="nw">$40B</span> insured; reconstruction costs +37% vs. pre-COVID.</li>
+      <li><a href="https://www.munichre.com/en/company/media-relations/media-information-and-corporate-news/media-information/2026/natural-disaster-figures-2025.html" rel="external noopener">Munich Re, NatCat 2025 media release</a> — overall losses ≈<span class="nw">$224B</span>; record wildfire loss; climate attribution commentary.</li>
+      <li><a href="https://www.aon.com/en/insights/reports/climate-and-catastrophe-report" rel="external noopener">Aon, <em>2026 Climate and Catastrophe Insight</em></a> — Palisades/Eaton fires <span class="nw">$41B</span> insured; severe convective storms <span class="nw">$61B</span>; protection-gap trends.</li>
+      <li><a href="https://www.penguinrandomhouse.com/books/672118/how-big-things-get-done-by-bent-flyvbjerg-and-dan-gardner/" rel="external noopener">Flyvbjerg &amp; Gardner, <em>How Big Things Get Done</em> (2023)</a> and associated database publications — 16,000+ projects; ~0.5% on budget/time/benefits; overrun base rates by class. Flyvbjerg et&nbsp;al., RCF review, <em>Production Planning &amp; Control</em> (2025).</li>
+      <li><a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/tradespeople-wanted-the-need-for-critical-trade-skills-in-the-us" rel="external noopener">McKinsey &amp; Company — “Tradespeople wanted” (2024)</a>; plus McKinsey megaproject and infrastructure-labor research (2015, 2022).</li>
+      <li><a href="https://press.bluebeam.com/2025/10/new-bluebeam-report-shows-early-ai-adopters-in-aec-seeing-significant-roi-despite-uneven-adoption/" rel="external noopener">Bluebeam, <em>2026 AEC Technology Outlook</em> (released 2025)</a> — ~27% operational AI use; 94% of adopters expanding.</li>
+      <li><a href="https://www.startus-insights.com/innovators-guide/ai-in-construction-a-strategic-guide/" rel="external noopener">StartUs Insights, <em>AI in Construction: A Strategic Guide</em> (2025)</a> — cited market outlook includes a ~33% CAGR projection.</li>
+      <li><a href="https://doi.org/10.1080/13669877.2025.2512080" rel="external noopener"><em>Journal of Risk Research</em>, decade review of AI in construction risk management (2025)</a>; <a href="https://www.sciencedirect.com/science/article/pii/S2444569X25000617" rel="external noopener"><em>Journal of Innovation &amp; Knowledge</em>, bibliometric analysis and systematic literature review (2025)</a>.</li>
+      <li><a href="https://commercial.allianz.com/news-and-insights/reports/allianz-risk-barometer.html" rel="external noopener">Allianz Risk Barometer 2026</a> — risk-priority shifts across cyber, AI, and natural catastrophe.</li>
+      <li>Trade press: <a href="https://www.enr.com/articles/62214-infrastructure-gains-in-new-asce-report-cardbut-progress-hinges-on-post-2026-funds" rel="external noopener">ENR on the 2025 Report Card and the post-2026 funding cliff</a> (Dec 2025); <a href="https://www.constructiondive.com/spons/managing-construction-risk-in-the-ai-era/809149/" rel="external noopener">Construction Dive on AI-era risk management</a> (2026, sponsored content).</li>
+    </ol>
+    <p class="smallnote" style="margin-top:1.6rem">Exhibit source mapping — Ex.&nbsp;1: items 1–3, 6, 7 · Ex.&nbsp;2: items 5, 6 · Ex.&nbsp;3: items 2–4, 7, 8 · Ex.&nbsp;4: item 5; ISO&nbsp;31000 · Ex.&nbsp;5–6: internal scenario workshop on items 1–8 · Ex.&nbsp;7: items 1, 2, 6 · Ex.&nbsp;8: items 6, 9 · Ex.&nbsp;9: TRAVO practice playbooks · Ex.&nbsp;10: items 2–4, 10, 11 plus filings and legislative trackers.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- N4 · one-page executive brief (visible only when saving to PDF) -->
+<section id="brief-print" aria-label="Executive brief — one page">
+  <div class="bp-title">The Risk Intelligence Imperative</div>
+  <div class="bp-meta">Executive brief · Dr. Karim S. Karam, Principal, TRAVO · July 2026 · travo-advisory.com</div>
+  <p class="bp-lead">TRAVO’s base-case expectation is that by 2031, continuous, auditable risk intelligence will increasingly become a condition of competing for major engineering programs — emerging first through insurance and procurement rather than regulation. Firms that remain dependent on static risk documents could face a growing “analog penalty.”</p>
+  <ol class="bp-list">
+    <li>Four forces converge now: a $3.7&nbsp;trillion US infrastructure funding gap, six straight $100B+ catastrophe-loss years, rising AEC AI adoption (~27% in the cited survey, with 94% of current adopters planning to expand), and an emerging professional and legal debate over how predictive tools may affect reasonable-care expectations.</li>
+    <li>The shift arrives first through insurance pricing and procurement prequalification; professional and legal expectations follow more gradually.</li>
+    <li>The analog penalty could increasingly appear through less favorable insurance terms, weaker procurement positioning, and greater difficulty defending professional judgment.</li>
+    <li>The most robust moves — decision governance, paired talent, outside-view forecasting, and a versioned risk-data backbone built after a bounded pilot — remain useful across the scenarios in this report.</li>
+    <li>Start with one live decision, not an enterprise program: establish the current risk picture, the few drivers that matter, and whether today’s forecast still holds.</li>
+  </ol>
+  <p class="bp-cta"><b>The bounded first step is a Project Risk Screen.</b> Request a decision-scoping call — <a href="mailto:principal@travo-advisory.com?subject=Decision-scoping%20call:%20Risk%20Intelligence%20brief">principal@travo-advisory.com</a>. Independent · principal-led · decision-focused.</p>
+</section>
+
+<script>
+function printBrief(){
+  document.body.classList.add('brief-only');
+  var reset=function(){document.body.classList.remove('brief-only');window.removeEventListener('afterprint',reset);};
+  window.addEventListener('afterprint',reset);
+  window.print();
+  setTimeout(reset,1500);
+}
+</script>
+
+<footer>
+  <div class="foot-in">
+    <a class="wordmark" href="#top">TRAVO<span>.</span></a>
+    <span>© 2026 TRAVO · Quantified Risk. Disciplined Decisions. · Independent, research-informed strategic foresight — not project-specific engineering advice.</span>
+    <span><a href="https://travo-advisory.com">travo-advisory.com</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---------- signature dot-field hero ---------- */
+(function(){
+  var svg=document.getElementById('dotfield');if(!svg)return;
+  var W=1200,H=340,gap=26,r=5,ns='http://www.w3.org/2000/svg';
+  // deterministic pseudo-random
+  var seed=42;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+  // diagonal band: y = -0.22x + 300 (band half-width 34)
+  function bandDist(x,y){return Math.abs(y-(-0.22*x+300))/Math.sqrt(1+0.22*0.22);}
+  var frag=document.createDocumentFragment();
+  for(var x=gap;x<W-8;x+=gap){
+    for(var y=gap;y<H-8;y+=gap){
+      if(rnd()<0.18)continue; // gaps = incomplete register
+      var d=bandDist(x,y),c=document.createElementNS(ns,'circle');
+      c.setAttribute('cx',x+ (rnd()*4-2));c.setAttribute('cy',y+(rnd()*4-2));
+      if(d<34){c.setAttribute('r',r+1.2);c.setAttribute('fill','#71D2CF');}
+      else{c.setAttribute('r',r);c.setAttribute('fill','#FFFFFF');c.setAttribute('opacity',(0.12+rnd()*0.18).toFixed(2));}
+      frag.appendChild(c);
+    }
+  }
+  // the signal: single coral dot at band's right end
+  var sx=1108,sy=-0.22*1108+300;
+  var halo=document.createElementNS(ns,'circle');
+  halo.setAttribute('cx',sx);halo.setAttribute('cy',sy);halo.setAttribute('r',26);
+  halo.setAttribute('fill','none');halo.setAttribute('stroke','#FF5B5E');halo.setAttribute('stroke-width','2');halo.setAttribute('opacity','.55');
+  var sig=document.createElementNS(ns,'circle');
+  sig.setAttribute('cx',sx);sig.setAttribute('cy',sy);sig.setAttribute('r',13);sig.setAttribute('fill','#FF5B5E');
+  frag.appendChild(halo);frag.appendChild(sig);
+  svg.appendChild(frag);
+})();
+
+/* ---------- scroll progress ---------- */
+(function(){
+  var bar=document.getElementById('progress');
+  function upd(){
+    var h=document.documentElement,max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max*100):0)+'%';
+  }
+  addEventListener('scroll',upd,{passive:true});upd();
+})();
+
+/* ---------- reveal on scroll + bar animation ---------- */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.rv');
+  var fills=document.querySelectorAll('.bar-fill');
+  function fillBars(){fills.forEach(function(f){f.style.width=f.dataset.w+'%';});}
+  if(reduce||!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('on');});fillBars();return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('on');
+        if(en.target.querySelector('.bar-fill')){
+          en.target.querySelectorAll('.bar-fill').forEach(function(f){f.style.width=f.dataset.w+'%';});
+        }
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

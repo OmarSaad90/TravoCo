@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Brief — The Risk Intelligence Imperative — TRAVO</title>
+<meta name="description" content="One-page executive brief: construction and engineering risk intelligence, 2026–2031. Independent, principal-led analysis from TRAVO.">
+<meta name="author" content="Dr. Karim S. Karam, Principal, TRAVO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF5B5E; --coral-light:#FFB9BB; --blue-light:#C5ECFE; --teal:#71D2CF;
+  --teal-dark:#14403F; --indigo:#242543; --white:#FFFFFF; --black:#1C1D34;
+  --sky-28:#F1FAFF; --line:#E5E5E8; --mut:#6E6F83;
+  --display:"Newsreader",Georgia,serif;
+  --body:"Hanken Grotesk",-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  font-family:var(--body); color:var(--indigo);
+  background:#E7ECEF;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  padding:24px;
+}
+.sheet{
+  background:var(--white);
+  width:210mm; max-width:100%;
+  min-height:297mm;
+  margin:0 auto;
+  padding:15mm 15mm 0;
+  display:flex; flex-direction:column;
+}
+
+/* section grammar: coral tick + teal hairline */
+.rule{
+  height:3px; margin:0 0 1.1rem;
+  background:
+    linear-gradient(var(--coral),var(--coral)) left center/2.25rem 3px no-repeat,
+    linear-gradient(var(--teal),var(--teal)) left center/100% 1px no-repeat;
+}
+
+.kicker{font-family:var(--mono); font-size:.72rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--coral); margin:0 0 .5rem}
+h1{
+  font-family:var(--display); font-weight:500; color:var(--indigo);
+  font-size:2.35rem; line-height:1.03; letter-spacing:-.018em; margin:0 0 .55rem; text-wrap:balance;
+}
+.byline{font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; color:var(--mut); text-transform:uppercase; margin:0 0 1.15rem}
+.byline b{color:var(--indigo); font-weight:500}
+
+.lead{
+  font-family:var(--display); font-size:1.12rem; line-height:1.42; color:var(--indigo);
+  border-left:3px solid var(--coral); padding-left:.95rem; margin:0 0 1.25rem; max-width:64ch;
+}
+
+/* body grid */
+.grid{display:grid; grid-template-columns:1.55fr 1fr; gap:1.6rem; align-items:start}
+.h-label{font-family:var(--mono); font-size:.68rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--teal-dark); margin:0 0 .7rem}
+
+ol.take{margin:0; padding:0; list-style:none; counter-reset:t}
+ol.take li{counter-increment:t; position:relative; padding:0 0 .7rem 2rem; font-size:.86rem; line-height:1.4}
+ol.take li:last-child{padding-bottom:0}
+ol.take li::before{
+  content:counter(t,decimal-leading-zero); position:absolute; left:0; top:.05rem;
+  font-family:var(--mono); font-size:.74rem; font-weight:500; color:var(--coral);
+}
+ol.take b{font-weight:700}
+
+/* figures panel */
+.figs{background:var(--sky-28); border:1px solid var(--blue-light); border-top:2px solid var(--indigo); padding:1.05rem 1.1rem}
+.fig{padding:.6rem 0; border-bottom:1px solid var(--line)}
+.fig:first-of-type{padding-top:0}
+.fig:last-child{border-bottom:none; padding-bottom:0}
+.fig .n{font-family:var(--display); font-weight:500; font-size:1.5rem; line-height:1; color:var(--indigo); letter-spacing:-.01em}
+.fig .t{font-size:.72rem; line-height:1.32; color:var(--mut); margin-top:.28rem}
+.fig .t b{color:var(--indigo); font-weight:600}
+
+/* CTA band */
+.cta{
+  background:var(--indigo); color:var(--white);
+  margin:1.5rem -15mm 0; padding:1.15rem 15mm 1.25rem;
+}
+.cta .ct-tick{width:2.25rem; height:3px; background:var(--coral); margin-bottom:.7rem}
+.cta p{margin:0; font-size:.9rem; line-height:1.45}
+.cta .ask{font-family:var(--display); font-size:1.05rem; color:#fff; margin-bottom:.35rem}
+.cta a{color:var(--teal); text-decoration:none}
+.cta .ind{font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); margin-top:.65rem}
+
+.foot{font-family:var(--mono); font-size:.6rem; letter-spacing:.05em; color:var(--mut); text-transform:uppercase; padding:.7rem 0; margin-top:auto}
+
+.print-hint{max-width:210mm; margin:0 auto 14px; font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:#5a6b72; display:flex; gap:.8rem; align-items:center}
+.print-hint button{font-family:var(--mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid var(--indigo); background:transparent; color:var(--indigo); padding:.5rem 1rem; cursor:pointer}
+.print-hint button:hover{background:var(--indigo); color:#fff}
+
+@media print{
+  @page{ size:A4; margin:0 }
+  body{background:#fff; padding:0}
+  .print-hint{display:none}
+  .sheet{width:auto; min-height:auto; margin:0; padding:14mm 15mm 0}
+  .cta{margin:1.4rem -15mm 0}
+  *{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+}
+@media(max-width:640px){
+  .sheet{width:100%; padding:22px}
+  .grid{grid-template-columns:1fr; gap:1.2rem}
+  .cta{margin:1.3rem -22px 0; padding:1.1rem 22px}
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="print-hint">
+  <span>One-page executive brief · save or print</span>
+  <button type="button" onclick="window.print()">Save as PDF</button>
+</div>
+
+<div class="sheet">
+  <div class="rule"></div>
+  <p class="kicker">Executive brief · 2026–2031</p>
+  <h1>The Risk Intelligence Imperative</h1>
+  <p class="byline">by <b>Dr. Karim S. Karam</b> · Principal, TRAVO · July 2026 · travo-advisory.com</p>
+
+  <p class="lead">By 2031, continuous, auditable risk intelligence becomes a condition of competing for major engineering programs — priced first through insurance and procurement, not regulation. Firms that stay on static risk documents face a growing “analog penalty.”</p>
+
+  <div class="grid">
+    <div>
+      <p class="h-label">What leaders should take away</p>
+      <ol class="take">
+        <li><b>Four forces converge now</b> — a $3.7T US infrastructure funding gap, six straight $100B+ catastrophe-loss years, doubling AEC AI adoption, and a shifting standard of care.</li>
+        <li><b>It arrives first through pricing</b> — insurance underwriting and procurement prequalification move before professional and legal expectations do.</li>
+        <li><b>The cost of lagging is concrete</b> — worse insurance terms, weaker bids, and less defensible professional judgment.</li>
+        <li><b>The winning moves pay off in every scenario</b> — a versioned risk-data backbone, decision governance, paired talent, and outside-view forecasting.</li>
+        <li><b>Start with one live decision, not a program</b> — establish the current risk picture, the few drivers that matter, and whether today’s forecast still holds.</li>
+      </ol>
+    </div>
+
+    <aside class="figs">
+      <p class="h-label" style="color:var(--coral)">The evidence, in four numbers</p>
+      <div class="fig"><div class="n">$3.7T</div><div class="t">US infrastructure funding <b>gap</b> through 2033 (ASCE, 2025)</div></div>
+      <div class="fig"><div class="n">6 years</div><div class="t">consecutive <b>$100B+</b> insured catastrophe seasons (Swiss Re)</div></div>
+      <div class="fig"><div class="n">27% → 94%</div><div class="t">AEC firms <b>using AI</b> / of adopters <b>expanding</b> (Bluebeam, 2025)</div></div>
+      <div class="fig"><div class="n">~0.5%</div><div class="t">of major projects hit <b>budget, time and benefits</b> (Flyvbjerg)</div></div>
+    </aside>
+  </div>
+
+  <div class="cta">
+    <div class="ct-tick"></div>
+    <p class="ask">The bounded first step is a Project Risk Screen.</p>
+    <p>Request a decision-scoping call — <a href="mailto:principal@travo-advisory.com?subject=Decision-scoping%20call:%20Risk%20Intelligence%20brief">principal@travo-advisory.com</a> · New Jersey / New York metropolitan region.</p>
+    <p class="ind">Independent · principal-led · decision-focused</p>
+  </div>
+
+  <p class="foot">Independent, research-informed strategic foresight — not project-specific engineering advice · © 2026 TRAVO</p>
+</div>
+
+</body>
+</html>

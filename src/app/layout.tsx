@@ -36,13 +36,14 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
-// Montserrat is deliberately NOT loaded. The reference document's `--gotham`
-// stack is "Gotham", "Gotham SSm", "Montserrat", "Hanken Grotesk", … and its
-// <link> requests only Hanken Grotesk, IBM Plex Mono and Newsreader — so on the
-// client's page every .travo-word falls through to Hanken Grotesk. next/font
-// registers Google families under their real name, so importing Montserrat here
-// would make that stack match it instead, rendering every "TRAVO" wider and (at
-// the single 700 weight we would ship) heavier than the client's.
+// Montserrat is deliberately NOT loaded here. The site's own reference never
+// requests it — its <link> asks only for Hanken Grotesk, IBM Plex Mono and
+// Newsreader — and next/font registers Google families under their real name,
+// so loading it globally would make the "Montserrat" entry that used to sit in
+// `--gotham` match, rendering every .travo-word wider and heavier than the
+// client's. The insights article does use Montserrat as its body face, so it
+// loads it in its own page (scoping the payload to that route) and `--gotham`
+// no longer names the family at all.
 
 const SITE_NAME = "TRAVO";
 // Kept in /public and referenced explicitly rather than using Next's

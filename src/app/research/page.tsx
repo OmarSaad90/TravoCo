@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+
+import ExecutiveBrief from "@/components/ExecutiveBrief";
 import PageEffects from "@/components/PageEffects";
+import { ARTICLE_PATH } from "@/lib/executive-brief";
+import "@/components/executive-brief.css";
 
 const OG_IMAGE = {
   url: "/og.png",
@@ -76,6 +81,30 @@ export default function ResearchPage() {
             <div className="card"><p className="card-label">Result</p><h3>What did the analysis show?</h3><p>Report ranges, drivers, alternatives or other decision outputs without invented precision.</p></div>
             <div className="card"><p className="card-label">Outcome &amp; learning</p><h3>What happened later?</h3><p>Where known and publishable, compare the forecast and decision with the realized outcome and lessons.</p></div>
           </div>
+        </div>
+      </section>
+      {/*
+        The Insights half of this page's own name. It sits between the two
+        publication sections deliberately: the one above states the standard the
+        practice publishes to, the one below is the peer-reviewed foundation, and
+        the current outlook belongs with them rather than up against the hero.
+        The brief renders from the same component as the printable sheet.
+      */}
+      <section
+        className="section reveal eb eb-inline"
+        aria-labelledby="current-outlook-title"
+        id="current-outlook"
+      >
+        <div className="wrap">
+          <ExecutiveBrief
+            headingLevel="h2"
+            titleId="current-outlook-title"
+            action={
+              <p className="eb-more">
+                <Link href={ARTICLE_PATH}>Read the full outlook &rarr;</Link>
+              </p>
+            }
+          />
         </div>
       </section>
       <section className="section reveal" aria-labelledby="publications-title">

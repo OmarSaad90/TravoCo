@@ -1,0 +1,83 @@
+/*
+ * The A4 page chrome for the standalone executive-brief sheet. Everything
+ * typographic lives in `@/components/executive-brief.css`, which this page also
+ * imports — only the things that make it a *sheet* are here.
+ *
+ * His file was a whole document, so `body` supplied the grey ground and the
+ * print block only had to hide its own "save or print" bar. Here the sheet is a
+ * route inside the site, so the ground moves onto `.brief-page` and the print
+ * block additionally suppresses the site header, footer and skip link.
+ */
+
+.brief-page {
+  background: #E7ECEF;
+  padding: 24px;
+}
+
+.brief-page .eb-sheet {
+  background: var(--white);
+  width: 210mm;
+  max-width: 100%;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 15mm 15mm 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* the CTA band bleeds to the sheet's edge, so it cancels the page padding */
+.brief-page .eb-sheet .eb-cta {
+  margin: 1.5rem -15mm 0;
+  padding: 1.15rem 15mm 1.25rem;
+}
+
+.brief-page .eb-print-hint {
+  max-width: 210mm;
+  margin: 0 auto 14px;
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #5a6b72;
+  display: flex;
+  gap: .8rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.brief-page .eb-print-hint button {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: 1px solid var(--indigo);
+  background: transparent;
+  color: var(--indigo);
+  padding: .5rem 1rem;
+  cursor: pointer;
+}
+.brief-page .eb-print-hint button:hover { background: var(--indigo); color: #fff; }
+.brief-page .eb-print-hint a { color: var(--indigo); }
+
+@media print {
+  @page { size: A4; margin: 0; }
+
+  /*
+   * His standalone file had no site chrome to suppress. Ours does, and without
+   * this the printed sheet carries a nav bar and the full site footer.
+   */
+  .site-header,
+  .site-footer,
+  .skip-link { display: none !important; }
+
+  .brief-page { background: #fff; padding: 0; }
+  .brief-page .eb-print-hint { display: none; }
+  .brief-page .eb-sheet { width: auto; min-height: auto; margin: 0; padding: 14mm 15mm 0; }
+  .brief-page .eb-sheet .eb-cta { margin: 1.4rem -15mm 0; }
+  .brief-page * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+@media (max-width: 640px) {
+  .brief-page { padding: 22px; }
+  .brief-page .eb-sheet { width: 100%; padding: 22px; }
+  .brief-page .eb-sheet .eb-cta { margin: 1.3rem -22px 0; padding: 1.1rem 22px; }
+}

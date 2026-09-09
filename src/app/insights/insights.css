@@ -1,0 +1,361 @@
+/*
+ * The client's standalone article stylesheet for "The Risk Intelligence
+ * Imperative", scoped under `.travo-doc`.
+ *
+ * It is a parallel design system: the same eight brand tokens, but its own
+ * semantic layer, type scale and — critically — generic class names the site
+ * already owns (.ti-section, .ti-kicker, .ti-btn, .hero, .prose, .tbl). Left global it
+ * would reskin every page, so every selector below carries the `.travo-doc`
+ * prefix and the document-level rules (:root, body, *) fold onto that element.
+ * Custom properties inherit, so the article's tokens override the site's for
+ * its subtree only.
+ *
+ * Deliberate divergences from his file, all of them consequences of the
+ * article living inside the real site rather than standing alone:
+ *   - his .topbar / .wordmark / footer rules are dropped; our Header and
+ *     Footer do that job
+ *   - his `@media print` block and #brief-print rules are dropped; the
+ *     one-page brief is a real route now (./executive-brief)
+ *   - `html { scroll-behavior: smooth }` is dropped; Lenis owns scrolling
+ *   - the three font tokens point at the next/font variables
+ *   - #progress gets a z-index above the sticky site header (see the end)
+ */
+
+/* ============ TRAVO TOKENS ============ */
+.travo-doc{/* ===== 8 locked TRAVO palette tokens ===== */
+  --coral:#FF5B5E;
+  --coral-light:#FFB9BB;
+  --blue-light:#C5ECFE;
+  --teal:#71D2CF;
+  --teal-dark:#14403F;
+  --indigo:#242543;
+  --white:#FFFFFF;
+  --black:#1C1D34;
+
+  /* ===== semantic aliases mapped onto locked tokens ===== */
+  --ink:var(--indigo);      /* body text on light */
+  --deep:var(--indigo);     /* headings / wordmark (was dark-teal) */
+  --paper:var(--white);
+  --rose:var(--coral-light);
+  --sky:var(--blue-light);
+
+  /* ===== functional tints — each a tint of a locked token (data-viz surfaces) ===== */
+  --teal-10:#E0F5F4;   /* faint teal fill  (base-case cells)  */
+  --teal-18:#D2F0F0;   /* light teal       (data markers)     */
+  --sky-28:#F1FAFF;    /* faint blue       (table stripes)    */
+  --sky-45:#E8F7FF;    /* light blue       (bar tracks)       */
+  --rose-30:#FFE7E8;   /* faint rose       (coral notices)    */
+  --line:#E5E5E8;      /* hairline         (12% indigo)       */
+  --mut:#6E6F83;       /* muted text       (66% indigo)       */
+
+  /* ===== 3 locked typefaces ===== */
+  --display:var(--font-newsreader),Georgia,serif;
+  --body:var(--font-montserrat),-apple-system,Segoe UI,Roboto,sans-serif;
+  --mono:var(--font-ibm-plex-mono),ui-monospace,Menlo,monospace;
+
+  /* ===== type scale ===== */
+  --fs-hero:clamp(2.6rem,6.6vw,5rem);
+  --fs-h1:clamp(2.25rem,5.2vw,3.9rem);
+  --fs-h2:clamp(1.75rem,3.8vw,2.75rem);
+  --fs-h3:clamp(1.1875rem,2vw,1.375rem);
+  --fs-body:1.0625rem;
+  --fs-small:.9375rem;
+  --fs-meta:.75rem;
+  --fs-micro:.6875rem;
+
+  /* ===== spacing ===== */
+  --space-section:clamp(4rem,8vw,7rem);
+  --space-block:clamp(2rem,4vw,3.25rem);
+  --gutter:clamp(1.375rem,4vw,3.25rem);
+  --wide:1240px;       /* --wrap-max */
+  --measure:76ch;      /* running-prose measure (long-form readability) */
+
+  /* ===== motion ===== */
+  --dur-fast:120ms;
+  --dur-med:280ms;
+  --dur-slow:500ms;
+  --ease:cubic-bezier(.25,0,.25,1);}
+.travo-doc, .travo-doc *{margin:0;padding:0;box-sizing:border-box}
+.travo-doc{font-family:var(--body);color:var(--ink);background:var(--paper);
+  font-size:var(--fs-body);line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+.travo-doc ::selection{background:var(--teal);color:var(--deep)}
+/* prevent mid-number line breaks */
+.travo-doc .nw{white-space:nowrap}
+/* prevent orphaned currency symbols before any number */
+.travo-doc abbr, .travo-doc b{white-space:normal}
+.travo-doc a{color:var(--deep);text-decoration-color:var(--teal);text-underline-offset:3px}
+.travo-doc a:hover{color:var(--coral);text-decoration-color:var(--coral)}
+.travo-doc :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:2px}
+/* ============ PROGRESS + TOP BAR ============ */
+.travo-doc #progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--teal);z-index:60}
+/* ============ HERO / COVER ============ */
+.travo-doc .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--teal-dark);background:var(--indigo)}
+.travo-doc .hero-in{max-width:calc(var(--wide) + (2 * var(--gutter)));margin:0 auto;padding:5.5rem var(--gutter) 0}
+.travo-doc .eyebrow{font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--white);}
+.travo-doc .eyebrow::before{content:"";display:inline-block;width:2.2rem;height:2px;background:var(--coral);margin-right:.7rem;vertical-align:middle}
+.travo-doc h1{font-family:var(--display);font-weight:500;color:var(--white);
+  font-size:var(--fs-hero);line-height:1.04;letter-spacing:-.018em;
+  text-wrap:balance;max-width:none;margin:1.4rem 0 1.6rem;}
+.travo-doc .hero-dek{font-size:clamp(1.05rem,1.6vw,1.28rem);line-height:1.55;max-width:none;color:var(--blue-light);
+  font-weight:500;}
+.travo-doc .hero-dek strong{color:var(--white)}
+.travo-doc .hero-meta{display:flex;flex-wrap:wrap;gap:.4rem 2rem;margin:1.8rem 0 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--teal)}
+.travo-doc .hero-meta b{color:var(--white);font-weight:600}
+.travo-doc .hero-art{display:block;width:100%;height:auto;margin-top:3rem}
+/* ============ STRUCTURE ============ */
+.travo-doc .doc-main{display:block}
+.travo-doc .ti-section{padding:var(--space-section) var(--gutter);position:relative}
+.travo-doc .section-in{max-width:var(--wide);margin:0 auto}
+.travo-doc .ti-section + .ti-section{border-top:none}
+/* signature grammar: short coral tick + full-width teal hairline opens every section */
+.travo-doc .section-in::before{content:"";display:block;height:3px;margin:0 0 2.4rem;
+  background:
+    linear-gradient(var(--coral),var(--coral)) left center/2.25rem 3px no-repeat,
+    linear-gradient(var(--teal),var(--teal)) left center/100% 1px no-repeat;}
+.travo-doc .ti-kicker{font-family:var(--mono);font-size:var(--fs-meta);font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--coral);display:block;margin-bottom:1.1rem;}
+.travo-doc h2{font-family:var(--display);font-weight:500;color:var(--deep);
+  font-size:var(--fs-h2);line-height:1.06;letter-spacing:-.018em;
+  text-wrap:balance;max-width:none;margin-bottom:1.6rem;}
+.travo-doc h3{font-family:var(--body);font-weight:700;color:var(--deep);font-size:var(--fs-h3);line-height:1.22;margin:2rem 0 .6rem}
+.travo-doc .prose{max-width:var(--measure)}
+.travo-doc .prose p{margin-bottom:1.15rem}
+.travo-doc .prose p:last-child{margin-bottom:0}
+.travo-doc .lead-in{font-weight:700;color:var(--deep)}
+.travo-doc .smallnote{font-size:.82rem;color:var(--mut);max-width:var(--measure)}
+/* dotted divider motif (signature echo) */
+.travo-doc .dotrule{display:flex;gap:9px;margin:0 0 1.4rem}
+.travo-doc .dotrule i{width:7px;height:7px;border-radius:50%;background:var(--teal);display:block}
+.travo-doc .dotrule i:nth-child(5){background:var(--coral)}
+.travo-doc .dotrule i:nth-child(n+6){background:var(--deep);opacity:.25}
+/* ============ PULL QUOTE ============ */
+.travo-doc .pull{font-family:var(--display);font-weight:500;font-style:italic;
+  font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.32;color:var(--teal-dark);
+  max-width:26ch;margin:0 0 2.2rem;}
+.travo-doc .pull.deep{color:var(--deep);font-style:normal}
+.travo-doc .pull-rule{width:3.4rem;height:4px;background:var(--coral);margin-bottom:1.1rem}
+/* ============ EXHIBITS ============ */
+.travo-doc figure.exhibit{max-width:var(--wide);margin:3rem auto 0;border:1px solid var(--line);overflow:hidden;background:var(--paper)}
+.travo-doc .ex-head{padding:1.4rem 1.6rem .4rem}
+.travo-doc .ex-no{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.travo-doc .ex-title{font-family:var(--body);font-weight:700;font-size:1.18rem;color:var(--deep);line-height:1.32;margin:.45rem 0 .35rem;max-width:none}
+.travo-doc .ex-sowhat{font-size:.9rem;font-style:italic;color:var(--mut);max-width:none}
+.travo-doc .ex-body{padding:1.4rem 1.6rem 1.8rem}
+.travo-doc figcaption.ex-src{background:var(--sky-28);border-top:1px solid var(--line);
+  font-size:.76rem;color:var(--mut);padding:.7rem 1.6rem;line-height:1.5;}
+.travo-doc figcaption.ex-src b{color:var(--deep);font-weight:600}
+/* tables */
+.travo-doc .tbl{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.45}
+.travo-doc #hz-scale .tbl th{background:var(--teal);color:var(--indigo)}
+.travo-doc #evidence-prose{max-width:none}
+.travo-doc #baseline-prose{max-width:none}
+.travo-doc #foresight-prose{max-width:none}
+.travo-doc #scenarios-prose{max-width:none}
+.travo-doc #what-changes h3{color:var(--teal-dark)}
+.travo-doc #what-changes li::marker{color:var(--teal-dark)}
+.travo-doc #what-changes li{color:var(--teal-dark)}
+.travo-doc #what-changes h3{border-bottom-color:var(--teal-dark)}
+.travo-doc #what-changes li::before{background:var(--teal-dark)}
+.travo-doc #hz-scale.horizon::after{background:var(--teal);box-shadow:0 0 0 4px var(--teal-10)}
+.travo-doc #hz-scale .rng{background:var(--teal);color:var(--indigo)}
+.travo-doc #hz-scale .nm{color:var(--teal)}
+.travo-doc #hz-lead .tbl th{background:var(--coral-light);color:var(--indigo)}
+.travo-doc #hz-lead.horizon::after{background:var(--coral);box-shadow:0 0 0 4px var(--rose-30)}
+.travo-doc #hz-lead .rng{background:var(--coral);color:var(--indigo)}
+.travo-doc #hz-lead .nm{color:var(--coral)}
+.travo-doc .tbl th{background:var(--indigo);color:#fff;text-align:left;font-weight:600;
+  padding:.7rem .8rem;font-size:.8rem;letter-spacing:.03em;vertical-align:bottom;}
+.travo-doc .tbl td a{color:var(--coral);text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;transition:color var(--dur-fast) var(--ease),text-decoration-color var(--dur-fast) var(--ease)}
+.travo-doc .tbl td a:hover{color:var(--coral-light);text-decoration-color:var(--coral-light)}
+.travo-doc .tbl td{padding:.7rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+.travo-doc .tbl tr:nth-child(even) td{background:var(--sky-28)}
+.travo-doc .tbl td:first-child{font-weight:600;color:var(--deep)}
+.travo-doc .tbl .hl td{background:var(--teal-10)}
+.travo-doc .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media(max-width:760px){
+.travo-doc .tbl{font-size:.82rem;min-width:640px}
+}
+/* chips */
+.travo-doc .chip{display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.24rem .55rem;border-radius:100px;white-space:nowrap}
+.travo-doc .chip.now{background:var(--coral);color:var(--indigo)}
+.travo-doc .chip.next{background:var(--coral-light);color:var(--indigo)}
+.travo-doc .chip.mon{background:var(--sky);color:var(--deep)}
+.travo-doc .chip.deep{background:var(--deep);color:#fff}
+.travo-doc .chip.rose{background:var(--rose);color:var(--deep)}
+/* bars (Exhibit 2) */
+.travo-doc .bars{display:grid;gap:.85rem}
+.travo-doc .bar-row{display:grid;grid-template-columns:190px 1fr 64px;align-items:center;gap:.9rem}
+@media(max-width:640px){
+.travo-doc .bar-row{grid-template-columns:120px 1fr 54px;font-size:.82rem}
+}
+.travo-doc .bar-label{font-size:.86rem;font-weight:600;color:var(--deep);text-align:right}
+.travo-doc .bar-track{background:var(--sky-45);height:22px;position:relative}
+.travo-doc .bar-fill{position:absolute;inset:0 auto 0 0;background:var(--teal);width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.travo-doc .bar-val{font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--deep)}
+.travo-doc .bar-note{margin-top:1.3rem;padding:.8rem 1rem;border-left:4px solid var(--coral);background:var(--rose-30);font-size:.88rem;max-width:60ch}
+.travo-doc .bar-note b{color:var(--teal-dark)}
+/* 2x2 matrix (Exhibit 5) */
+.travo-doc .matrix-wrap{display:grid;grid-template-columns:auto 1fr;grid-template-rows:1fr auto;gap:.7rem;max-width:880px;margin:0 auto}
+.travo-doc .axis-y{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center}
+.travo-doc .axis-x{grid-column:2;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);text-align:center}
+.travo-doc .matrix{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px}
+.travo-doc .quad{border:1px solid var(--line);padding:1.1rem 1.15rem;background:var(--paper);min-height:170px}
+.travo-doc .quad.base{background:var(--teal-10);border-color:var(--teal)}
+.travo-doc .quad h4{font-family:var(--mono);font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.55rem}
+.travo-doc .quad p{font-size:.86rem;line-height:1.5}
+.travo-doc .quad .ti-tag{display:block;font-size:.74rem;color:var(--mut);font-style:italic;margin-top:.6rem}
+@media(max-width:640px){
+.travo-doc .matrix{grid-template-columns:1fr}
+.travo-doc .quad{min-height:0}
+}
+/* capability lanes (Exhibit 8) */
+.travo-doc .lanes{display:grid;gap:.65rem}
+.travo-doc .lane{display:grid;grid-template-columns:200px 1fr 132px;align-items:center;gap:1rem;padding:.75rem .9rem;border:1px solid var(--line)}
+.travo-doc .lane:nth-child(even){background:var(--sky-28)}
+.travo-doc .lane-name{font-weight:700;color:var(--deep);font-size:.9rem}
+.travo-doc .lane-name small{display:block;font-weight:400;color:var(--mut);font-size:.76rem;line-height:1.4;margin-top:.15rem}
+.travo-doc .lane-track{position:relative;height:26px}
+.travo-doc .lane-track::before{content:"";position:absolute;left:8px;right:8px;top:50%;height:2px;background:var(--line)}
+.travo-doc .lane-track .from, .travo-doc .lane-track .to{position:absolute;top:50%;transform:translateY(-50%);width:13px;height:13px;border-radius:50%}
+.travo-doc .lane-track .from{left:0;background:var(--deep)}
+.travo-doc .lane-track .to{right:0;background:var(--teal);box-shadow:0 0 0 4px var(--teal-18)}
+.travo-doc .lane-track .arrow{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:.8rem}
+@media(max-width:760px){
+.travo-doc .lane{grid-template-columns:1fr;gap:.5rem}
+.travo-doc .lane-track{display:none}
+}
+/* roadmap (Exhibit 9) */
+.travo-doc .horizon{position:relative;padding-left:1.8rem;margin-top:1.6rem}
+.travo-doc .horizon::before{content:"";position:absolute;left:6px;top:10px;bottom:-1.4rem;width:3px;background:var(--teal)}
+.travo-doc .horizon:last-child::before{bottom:auto;height:14px}
+.travo-doc .horizon::after{content:"";position:absolute;left:0;top:6px;width:15px;height:15px;border-radius:50%;background:var(--deep);box-shadow:0 0 0 4px var(--teal-18)}
+.travo-doc .hz-head{display:flex;flex-wrap:wrap;gap:.6rem 1rem;align-items:baseline;margin-bottom:.7rem}
+.travo-doc .hz-head .rng{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--deep);color:#fff;padding:.28rem .7rem}
+.travo-doc .hz-head .nm{font-family:var(--display);font-weight:500;font-size:1.25rem;color:var(--deep)}
+/* watchlist (Exhibit 10) */
+.travo-doc .watch-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+@media(max-width:860px){
+.travo-doc .watch-grid{grid-template-columns:1fr}
+}
+.travo-doc .watch{border:1px solid var(--line);overflow:hidden}
+.travo-doc .watch header{padding:.7rem 1rem;display:flex;align-items:center;gap:.7rem;font-weight:700;font-size:.92rem}
+.travo-doc .watch.confirm header{background:var(--teal-18);color:var(--deep)}
+.travo-doc .watch.accel header{background:var(--teal-dark);color:#fff}
+.travo-doc .watch.weak header{background:var(--rose-30);color:var(--deep)}
+.travo-doc .watch.reverse header{background:var(--coral);color:var(--indigo)}
+.travo-doc .watch ul{list-style:none}
+.travo-doc .watch li{padding:.75rem 1rem;border-top:1px solid var(--line);font-size:.85rem;line-height:1.5}
+.travo-doc .watch li b{color:var(--deep)}
+.travo-doc .watch li .resp{display:block;margin-top:.3rem;font-size:.78rem;color:var(--mut)}
+.travo-doc .watch li .resp::before{content:"→ ";color:var(--coral);font-weight:700}
+/* exec summary */
+.travo-doc .execlist{counter-reset:x;max-width:var(--measure)}
+.travo-doc .execlist li{list-style:none;counter-increment:x;position:relative;padding:0 0 1.15rem 3.4rem;margin-bottom:1.15rem;border-bottom:1px solid var(--line)}
+.travo-doc .execlist li:last-child{border-bottom:none}
+.travo-doc .execlist li::before{content:counter(x,decimal-leading-zero);position:absolute;left:0;top:.05rem;
+  font-family:var(--mono);font-size:1.15rem;font-weight:600;color:var(--teal);}
+.travo-doc .execlist b{color:var(--deep)}
+/* prediction panel */
+.travo-doc .pred{background:var(--teal-10);border:1px solid var(--teal);
+  padding:1.8rem 1.9rem;max-width:var(--wide);}
+.travo-doc .pred .lbl{font-family:var(--mono);font-size:var(--fs-meta);font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-dark);display:block;margin-bottom:.8rem}
+.travo-doc .pred p{font-family:var(--display);font-weight:500;font-size:clamp(1.15rem,2vw,1.45rem);line-height:1.42;color:var(--deep)}
+.travo-doc .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.4rem}
+@media(max-width:860px){
+.travo-doc .tri{grid-template-columns:1fr}
+}
+.travo-doc .tri h3{margin-top:0;padding-bottom:.5rem;border-bottom:3px solid var(--teal)}
+.travo-doc .tri .why h3{border-bottom-color:var(--coral)}
+.travo-doc .tri ul{list-style:none}
+.travo-doc .tri li{padding:.55rem 0 .55rem 1.15rem;position:relative;font-size:.9rem;line-height:1.5;border-bottom:1px dashed var(--line)}
+.travo-doc .tri li::before{content:"";position:absolute;left:0;top:1.05rem;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.travo-doc .tri .why li::before{background:var(--coral)}
+/* sidebar module */
+.travo-doc .sidebar-mod{background:var(--blue-light);border:1px solid var(--indigo);
+  padding:2.2rem 2rem;max-width:var(--wide);margin:0 auto;}
+.travo-doc .sidebar-mod .sb-eyebrow{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.7rem}
+.travo-doc .sidebar-mod h2{margin-bottom:1.2rem}
+.travo-doc .sidebar-mod .cols{columns:2;column-gap:2.6rem;max-width:none}
+@media(max-width:860px){
+.travo-doc .sidebar-mod .cols{columns:1}
+}
+.travo-doc .sidebar-mod .cols p{break-inside:avoid;margin-bottom:1rem;font-size:.94rem}
+/* questions */
+.travo-doc .qlist{counter-reset:q;max-width:var(--measure)}
+.travo-doc .qlist li{list-style:none;counter-increment:q;position:relative;padding:.9rem 0 .9rem 3.2rem;border-bottom:1px solid var(--line);font-size:.98rem}
+.travo-doc .qlist li::before{content:counter(q);position:absolute;left:.3rem;top:.85rem;font-family:var(--display);font-weight:500;font-size:1.35rem;color:var(--deep);opacity:.35}
+.travo-doc .qlist .cat{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-dark);display:block;margin-top:.25rem}
+/* conclusion */
+.travo-doc .concl{max-width:60ch;margin:0 auto;text-align:left}
+.travo-doc .concl .final{font-family:var(--display);font-weight:500;color:var(--deep);font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.35;margin-top:1.8rem}
+.travo-doc .concl-rule{width:5rem;height:3px;background:var(--teal);margin:2.4rem auto 0}
+/* methodology */
+.travo-doc .meth{background:var(--sky-28)}
+.travo-doc .meth .cols2{columns:2;column-gap:3rem;font-size:.86rem}
+@media(max-width:860px){
+.travo-doc .meth .cols2{columns:1}
+}
+.travo-doc .meth .cols2 p, .travo-doc .meth .cols2 li{break-inside:avoid}
+.travo-doc .assump{border:1px solid var(--indigo);background:var(--paper);padding:1rem 1.2rem;margin:1.2rem 0}
+.travo-doc .assump ul{list-style:none;font-size:.86rem}
+.travo-doc .assump li{padding:.35rem 0}
+.travo-doc .assump b{color:var(--teal-dark)}
+.travo-doc .srclist{font-size:.84rem;color:var(--ink);padding-left:1.2rem}
+.travo-doc .srclist li{margin-bottom:.5rem}
+/* footer */
+/* reveal animation */
+.travo-doc .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.travo-doc .rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+.travo-doc .rv{opacity:1;transform:none;transition:none}
+.travo-doc .bar-fill{transition:none}
+}
+/* svg text */
+.travo-doc .svgt{font-family:var(--mono);font-size:11px;fill:var(--mut)}
+.travo-doc .svgt.b{fill:var(--deep);font-weight:600}
+.travo-doc .svgt.w{fill:#fff;font-weight:600}
+/* ============ N4 — one-page executive brief (print-to-PDF) ============ */
+.travo-doc .ti-btn-outline{background:var(--coral);color:#fff;border:1px solid var(--coral)}
+.travo-doc .ti-btn-outline:hover{background:var(--coral-light);color:var(--indigo);border-color:var(--coral-light)}
+.travo-doc .brief-cta{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;margin-top:1.6rem}
+.travo-doc .brief-cta .hint{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+/* ============ COMMERCIAL BRIDGES (restrained) ============ */
+/* buttons — design-system §8 */
+.travo-doc .ti-btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-weight:500;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem 1.5rem;text-decoration:none;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease)}
+.travo-doc .ti-btn-primary{background:var(--coral);color:#fff}
+.travo-doc .ti-btn-primary:hover{background:var(--coral-light);color:#fff}
+.travo-doc .ti-btn-ghost{background:transparent;color:#fff;border:1px solid var(--teal)}
+.travo-doc .ti-btn-ghost:hover{background:var(--teal);color:var(--indigo)}
+/* Bridge 1 — quiet "in practice" note (not a CTA box) */
+.travo-doc .practice-note{border:1px solid var(--indigo);background:var(--sky-28);padding:1.3rem 1.5rem;max-width:var(--measure)}
+.travo-doc .practice-note a{color:var(--coral);text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;transition:color var(--dur-fast) var(--ease),text-decoration-color var(--dur-fast) var(--ease)}
+.travo-doc .practice-note a:hover{color:var(--coral-light);text-decoration-color:var(--coral-light)}
+.travo-doc .practice-note .pn-label{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-dark);display:block;margin-bottom:.6rem}
+.travo-doc .practice-note p{font-size:var(--fs-body);margin:0}
+.travo-doc .practice-note p + p{margin-top:.7rem}
+/* Bridge 2 — role routing table reuses .tbl; regional note */
+.travo-doc .region-note{font-size:var(--fs-small);color:var(--mut);max-width:var(--measure);margin-top:1.4rem}
+.travo-doc .region-note b{color:var(--deep)}
+/* Bridge 3 — end engagement band (section-ink) */
+.travo-doc #engage{background:var(--indigo)}
+.travo-doc #engage h2{color:#fff}
+.travo-doc #engage .lede-dark{color:var(--blue-light);max-width:none;font-size:1.05rem;line-height:1.5}
+.travo-doc #engage .lede-dark + .lede-dark{margin-top:.9rem}
+.travo-doc #engage .cta-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.9rem}
+.travo-doc #engage .cta-independence{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-top:1.6rem}
+.travo-doc #engage .author{margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid rgba(197,236,254,.22);max-width:none}
+.travo-doc #engage .author .nm{font-family:var(--display);font-weight:500;font-size:1.15rem;color:#fff}
+.travo-doc #engage .author p{font-size:var(--fs-small);color:var(--blue-light);margin:.5rem 0 0}
+.travo-doc #engage .author a{color:var(--teal)}
+
+/* ---- TravoC adaptations ------------------------------------------------ */
+
+/*
+ * His progress bar assumed it was the topmost fixed element on the page. Ours
+ * sits under a sticky .site-header at z-index 100, which would hide it
+ * entirely, so it is lifted above the header rather than moved below it — a
+ * 3px rule across the very top of the viewport, as in his file.
+ */
+.travo-doc #progress { z-index: 300; }

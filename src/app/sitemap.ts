@@ -12,6 +12,9 @@ const routes = [
   "/research",
   "/about",
   "/contact",
+  // The executive-brief sheet is deliberately absent: it is a condensed
+  // rendering of the article and points its canonical there.
+  "/insights/risk-intelligence-imperative",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

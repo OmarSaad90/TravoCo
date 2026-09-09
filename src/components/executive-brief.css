@@ -1,0 +1,231 @@
+/*
+ * The executive brief's own typography and layout, shared by both places it
+ * renders: the A4 sheet at /insights/risk-intelligence-imperative/executive-brief
+ * and the section on /research.
+ *
+ * His file used generic names — .rule, .kicker, .lead, .grid, .fig, .cta — three
+ * of which the site already owns (.kicker has 19 rules in globals.css, .fig is a
+ * bordered card, .grid sets its own gap). Rather than out-specify them at every
+ * turn, the markup carries an `eb-` namespace. The values below are his.
+ *
+ * Fonts map onto the site's tokens: his brief loads Hanken Grotesk, IBM Plex
+ * Mono and Newsreader, which is exactly what the site already ships.
+ */
+
+.eb {
+  /* the three tints his sheet adds on top of the locked palette */
+  --eb-sky: #F1FAFF;
+  --eb-line: #E5E5E8;
+  --eb-mut: #6E6F83;
+
+  font-family: var(--sans);
+  color: var(--indigo);
+}
+
+/* section grammar: coral tick over a teal hairline */
+.eb .eb-rule {
+  height: 3px;
+  margin: 0 0 1.1rem;
+  background:
+    linear-gradient(var(--coral), var(--coral)) left center / 2.25rem 3px no-repeat,
+    linear-gradient(var(--teal), var(--teal)) left center / 100% 1px no-repeat;
+}
+
+.eb .eb-kicker {
+  display: block;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin: 0 0 .5rem;
+  padding: 0;
+}
+
+.eb .eb-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  color: var(--indigo);
+  font-size: 2.35rem;
+  line-height: 1.03;
+  letter-spacing: -.018em;
+  margin: 0 0 .55rem;
+  text-wrap: balance;
+}
+
+.eb .eb-byline {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  color: var(--eb-mut);
+  text-transform: uppercase;
+  margin: 0 0 1.15rem;
+}
+.eb .eb-byline b { color: var(--indigo); font-weight: 500; }
+
+.eb .eb-lead {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.42;
+  color: var(--indigo);
+  border-left: 3px solid var(--coral);
+  padding-left: .95rem;
+  margin: 0 0 1.25rem;
+  max-width: 64ch;
+}
+
+.eb .eb-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.eb .eb-label {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  margin: 0 0 .7rem;
+}
+.eb .eb-label-alt { color: var(--coral); }
+
+.eb .eb-take { margin: 0; padding: 0; list-style: none; counter-reset: t; }
+.eb .eb-take li {
+  counter-increment: t;
+  position: relative;
+  padding: 0 0 .7rem 2rem;
+  font-size: .86rem;
+  line-height: 1.4;
+}
+.eb .eb-take li:last-child { padding-bottom: 0; }
+.eb .eb-take li::before {
+  content: counter(t, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: .05rem;
+  font-family: var(--mono);
+  font-size: .74rem;
+  font-weight: 500;
+  color: var(--coral);
+}
+.eb .eb-take b { font-weight: 700; }
+
+.eb .eb-figs {
+  background: var(--eb-sky);
+  border: 1px solid var(--blue-light);
+  border-top: 2px solid var(--indigo);
+  padding: 1.05rem 1.1rem;
+}
+.eb .eb-fig { padding: .6rem 0; border-bottom: 1px solid var(--eb-line); }
+.eb .eb-fig:first-of-type { padding-top: 0; }
+.eb .eb-fig:last-child { border-bottom: none; padding-bottom: 0; }
+.eb .eb-fig .n {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--indigo);
+  letter-spacing: -.01em;
+}
+.eb .eb-fig .t { font-size: .72rem; line-height: 1.32; color: var(--eb-mut); margin-top: .28rem; }
+.eb .eb-fig .t b { color: var(--indigo); font-weight: 600; }
+
+.eb .eb-cta { background: var(--indigo); color: var(--white); }
+.eb .eb-tick { width: 2.25rem; height: 3px; background: var(--coral); margin-bottom: .7rem; }
+.eb .eb-cta p { margin: 0; font-size: .9rem; line-height: 1.45; color: var(--white); }
+.eb .eb-ask { font-family: var(--serif); font-size: 1.05rem; margin-bottom: .35rem; }
+.eb .eb-cta a { color: var(--teal); text-decoration: none; }
+.eb .eb-cta a:hover { text-decoration: underline; }
+.eb .eb-ind {
+  font-family: var(--mono);
+  font-size: .66rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-top: .65rem;
+}
+
+.eb .eb-foot {
+  font-family: var(--mono);
+  font-size: .6rem;
+  letter-spacing: .05em;
+  color: var(--eb-mut);
+  text-transform: uppercase;
+  padding: .7rem 0;
+  margin-top: auto;
+}
+
+@media (max-width: 640px) {
+  .eb .eb-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .eb .eb-title { font-size: 2rem; }
+}
+
+/* ---- the /research rendering ------------------------------------------- */
+
+/*
+ * Inside a site section the brief is not a sheet: it has no paper, no A4
+ * measure and no bottom margin to push the footnote to. It sits in the page's
+ * own `.wrap` and only needs the CTA band bled to the section's gutter and the
+ * type scaled up a little — .86rem takeaways are sized for print, not for a
+ * screen section between two others set at 1.0625rem.
+ */
+.eb-inline .eb-title { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+.eb-inline .eb-lead { font-size: 1.2rem; line-height: 1.45; }
+.eb-inline .eb-grid { gap: clamp(1.6rem, 3vw, 3rem); }
+.eb-inline .eb-take li { font-size: 1rem; line-height: 1.5; padding-bottom: .95rem; }
+.eb-inline .eb-take li::before { font-size: .8rem; }
+.eb-inline .eb-figs { padding: 1.3rem 1.4rem; }
+.eb-inline .eb-fig { padding: .8rem 0; }
+.eb-inline .eb-fig .n { font-size: 1.75rem; }
+.eb-inline .eb-fig .t { font-size: .8rem; }
+.eb-inline .eb-cta { margin-top: 2rem; padding: 1.6rem clamp(1.4rem, 3vw, 2.2rem) 1.75rem; }
+.eb-inline .eb-cta p { font-size: 1rem; }
+.eb-inline .eb-ask { font-size: 1.2rem; }
+
+/*
+ * The link on to the full outlook, which the printable sheet does not carry.
+ * It is the one action this section exists to produce, so it is a button
+ * rather than a line of text — as a mono caption between two other mono lines
+ * in the band it read as more small print.
+ */
+/*
+ * NOTE the extra .eb-cta in this selector. `.eb .eb-cta p { margin: 0 }` above
+ * is (0,2,1) and .eb-more IS a <p> in that band, so a plain `.eb-inline
+ * .eb-more` (0,2,0) loses on specificity no matter where it sits in the file —
+ * the margin silently did nothing. Keep this at three classes.
+ */
+.eb-inline .eb-cta .eb-more { margin: 1.6rem 0 1.4rem; }
+.eb-inline .eb-cta .eb-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  background: var(--coral);
+  color: var(--white);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .85rem 1.6rem;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease;
+}
+.eb-inline .eb-cta .eb-more a:hover { background: var(--coral-light); color: var(--indigo); }
+
+/*
+ * The gap under the band is TWO boxes, not one: this section's padding-block-end
+ * and the next section's padding-block-start, each up to --space-section (8.5rem)
+ * — ~17rem of white below a dark block. Trimming only the first left most of it
+ * in place, so both are trimmed here. The sibling selector keeps it to this one
+ * boundary; every other section rhythm on the page is untouched.
+ */
+.section.eb-inline { padding-block-end: clamp(1.25rem, 2.5vw, 2rem); }
+.section.eb-inline + .section { padding-block-start: clamp(2.5rem, 5vw, 4rem); }
+
+@media (max-width: 900px) {
+  .eb-inline .eb-grid { grid-template-columns: 1fr; }
+}

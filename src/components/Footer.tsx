@@ -44,6 +44,9 @@ export default function Footer() {
               <Link href="/research">Research &amp; Insights</Link>
             </li>
             <li>
+              <Link href="/insights/risk-intelligence-imperative">Current outlook</Link>
+            </li>
+            <li>
               <Link href="/about">About</Link>
             </li>
             <li>
