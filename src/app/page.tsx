@@ -69,7 +69,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-soft reveal" aria-labelledby="why-quantify-title">
+      <section className="section section-soft reveal" aria-labelledby="why-quantify-title" id="why-quantify">
         <div className="wrap">
           <div className="premium-section-intro" style={{ display: "block" }}>
             <div>
@@ -92,7 +92,7 @@ export default function HomePage() {
         <div className="premium-proof-item"><p className="proof-label">Teaching</p><strong>Construction risk, uncertainty, planning, monitoring and control taught at Stevens.</strong></div>
       </div>
 
-      <section className="purpose-band reveal" aria-labelledby="purpose-title">
+      <section className="purpose-band reveal" aria-labelledby="purpose-title" id="purpose">
         <div className="wrap purpose-band-grid">
           <div>
             <p className="kicker"><span className="travo-word">TRAVO</span> purpose</p>
@@ -146,7 +146,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-soft reveal" aria-labelledby="entry-title">
+      <section className="section section-soft reveal" aria-labelledby="entry-title" id="common-entry-points">
         <div className="wrap">
           <div className="premium-section-intro entry-intro">
             <div>

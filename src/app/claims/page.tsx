@@ -52,8 +52,8 @@ export default function ClaimsPage() {
         <div className="wrap">
           <div className="section-head"><p className="kicker">Engagements</p><h2 id="claims-services-title">Two levels of technical dispute work.</h2></div>
           <div className="grid grid-2">
-            <div className="card"><p className="card-label">F1 · Available now</p><h3>Counsel-Directed Project Risk &amp; Quantum Review</h3><p>Phase-one consulting-expert review of a defined project record to establish preliminary delay, cost and quantum exposure, dominant technical drivers, assumptions, exclusions and data gaps.</p><p><Link href="/services#svc-f1">See detailed deliverable →</Link></p></div>
-            <div className="card"><p className="card-label">F2 · Specialist-supported</p><h3>Deep Delay, Quantum &amp; Forensic Analysis</h3><p>Deeper CPM/delay, causation, quantum, rebuttal or methodology work where phase-one findings justify a larger forensic effort and the matter requires specialist depth.</p><p><Link href="/services#svc-f2">See detailed deliverable →</Link></p></div>
+            <div className="card" id="claims-f1"><p className="card-label">F1 · Available now</p><h3>Counsel-Directed Project Risk &amp; Quantum Review</h3><p>Phase-one consulting-expert review of a defined project record to establish preliminary delay, cost and quantum exposure, dominant technical drivers, assumptions, exclusions and data gaps.</p><p><Link href="/services#svc-f1">See detailed deliverable →</Link></p></div>
+            <div className="card" id="claims-f2"><p className="card-label">F2 · Specialist-supported</p><h3>Deep Delay, Quantum &amp; Forensic Analysis</h3><p>Deeper CPM/delay, causation, quantum, rebuttal or methodology work where phase-one findings justify a larger forensic effort and the matter requires specialist depth.</p><p><Link href="/services#svc-f2">See detailed deliverable →</Link></p></div>
           </div>
         </div>
       </section>

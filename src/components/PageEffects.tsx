@@ -2,13 +2,17 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect } from "react";
+import { scrollToHash } from "@/lib/scroll-to-hash";
 
 /**
  * Ports two behaviors the original single-file site handled in its inline
  * router script (showPage()), and adds the scroll reveal it never had:
  *  1. Fade in every `.reveal` section once it's mounted (as the original did).
  *  2. If the URL has a hash (e.g. /services#svc-p1), open it if it's a
- *     <details> element and scroll to it, offset for the sticky header.
+ *     <details> element and scroll to it, offset for the sticky header — on
+ *     mount for a deep link, and on `hashchange` for an in-page jump. The
+ *     scrolling itself lives in src/lib/scroll-to-hash.ts, which the nav
+ *     dropdowns also call.
  *  3. Stagger every block of text into view as it's scrolled to.
  *
  * The reveal is driven entirely from here rather than from per-page markup:
@@ -99,19 +103,7 @@ export default function PageEffects() {
 
     // Resolve the hash before measuring what's on screen, so a deep link
     // doesn't leave the section it jumped to counted as below the fold.
-    const hash = window.location.hash.replace(/^#/, "");
-    if (hash) {
-      const target = document.getElementById(hash);
-      if (target) {
-        if (target.tagName === "DETAILS") {
-          (target as HTMLDetailsElement).open = true;
-        }
-        const header = document.querySelector(".site-header");
-        const headerHeight = header ? header.getBoundingClientRect().height : 0;
-        const y = target.getBoundingClientRect().top + window.scrollY - headerHeight - 14;
-        window.scrollTo(0, Math.max(0, y));
-      }
-    }
+    scrollToHash(window.location.hash);
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (typeof IntersectionObserver === "undefined") return;
@@ -161,6 +153,22 @@ export default function PageEffects() {
       });
     };
   }, [pathname]);
+
+  /**
+   * The effect above only runs when a route mounts, which covers deep links and
+   * cross-page jumps. This covers the third case: an in-page anchor followed
+   * while already on the page — a nav dropdown item, one of the service links
+   * in the buyer cards, or the back button moving between two hashes. Without
+   * it the router scrolls natively, landing the target under the masthead and
+   * leaving a collapsed <details> collapsed.
+   */
+  useEffect(() => {
+    function onHashChange() {
+      scrollToHash(window.location.hash);
+    }
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   return null;
 }

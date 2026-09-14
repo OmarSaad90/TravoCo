@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="wrap footer-top">
-        <div>
+        <div className="footer-brand">
           <Link className="wordmark" href="/" aria-label="TRAVO home">
             <img className="brand-logo" src="/brand-logo-footer.png" alt="TRAVO logo" />
             <span className="brand-tagline">Quantified Risk. Disciplined Decisions.</span>

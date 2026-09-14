@@ -2656,14 +2656,337 @@ html{-webkit-text-size-adjust:100%}
    re-exported trimmed.
 
    Deliberate divergence from the reference file. */
-.site-footer .wordmark {
-  --lockup-w: clamp(11rem, 14vw, 13rem);
-  gap: 0;
+/* 2026-09-14 — the footer mark matches the masthead's size, and the tagline is
+   back, with the lockup's three rows given even breathing room.
+
+   The width expression is `.brand-logo`'s, written out again: that rule is in
+   the ported reference region and CSS cannot read another rule's property, so
+   the two track only as long as both are changed together.
+
+   Both tokens are declared on `.footer-brand` rather than on `.wordmark`,
+   because `.footer-tag` is the wordmark's SIBLING, not its descendant, and
+   custom properties inherit down rather than sideways. All three rows read the
+   same pair.
+
+   `--lockup-gap` is the single lever for both gaps — mark to tagline, and
+   tagline to strapline — so the band stays even when it is tuned. */
+.footer-brand {
+  --lockup-w: clamp(4rem, 6vw, 4.75rem);
+  --lockup-gap: 1.25rem;
 }
+.site-footer .wordmark { gap: 0; }
 .site-footer .brand-logo { width: var(--lockup-w); }
+
+/* The mark-to-tagline gap cancels the PNG's 42 transparent rows outright
+   (measured: 42/292 = 0.1438 of its width) and then adds the real gap, rather
+   than deriving the gap from the mark's width. The reference's `-0.075`
+   derivation shrank the gap as the mark shrank while the tagline held at its
+   0.875rem floor, so at this size it collapsed to 5px against 14px of type —
+   the crowding the client reported. */
 .site-footer .brand-tagline {
   font-size: max(0.875rem, calc(var(--lockup-w) * 0.0688));
   letter-spacing: 0;
   color: var(--blue-light);
-  margin-top: calc(var(--lockup-w) * -0.075);
+  margin-top: calc(var(--lockup-w) * -0.1438 + var(--lockup-gap));
 }
+
+/* The strapline sits under the TAGLINE, not under the image, so it takes the
+   gap plain — no padding cancellation. That correction only ever belongs on
+   whichever row is directly beneath the PNG; applying it here as well would
+   pull the strapline 11px up into the tagline. */
+.site-footer .footer-tag { margin-top: var(--lockup-gap); }
+
+/* ---------- Navigation dropdowns (client request) ----------
+   Section menus under the primary nav entries. The targets are anchors inside
+   a page, not separate routes, so every panel link lands the reader in a part
+   of the page the parent entry already points at; Header.tsx and src/lib/nav.tsx
+   hold the behavior and the data.
+
+   Two layouts share this block:
+     · >= 1280px — a panel floating below the masthead. `Services` uses the
+       `.nav-item-wide` variant, which spans the wrap and sets its four service
+       groups in columns; every other menu is a narrow list under its entry.
+     · < 1280px — .site-nav is already the stacked drawer, so the panels flatten
+       into indented sub-lists behind the +/- disclosure buttons.
+
+   `hidden` is the single source of open/closed state (Header sets it from
+   `openKey`), so each `display` below is written against `:not([hidden])` —
+   a bare `display` on .nav-menu would out-rank the attribute's UA rule and the
+   panel would never close. */
+
+.nav-item-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* The mark is drawn in CSS rather than shipped as a glyph so it can invert to a
+   minus without a second element or a font dependency. */
+.nav-sub-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 0.4rem;
+  cursor: pointer;
+  color: var(--ink);
+  line-height: 0;
+}
+.nav-sub-toggle-mark {
+  display: inline-block;
+  position: relative;
+  width: 11px;
+  height: 11px;
+}
+.nav-sub-toggle-mark::before,
+.nav-sub-toggle-mark::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  transition: transform var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease);
+}
+.nav-sub-toggle-mark::before { inset: 5px 0 5px 0; }   /* horizontal bar */
+.nav-sub-toggle-mark::after  { inset: 0 5px 0 5px; }   /* vertical bar */
+.nav-item.is-expanded .nav-sub-toggle-mark::after { transform: scaleY(0); opacity: 0; }
+
+.nav-menu-code {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  color: var(--teal-dark);
+  margin-right: 0.5rem;
+}
+.nav-menu-title {
+  margin: 0 0 0.55rem;
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+@media (min-width: 1280px) {
+  .site-nav li.nav-item { position: static; }
+  /* Narrow panels hang off their own entry; the wide one spans the masthead,
+     so only the narrow ones become a containing block. .navbar is deliberately
+     left unpositioned — the drawer below 1280px resolves against .site-header
+     and would move if that changed. */
+  .site-nav li.has-menu:not(.nav-item-wide) { position: relative; }
+
+  .nav-menu {
+    position: absolute;
+    /* Clears the navbar's own padding-block, so the panel meets the masthead's
+       bottom border rather than floating inside it. Same value as `.navbar`'s
+       padding-block — change one and you must change the other, since CSS
+       cannot read another rule's property. */
+    top: calc(100% + 0.85rem);
+    z-index: 120;
+    background: var(--white);
+    border: 1px solid var(--teal);
+    border-top: 3px solid var(--ink);
+    box-shadow: 0 18px 40px -24px rgba(36, 37, 67, 0.55);
+  }
+  .nav-menu:not([hidden]) { display: block; }
+
+  /* Narrow menus: a single column, aligned to the left edge of the entry. */
+  .site-nav li.has-menu:not(.nav-item-wide) .nav-menu {
+    left: -0.9rem;
+    min-width: 15rem;
+    max-width: 24rem;
+    padding: 1rem 0.5rem;
+  }
+
+  /* Services: full masthead width, capped to the wrap so the columns line up
+     with the page content underneath. Its `li` is left static, so this panel's
+     containing block is `.site-header` itself and a bare `top: 100%` already
+     lands on the masthead's bottom edge — the padding correction above applies
+     only to the narrow panels, whose containing block is their own entry. */
+  .nav-item-wide .nav-menu {
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1.75rem 0 2rem;
+  }
+  .nav-item-wide .nav-menu-inner {
+    max-width: var(--wrap-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem clamp(1.25rem, 2.5vw, 2.5rem);
+    align-items: start;
+  }
+
+  .nav-menu ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-menu li { display: block; }
+  .site-nav .nav-menu a:not(.btn) {
+    display: block;
+    white-space: normal;
+    font-weight: 500;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    padding: 0.4rem 0.9rem;
+    color: var(--ink);
+  }
+  /* The sliding 2px underline the top-level entries use reads as clutter on a
+     stacked list; these get a left rule and a tint instead. */
+  .site-nav .nav-menu a:not(.btn)::after { content: none; }
+  .site-nav .nav-menu a:not(.btn):hover,
+  .site-nav .nav-menu a:not(.btn):focus-visible {
+    background: var(--blue-light);
+    color: var(--teal-dark);
+    box-shadow: inset 3px 0 0 var(--coral);
+  }
+  .site-nav .nav-menu a:not(.btn):hover .nav-menu-code { color: var(--teal-dark); }
+  .site-nav .nav-menu .nav-menu-title a:not(.btn) {
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  .site-nav .nav-menu .nav-menu-title a:not(.btn):hover {
+    background: none;
+    box-shadow: none;
+    color: var(--coral);
+  }
+  .nav-item-wide .nav-menu-title { padding-inline: 0.9rem; }
+
+  /* Keeping the entry lit while its panel is open ties the two together. */
+  .site-nav li.has-menu.is-expanded > .nav-item-row > a:not(.btn) { color: var(--teal); }
+  .site-nav li.has-menu.is-expanded > .nav-item-row > a:not(.btn)::after {
+    right: 0;
+    background: var(--teal);
+  }
+}
+
+@media (max-width: 1279.98px) {
+  .nav-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .nav-item-row > a { flex: 1; }
+  .nav-sub-toggle { display: inline-flex; align-items: center; }
+
+  /* The drawer is absolutely positioned at the masthead's bottom edge, so it
+     does not lengthen the page — anything past the viewport bottom would be
+     unreachable, and the Services menu alone adds seventeen entries. Cap it at
+     what is actually left below the header and scroll the remainder inside.
+     `--header-h` is measured and published by Header.tsx; the 12rem fallback
+     only applies for the first paint or with JS off, when the menu cannot be
+     opened anyway. `overscroll-behavior` stops the page behind it from taking
+     over the scroll at either end. */
+  .site-nav.is-open {
+    max-height: calc(100dvh - var(--header-h, 12rem));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .nav-menu:not([hidden]) { display: block; }
+  .nav-menu-inner > .nav-menu-group + .nav-menu-group { margin-top: 0.9rem; }
+  .nav-menu-title { margin: 0 0 0.35rem; padding-left: 0.9rem; }
+  /* `.site-nav ul` is a flex column in the drawer; these are plain lists. */
+  .nav-menu ul { display: block; list-style: none; margin: 0; padding: 0 0 0.85rem; }
+  /* The drawer's own `li { border-bottom }` would draw a rule under every
+     sub-item; the group is one block, so only its outer entry keeps a rule. */
+  .site-nav .nav-menu li { border-bottom: 0; }
+  .site-nav .nav-menu a:not(.btn) {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-left: 2px solid var(--teal);
+  }
+  .site-nav .nav-menu a:not(.btn):hover { background: var(--blue-light); }
+  .site-nav .nav-menu .nav-menu-title a:not(.btn) {
+    padding: 0;
+    border-left: 0;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+}
+
+/* ---------- Footer: strapline on one line (client request) ----------
+   "Total Risk Analysis and Value Optimization" was wrapping "Optimization" onto
+   a second line. No single font-size fixes it: the column holding it is 4fr of
+   an 11fr grid, so it is widest at the wrap max (~343px) and narrowest just
+   above the 900px breakpoint, where the gutters and column gaps have shrunk but
+   the four columns have not yet collapsed to two (~250px).
+
+   So the size is derived from the column instead of guessed. The string is 42
+   characters of IBM Plex Mono, whose advance is 0.6em, plus the 0.18em tracking
+   this strapline shares with `.kicker`: 42 x 0.78em = 32.8em wide, so the
+   largest size that always fits is the column width / 32.8 — 3.05cqi. 2.9cqi
+   leaves ~5% headroom, capped at the reference's own size so it never grows
+   past the design value.
+
+   `container-type` goes on the wrapper rather than the grid, because `cqi` has
+   to resolve against this one column, not the whole footer. Where container
+   units are unsupported the `min()` is invalid and the declaration is dropped,
+   leaving the reference's `--fs-micro` and the wrap it produces today. */
+.footer-brand { container-type: inline-size; }
+.site-footer .footer-tag {
+  white-space: nowrap;
+  font-size: min(var(--fs-micro), 2.9cqi);
+}
+
+/* ---------- Footer: no rule above the column headings (client request) ----------
+   The reference draws a 1px `--teal-dark` line over Practice / Firm / Contact.
+   Client asked for it gone. The 0.9rem `padding-top` it sat under is kept, so
+   the three heading columns stay where they are relative to the brand column —
+   drop that too if the headings should rise to meet the logo. */
+.site-footer .footer-heading { border-top: 0; }
+
+/* ---------- /about — "About TRAVO" intro (client request) ----------
+   The body paragraphs run the full wrap width — client's call; the 62ch
+   measure borrowed from the Founder's Letter read as a stray column against
+   the full-width section head. Nothing in this stylesheet caps a bare <p>, so
+   that takes no rule: the paragraphs sit directly in `.wrap` the way the
+   Privacy Notice's prose does.
+
+   The space below the section was the sum of TWO boxes, not one: this
+   section's `padding-block-end` and Founder evidence's `padding-block-start`,
+   each up to `--space-section` (8.5rem), so ~17rem of white separated two
+   sections that are both on white and read as one continuous area. Both are
+   trimmed, and the adjacent-sibling selector keeps it to this one boundary —
+   every other section on the page keeps the full rhythm. Adjust them as a
+   pair; trimming one alone leaves most of the gap in place. */
+#about-travo { padding-block-end: clamp(1.5rem, 3vw, 2.5rem); }
+#about-travo + .section { padding-block-start: clamp(2.5rem, 5vw, 4.5rem); }
+
+/* Lede to body copy. `.section-head`'s `--space-block` bottom margin (3rem) is
+   sized to separate a heading from a grid of cards; here the lede and the
+   paragraphs under it are one continuous argument, so that much air reads as a
+   break in the middle of the thought. */
+#about-travo .section-head { margin-bottom: clamp(0.9rem, 2vw, 1.5rem); }
+
+/* ---------- Headings that fill rather than balance (client request) ----------
+   `h1, h2` carry `text-wrap: balance` globally (see the heading block near the
+   top). Balancing evens the line lengths, so a long heading gets a SHORT first
+   line with the right margin still open, and the break lands wherever the two
+   halves come out even — including inside a hyphenated compound. Client read
+   all three of these as broken rather than wrapped.
+
+   `pretty` fills each line normally and only guards the last one against an
+   orphan. The reference already reaches for it this way on
+   `#research-lines-title`, so this follows its own precedent rather than
+   introducing a new mechanism. Short headings elsewhere still balance, which
+   is what that global rule is good at — this is a per-heading opt-out, not a
+   change to the default.
+
+   `.nobreak` is the second half of the fix. A hyphenated compound is a break
+   opportunity at ANY width, so `pretty` alone leaves the split free to come
+   back at some other viewport; the spans pin the three compounds that actually
+   appear in these headings. Both fixes are needed — filling the line moves the
+   break, it does not remove the opportunity. */
+#about-travo-title,
+#formats-title,
+#topics-title { text-wrap: pretty; }
+.nobreak { white-space: nowrap; }

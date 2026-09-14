@@ -40,6 +40,14 @@ export default function AboutPage() {
       <section className="section page-hero section-ink on-dark" aria-labelledby="about-title" id="about">
         <div className="wrap"><p className="kicker">About</p><h1 id="about-title">Research. Industry. Teaching.<br />One risk discipline.</h1><p className="lede editorial"><em><span className="travo-word">TRAVO</span> is the commercial application of a career spent studying, applying and teaching engineering decision-making under uncertainty.</em></p></div>
       </section>
+      <section className="section reveal" aria-labelledby="about-travo-title" id="about-travo">
+        <div className="wrap">
+          <div className="section-head"><p className="kicker">About <span className="travo-word">TRAVO</span></p><h2 id="about-travo-title"><span className="travo-word">TRAVO</span> is an independent, <span className="nobreak">principal-led</span> construction risk advisory practice.</h2><p className="lede col">Led by Dr. Karim S. Karam, <span className="travo-word">TRAVO</span> provides quantitative risk and decision analysis to owners, developers, lenders, contractors, counsel, sureties and public agencies facing consequential decisions about project cost, schedule, contingency and delivery.</p></div>
+          <p>The practice is built around one proposition: that uncertainty on construction projects is quantifiable, that the range of outcomes can be disciplined by evidence, and that better decisions follow from understanding what is actually driving the risk — not from a checklist or a template.</p>
+          <p><span className="travo-word">TRAVO</span> helps clients understand how uncertainty can change an expected outcome before capital is committed, contingency is set, a bid is submitted, or a project position must be defended. The work combines senior construction practice and research experience, quantitative risk analysis and disciplined decision analysis to test assumptions, identify the few conditions that matter most, and translate uncertainty into defensible ranges, priorities and actions.</p>
+          <p><span className="travo-word">TRAVO</span> can enter at any point in the project lifecycle — from preconstruction through active delivery, distress and post-project learning — with one objective: make uncertainty useful to the decision.</p>
+        </div>
+      </section>
       <section className="section reveal" aria-labelledby="background-title">
         <div className="wrap"><div className="section-head"><p className="kicker">Founder evidence</p><h2 id="background-title">The methodology was developed across three environments.</h2></div>
           <div className="source-triad">
@@ -49,7 +57,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section section-soft reveal" aria-labelledby="mission-vision-title">
+      <section className="section section-soft reveal" aria-labelledby="mission-vision-title" id="mission-vision">
         <div className="wrap">
           <div className="section-head"><p className="kicker">Mission &amp; Vision</p><h2 id="mission-vision-title">A focused practice with a defined purpose and direction.</h2></div>
           <div className="grid grid-2">
@@ -64,7 +72,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section reveal" aria-labelledby="principal-title">
+      <section className="section reveal" aria-labelledby="principal-title" id="the-principal">
         <div className="wrap">
           <div className="section-head"><p className="kicker">The Principal</p><h2 id="principal-title">Risk methodology. Operating judgment. Academic discipline.</h2></div>
           <div className="col">
@@ -76,7 +84,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <section className="section section-ink on-dark reveal" aria-labelledby="principles-title">
+      <section className="section section-ink on-dark reveal" aria-labelledby="principles-title" id="operating-principles">
         <div className="wrap">
           <div className="section-head"><p className="kicker">Operating principles</p><h2 id="principles-title">How the practice is accepted, executed and declined.</h2></div>
           <div className="grid grid-3">
